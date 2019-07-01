@@ -2,25 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-          - image: circleci/ruby:2.5.1-node-browsers
-            environment:
-              BUNDLER_VERSION: 2.0.1
+      - image: circleci/ruby:2.5.1-node-browsers
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: setup bundler
-          command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
@@ -31,3 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+      - run:
+          name: run tests
+          command: |
+            DISABLE_SPRING=true bundle exec rails test
