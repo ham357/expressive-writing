@@ -53,6 +53,33 @@ jobs:
           command: |
             docker push ${ECR_DOMAIN}/expressive-writing-image:$CIRCLE_SHA1
             docker push ${ECR_DOMAIN}/expressive-writing-image:latest
+  deploy:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - run:
+          name: install aws cli
+          command: |
+            sudo pip install awscli
+      - run:
+          name: download jq
+          command: |
+            wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+            mv jq-linux64 jq
+      - run:
+          name: login
+          command: |
+            $(aws ecr get-login --no-include-email --region ap-northeast-1)
+      - run:
+          name: deploy
+          command: |
+            aws ecs describe-task-definition --task-definition rails-service | jq '.taskDefinition | { containerDefinitions: .containerDefinitions }' > definition.json
+            aws ecs register-task-definition --family rails-service --cli-input-json file://definition.json
+            aws ecs update-service --cluster expressive-writing-ecs-cluster --service rails-service --task-definition rails-service
+      - run:
+          name: migration
+          command: |
+            aws ecs run-task --cluster expressive-writing-ecs-cluster --task-definition rails-migrate
 workflows:
   version: 2
   test:
@@ -61,6 +88,12 @@ workflows:
     - build_image:
         requires:
           - build
+        filters:
+          branches:
+            only: master
+    - deploy:
+        requires:
+          - build_image
         filters:
           branches:
             only: master

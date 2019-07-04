@@ -20,7 +20,8 @@ test:
 
 production:
   <<: *default
-  database: expressive-writing_production
-  username: expressive-writing
-  password: <%= ENV['EXPRESSIVE-WRITING_DATABASE_PASSWORD'] %>
+  database: <%= Rails.application.credentials.db[:name] %>
+  username: <%= Rails.application.credentials.db[:user] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:host] %>
   
