@@ -79,7 +79,7 @@ jobs:
       - run:
           name: migration
           command: |
-            aws ecs run-task --cluster expressive-writing-ecs-cluster --task-definition rails-migrate2
+            aws ecs run-task --cluster expressive-writing-ecs-cluster --task-definition rails-migrate
 workflows:
   version: 2
   test:
