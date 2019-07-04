@@ -73,13 +73,13 @@ jobs:
       - run:
           name: deploy
           command: |
-            aws ecs describe-task-definition --task-definition rails-service | jq '.taskDefinition | { containerDefinitions: .containerDefinitions }' > definition.json
-            aws ecs register-task-definition --family rails-service --cli-input-json file://definition.json
-            aws ecs update-service --cluster expressive-writing-ecs-cluster --service rails-service --task-definition rails-service
+            aws ecs describe-task-definition --task-definition rails-service2 | jq '.taskDefinition | { containerDefinitions: .containerDefinitions }' > definition.json
+            aws ecs register-task-definition --family rails-service2 --cli-input-json file://definition.json
+            aws ecs update-service --cluster expressive-writing-ecs-cluster --service rails-service2 --task-definition rails-service2
       - run:
           name: migration
           command: |
-            aws ecs run-task --cluster expressive-writing-ecs-cluster --task-definition rails-migrate
+            aws ecs run-task --cluster expressive-writing-ecs-cluster --task-definition rails-migrate2
 workflows:
   version: 2
   test:
