@@ -40,7 +40,7 @@ jobs:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     working_directory: ~/repo
-        steps:
+    steps:
       - checkout
       - restore_cache:
           keys:
