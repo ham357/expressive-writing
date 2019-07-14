@@ -143,14 +143,12 @@ jobs:
             aws ecs run-task --cluster expressive-writing-ecs-cluster --task-definition rails-migrate
 workflows:
   version: 2
-  rubocop_rspec:
+  test:
     jobs:
       - rubocop
       - rspec:
           requires:
             - rubocop
-  test:
-    jobs:
     - build
     - build_image:
         requires:
