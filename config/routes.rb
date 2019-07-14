@@ -1,5 +1,3 @@
 Rails.application.routes.draw do
-  root to: 'top#index'
-  resources :todos
-  resources :health_check, only: [:index]
+  root to: 'posts#index'
 end
