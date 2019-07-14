@@ -149,17 +149,16 @@ workflows:
       - rspec:
           requires:
             - rubocop
-    - build
-    - build_image:
-        requires:
-          - build
-        filters:
-          branches:
-            only: master
-    - deploy:
-        requires:
-          - build_image
-        filters:
-          branches:
-            only: master
-
+      - build
+      - build_image:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - build_image
+          filters:
+            branches:
+              only: master
