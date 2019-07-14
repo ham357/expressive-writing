@@ -51,6 +51,7 @@ group :development do
   gem 'rspec-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'erb2haml'
 end
 
 group :test do
@@ -67,3 +68,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'therubyracer'
 gem 'materialize-sass'
 gem 'jquery-rails'
+gem 'hamlit'
