@@ -1,7 +1,8 @@
 %header
   %nav
     .nav-wrapper
-      %a.brand-logo{:href => "#"} Logo
+      = link_to root_path,class: "brand-logo",data: {"turbolinks" => false} do
+        Logo
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
           %a{:href => "sass.html"} Sass
