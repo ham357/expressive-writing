@@ -94,6 +94,11 @@ GEM
     erubi (1.8.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.2)
+      factory_bot (~> 5.0.2)
+      railties (>= 4.2.0)
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -287,6 +292,7 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   erb2haml
+  factory_bot_rails
   hamlit
   jbuilder (~> 2.5)
   jquery-rails
