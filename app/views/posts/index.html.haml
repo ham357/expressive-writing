@@ -6,9 +6,9 @@
         %li
           %a{:href => "sass.html"} Sass
         %li
-          %a{:href => "badges.html"} Components
+          = link_to "Sign up", new_user_registration_path,data: {"turbolinks" => false}
         %li
-          %a{:href => "collapsible.html"} JavaScript
+          = link_to "Log in", new_user_session_path,data: {"turbolinks" => false}
 
 .row
   .col.s12.m6.l3
