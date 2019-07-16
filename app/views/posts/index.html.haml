@@ -1,40 +1,8 @@
 .row
-  .col.s12.m6.l3
-    .card.hoverable
-      .card-image
-        %img{:src => "uploads/no_image.jpg"}/
-      .card-content
-        %span.card-title Card Title
-        %p
-          I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.
-      .card-action
-        %a{:href => "#"} This is a link
-  .col.s12.m6.l3
-    .card.hoverable
-      .card-image
-        %img{:src => "uploads/no_image.jpg"}/
-      .card-content
-        %span.card-title Card Title
-        %p
-          I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.
-      .card-action
-        %a{:href => "#"} This is a link
-  .col.s12.m6.l3
-    .card.hoverable
-      .card-image
-        %img{:src => "uploads/no_image.jpg"}/
-      .card-content
-        %span.card-title Card Title
-        %p
-          I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.
-      .card-action
-        %a{:href => "#"} This is a link
+  = render @posts
 .fixed-action-btn
-  %a.btn-floating.btn-large.red
-    %i.large.material-icons mode_edit
+  = link_to new_post_path, class: "btn-floating btn-large red", data: {"turbolinks" => false} do
+    %i.large.material-icons create
 .row
   .col.s12.m5
     .card-panel.teal

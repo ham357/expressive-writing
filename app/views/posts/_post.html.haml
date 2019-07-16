@@ -1,0 +1,9 @@
+.col.s12.m6.l3
+  .card.hoverable
+    .card-image
+      = image_tag post.image.url if post.image.url.present?
+    .card-content
+      %p 
+        = post.contents
+    .card-action
+      %a{:href => "#"} This is a link
