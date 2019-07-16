@@ -14,4 +14,6 @@
       :cdata
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    = render "layouts/header"
     = yield
+    = render "layouts/footer"

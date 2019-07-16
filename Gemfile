@@ -42,6 +42,9 @@ group :development, :test do
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -69,3 +72,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'materialize-sass'
 gem 'jquery-rails'
 gem 'hamlit'
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
