@@ -31,3 +31,7 @@ Style/FrozenStringLiteralComment:
 
 Metrics/BlockLength:
   Max: 100
+
+MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20
