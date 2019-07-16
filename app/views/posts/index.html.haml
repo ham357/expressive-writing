@@ -1,2 +1,11 @@
 .row
   = render @posts
+.fixed-action-btn
+  = link_to new_post_path, class: "btn-floating btn-large red", data: {"turbolinks" => false} do
+    %i.large.material-icons create
+.row
+  .col.s12.m5
+    .card-panel.teal
+      %span.white-text
+        I am a very simple card. I am good at containing small bits of information.
+        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
