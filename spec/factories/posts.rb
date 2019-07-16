@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
     contents { "これはテスト。テストなのです。" }
-    image { File.open("#{Rails.root}/public/uploads/no_image.jpg") }
+    image { "imageUrl(640, 480, 'cats')" }
     user
   end
 end
