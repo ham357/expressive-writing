@@ -10,7 +10,7 @@
           %span File
           = f.file_field :image
         .file-path-wrapper
-          = f.text_field :image, class: "file-path validate"
+          %input.file-path.validate{:type => "text"}/
     %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
       Submit
       %i.material-icons.right send
