@@ -1,19 +1,20 @@
-.col.s12.m3.l4
-  .card.small.hoverable
-    .card-image.waves-effect.waves-block.waves-light
-      = image_tag post.image.url, class: 'activator' if post.image.url.present?
-    .card-content
-      %span.card-title.activator.grey-text.text-darken-4
-        Card Title
-        %i.material-icons.right more_vert
-      %p.truncate
-        = post.contents
-      %p
-        %a{:href => "#"} This is a link
-    .card-reveal
-      %span.card-title.grey-text.text-darken-4
-        Card Title
-        %i.material-icons.right close
-      %p         
-        = post.contents
+.container
+  .col.s4
+    .card.small.hoverable
+      .card-image.waves-effect.waves-block.waves-light
+        = image_tag post.image.url, class: 'activator' if post.image.url.present?
+      .card-content
+        %span.card-title.activator.grey-text.text-darken-4
+          Card Title
+          %i.material-icons.right more_vert
+        %p.truncate
+          = post.contents
+        %p
+          %a{:href => "#"} This is a link
+      .card-reveal
+        %span.card-title.grey-text.text-darken-4
+          Card Title
+          %i.material-icons.right close
+        %p         
+          = post.contents
 
