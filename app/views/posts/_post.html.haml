@@ -1,9 +1,19 @@
-.col.s12.m6.l3
-  .card.hoverable
-    .card-image
-      = image_tag post.image.url if post.image.url.present?
+.col.s12.m3.l4
+  .card.small.hoverable
+    .card-image.waves-effect.waves-block.waves-light
+      = image_tag post.image.url, class: 'activator' if post.image.url.present?
     .card-content
-      %p 
+      %span.card-title.activator.grey-text.text-darken-4
+        Card Title
+        %i.material-icons.right more_vert
+      %p.truncate
         = post.contents
-    .card-action
-      %a{:href => "#"} This is a link
+      %p
+        %a{:href => "#"} This is a link
+    .card-reveal
+      %span.card-title.grey-text.text-darken-4
+        Card Title
+        %i.material-icons.right close
+      %p         
+        = post.contents
+
