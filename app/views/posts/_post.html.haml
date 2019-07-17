@@ -17,4 +17,6 @@
           = post.contents
         %p
           %a{:href => "#"} Show detail
+        %p.right
+          = post.created_at.strftime("Create time:%Y/%m/%d %H:%M")
 
