@@ -50,7 +50,7 @@ describe Post, type: :model do
         expect(post.errors[:contents]).to include("can't be blank")
       end
 
-      it "説明文が100文字より多いためエラーになる" do
+      it "contentsが100文字より多いためエラーになる" do
         post = build(:post, contents: ('a' * 1001).to_s, user_id: @user.id)
         post.valid?
         expect(post.errors[:contents][0]).to include("is too long")
