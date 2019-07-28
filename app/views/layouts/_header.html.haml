@@ -8,7 +8,7 @@
           %a{:href => "sass.html"} Sass
         %li
           - if user_signed_in?
-            = link_to "My Page", "",data: {"turbolinks" => false}
+            = link_to "My Page", mypages_path,data: {"turbolinks" => false}
           - else
             = link_to "Sign up", new_user_registration_path,data: {"turbolinks" => false}
         %li
