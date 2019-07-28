@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_022737) do
+ActiveRecord::Schema.define(version: 2019_07_18_060357) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title"
     t.text "contents", null: false
     t.string "image"
     t.bigint "user_id", null: false

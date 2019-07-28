@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create destroy edit update]
+
   def index
-    @posts = Post.all.limit(48)
+    @posts = Post.includes(:user).where(user: current_user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new
@@ -25,6 +27,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:contents, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :contents, :image).merge(user_id: current_user.id)
   end
 end

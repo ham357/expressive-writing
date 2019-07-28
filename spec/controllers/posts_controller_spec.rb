@@ -3,7 +3,9 @@ require 'rails_helper'
 describe PostsController, type: :controller do
   let(:user) { create(:user) }
   let(:post) { create(:post, user_id: user.id) }
-
+  before do
+    sign_in user
+  end
   describe 'GET #index' do
     it "インスタンス変数の値が正常" do
       posts = create_list(:post, 3, user_id: user.id)
