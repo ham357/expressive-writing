@@ -3,9 +3,9 @@
     .card-image.waves-effect.waves-block.waves-light.activator
       = image_tag post.image.url, class: 'activator' if post.image.url.present?
     .card-content
-      %span.card-title.activator.grey-text.text-darken-4
+      %span.card-title.truncate.activator.grey-text.text-darken-4
         = post.title
-        %i.material-icons.right more_vert
+        -# %i.material-icons.right more_vert
       %p.truncate.activator
         = post.contents
     .card-reveal
