@@ -1,0 +1,22 @@
+.edit__container
+  .row
+    .col.s12.m12.l12.x12
+      = form_for @post,class: "center-align" do |f|
+        .row
+          .input-field.col.s12.m12.l12.x12
+            = f.text_field :title,'data-length': "50"
+            = f.label :title, "Title"
+        .row
+          .input-field.col.s12.m12.l12.x12
+            = f.text_area :contents, class: "materialize-textarea",'data-length': "1000"
+            = f.label :contents, "Contents"
+        .row
+          .file-field.input-field.col.s12.m12.l12.x12
+            .btn
+              %span File
+              = f.file_field :image
+            .file-path-wrapper
+              %input.file-path.validate{:type => "text"}/
+        %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
+          Update
+          %i.material-icons.right send
