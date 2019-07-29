@@ -4,12 +4,12 @@
       = form_for @post,class: "center-align" do |f|
         .row
           .input-field.col.s12.m12.l12.x12
-            = f.text_field :title,'data-length': "50"
-            = f.label :title, "Title"
+            = f.text_field :title,'data-length': "50", autofocus: true
+            = f.label :title, "Title",class:"active"
         .row
           .input-field.col.s12.m12.l12.x12
             = f.text_area :contents, class: "materialize-textarea",'data-length': "1000"
-            = f.label :contents, "Contents"
+            = f.label :contents, "Contents",class:"active"
         .row
           .file-field.input-field.col.s12.m12.l12.x12
             .btn
