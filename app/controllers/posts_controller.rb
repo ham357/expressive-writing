@@ -24,6 +24,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.call(params[:id])
+  end
+
   private
 
   def post_params
