@@ -4,6 +4,8 @@
     word-wrap: break-word;
   }
 }
-.card-image{
-  height: 300px;
+.card.medium.hoverable{
+  .card-image{
+    height: 300px;
+  }
 }
