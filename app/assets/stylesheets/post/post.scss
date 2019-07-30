@@ -13,4 +13,9 @@
 .edit__container{
   width: 500px;
   margin: 0 auto;
+  .file-field{
+    .character-counter{
+      display: none;
+    }
+  }
 }
