@@ -11,5 +11,5 @@
             = @post.contents
         - if user_signed_in? && current_user.id == @post.user_id
           .card-action
-            = link_to "edit", edit_post_path(@post.id)
+            = link_to "edit", edit_post_path(@post.id),data: {"turbolinks" => false}
             = link_to "delete", post_path, method: :delete, data: { confirm: 'Do you want to delete?' } 
