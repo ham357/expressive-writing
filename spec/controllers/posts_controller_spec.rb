@@ -80,18 +80,40 @@ describe PostsController, type: :controller do
   end
 
   describe '#create' do
-    it "投稿内容が保存できているか" do
-      # post = create(:post, user_id: user.id)
-      expect do
-        # binding.pry
-        #  post :create, params: { post: attributes_for(:post)}
+    context 'パラメータが妥当な場合' do
+      it "投稿内容が保存できているか" do
+        expect do
+          post :create, params: { post: attributes_for(:post) }
+        end.to change(Post, :count).by(1)
+      end
+
+      it "正常にトップページへリダイレクトされているか" do
         post :create, params: { post: attributes_for(:post) }
-      end.to change(Post, :count).by(1)
+        expect(response).to redirect_to root_path
+      end
     end
 
-    it "正常にトップページへリダイレクトされているか" do
-      post :create, params: { post: attributes_for(:post) }
-      expect(response).to redirect_to root_path
+    context 'パラメータが不正な場合' do
+      it 'リクエストが成功すること' do
+        post :create, params: { post: attributes_for(:post, contents: "") }
+        expect(response.status).to eq 200
+      end
+
+      it '投稿が登録されないこと' do
+        expect do
+          post :create, params: { post: attributes_for(:post, contents: "") }
+        end.to_not change(User, :count)
+      end
+
+      it 'newテンプレートで表示されること' do
+        post :create, params: { post: attributes_for(:post, contents: "") }
+        expect(response).to render_template :new
+      end
+
+      it 'エラーが表示されること' do
+        post :create, params: { post: attributes_for(:post, contents: "") }
+        expect(assigns(:post).errors.any?).to be_truthy
+      end
     end
   end
 
