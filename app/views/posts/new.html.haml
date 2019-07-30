@@ -20,3 +20,7 @@
         %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
           Submit
           %i.material-icons.right send
+        = link_to root_path,data: {"turbolinks" => false} do
+          .btn.waves-effect.waves-light.grey
+            Cancel
+            %i.material-icons.right cancel
