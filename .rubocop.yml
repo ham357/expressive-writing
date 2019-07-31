@@ -35,3 +35,6 @@ Metrics/BlockLength:
 MethodLength:
   CountComments: false  # count full line comments?
   Max: 20
+
+Metrics/AbcSize:
+  Max: 20
