@@ -10,7 +10,7 @@
         .row
           .input-field
             = f.text_area :contents, class: "materialize-textarea",'data-length': "1000"
-            = f.label :contents, "Contents"
+            = f.label :contents, "Contents *"
             %span.helper-text{"data-error" => "1000 character limit", "data-success" => "right"}
         .row
           .file-field.input-field
