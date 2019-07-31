@@ -30,8 +30,15 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params) if post.user_id == current_user.id
-    redirect_to root_path
+    if post.update(post_params) && post.user_id == current_user.id
+      redirect_to root_path
+    else
+      @post = Post.find(params[:id])
+      respond_to do |format|
+        format.html { render "edit" }
+        format.json
+      end
+    end
   end
 
   def destroy
