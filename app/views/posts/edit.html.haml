@@ -1,28 +1,4 @@
 .edit__container
   .row
     .col.s12.m12.l12.x12
-      = form_for @post,class: "center-align" do |f|
-        .row
-          .input-field.col.s12.m12.l12.x12
-            = f.text_field :title,'data-length': "50", autofocus: true
-            = f.label :title, "Title",class:"active"
-            %span.helper-text{"data-error" => "50 character limit", "data-success" => "right"}
-        .row
-          .input-field.col.s12.m12.l12.x12
-            = f.text_area :contents, class: "materialize-textarea",'data-length': "1000"
-            = f.label :contents, "Contents *",class:"active"
-            %span.helper-text{"data-error" => "1000 character limit", "data-success" => "right"}
-        .row
-          .file-field.input-field.col.s12.m12.l12.x12
-            .btn
-              %span File
-              = f.file_field :image
-            .file-path-wrapper
-              %input.file-path.validate{:type => "text"}/
-        %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
-          Update
-          %i.material-icons.right send
-        = link_to post_path(@post.id),data: {"turbolinks" => false} do
-          .btn.waves-effect.waves-light.grey
-            Cancel
-            %i.material-icons.right cancel
+      = render "form", { post: @post}
