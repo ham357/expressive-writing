@@ -67,15 +67,40 @@ describe PostsController, type: :controller do
   end
 
   describe '#update' do
-    it "投稿内容が更新できているか" do
-      patch :update, params: { id: test_post.id, post: update_attributes }
-      test_post.reload
-      expect(test_post.contents).to eq("変更しました")
+    context 'パラメータが妥当な場合' do
+      it "投稿内容が更新できているか" do
+        patch :update, params: { id: test_post.id, post: update_attributes }
+        test_post.reload
+        expect(test_post.contents).to eq("変更しました")
+      end
+
+      it "正常にトップページへリダイレクトされているか" do
+        patch :update, params: { id: test_post.id, post: update_attributes }
+        expect(response).to redirect_to root_path
+      end
     end
 
-    it "正常にトップページへリダイレクトされているか" do
-      patch :update, params: { id: test_post.id, post: update_attributes }
-      expect(response).to redirect_to root_path
+    context 'パラメータが不正な場合' do
+      it 'リクエストが成功すること' do
+        patch :update, params: { id: test_post.id, post: attributes_for(:post, contents: "") }
+        expect(response.status).to eq 200
+      end
+
+      it '投稿内容が変更されないこと' do
+        expect do
+          put :update, params: { id: test_post.id, post: attributes_for(:post, contents: "") }
+        end.to_not change(Post.find(test_post.id), :contents)
+      end
+
+      it 'editテンプレートで表示されること' do
+        put :update, params: { id: test_post.id, post: attributes_for(:post, contents: "") }
+        expect(response).to render_template :edit
+      end
+
+      it 'エラーが表示されること' do
+        put :update, params: { id: test_post.id, post: attributes_for(:post, contents: "") }
+        expect(assigns(:post).errors.any?).to be_truthy
+      end
     end
   end
 
