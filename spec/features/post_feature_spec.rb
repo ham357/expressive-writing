@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'post', type: :feature do
+feature '記事投稿', type: :feature do
   context 'パラメータが妥当な場合' do
     scenario '正常に投稿できているか' do
       user = FactoryBot.create(:user)
