@@ -13,30 +13,30 @@ describe PostsController, type: :controller do
     sign_in user
   end
   describe 'GET #index' do
-    it "インスタンス変数の値が正常" do
+    it "インスタンス変数の値が正常か" do
       posts = create_list(:post, 3, user_id: user.id)
       get :index
       expect(assigns(:posts)).to match(posts)
     end
 
-    it "ビューに正しく遷移できる" do
+    it "ビューに正しく遷移できているか" do
       get :index
       expect(response).to render_template :index
     end
   end
 
   describe 'GET #new' do
-    it 'リクエストが成功すること' do
+    it 'リクエストが成功しているか' do
       get :new
       expect(response.status).to eq 200
     end
 
-    it 'newテンプレートで表示されること' do
+    it 'newテンプレートが表示されているか' do
       get :new
       expect(response).to render_template :new
     end
 
-    it '@postがnewされていること' do
+    it '@postがnewされているか' do
       get :new
       expect(assigns(:post)).to_not be_nil
     end
