@@ -39,3 +39,43 @@ feature '記事投稿', type: :feature do
     end
   end
 end
+
+feature '記事更新', type: :feature do
+  context 'パラメータが妥当な場合' do
+    scenario '正常に更新できているか' do
+      user = create(:user)
+      test_post = create(:post, user_id: user.id)
+
+      sign_in user
+      visit root_path
+
+      visit edit_post_path(test_post.id)
+      expect(current_path).to eq edit_post_path(test_post.id)
+      fill_in "post[contents]", with: "変更しました"
+      expect  do
+        find('[type="submit"]').click
+        test_post.reload
+      end.to change { test_post.contents }.from("これはテスト。テストなのです。").to("変更しました")
+      expect(current_path).to eq root_path
+    end
+  end
+
+  context 'パラメータが不正な場合' do
+    scenario 'コンテンツが空のため保存できていないか' do
+      user = create(:user)
+      test_post = create(:post, user_id: user.id)
+
+      sign_in user
+      visit root_path
+
+      visit edit_post_path(test_post.id)
+      expect(current_path).to eq edit_post_path(test_post.id)
+      fill_in "post[contents]", with: ""
+      expect  do
+        find('[type="submit"]').click
+        test_post.reload
+      end.not_to change test_post.contents
+      expect(current_path).to eq post_path(test_post.id)
+    end
+  end
+end
