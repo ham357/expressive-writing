@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 feature '記事投稿', type: :feature do
+  let(:user) { create(:user) }
+
   context 'パラメータが妥当な場合' do
     scenario '正常に投稿できているか' do
-      user = create(:user)
-
       sign_in user
       visit root_path
-
       visit new_post_path
       expect(current_path).to eq new_post_path
 
@@ -22,11 +21,8 @@ feature '記事投稿', type: :feature do
 
   context 'パラメータが不正な場合' do
     scenario 'コンテンツが空のため保存できていないか' do
-      user = create(:user)
-
       sign_in user
       visit root_path
-
       visit new_post_path
       expect(current_path).to eq new_post_path
 
@@ -41,11 +37,11 @@ feature '記事投稿', type: :feature do
 end
 
 feature '記事更新', type: :feature do
+  let(:user) { create(:user) }
+  let(:test_post) { create(:post, user_id: user.id) }
+
   context 'パラメータが妥当な場合' do
     scenario '正常に更新できているか' do
-      user = create(:user)
-      test_post = create(:post, user_id: user.id)
-
       sign_in user
       visit root_path
 
@@ -62,9 +58,6 @@ feature '記事更新', type: :feature do
 
   context 'パラメータが不正な場合' do
     scenario 'コンテンツが空のため保存できていないか' do
-      user = create(:user)
-      test_post = create(:post, user_id: user.id)
-
       sign_in user
       visit root_path
 
@@ -74,7 +67,7 @@ feature '記事更新', type: :feature do
       expect  do
         find('[type="submit"]').click
         test_post.reload
-      end.not_to change test_post.contents
+      end.not_to change { test_post.contents }.from("これはテスト。テストなのです。")
       expect(current_path).to eq post_path(test_post.id)
     end
   end
