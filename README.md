@@ -1,24 +1,45 @@
-# README
+# Expressive-writing(作成中)
+アイデアやメモを投稿したり、シェアするSNSです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 本番環境
+http://expressive-writing-lb-1420086715.ap-northeast-1.elb.amazonaws.com/
 
-Things you may want to cover:
+# 使用技術
+- Ruby 2.5.1
+- Ruby on Rails 5.2.3
+- MySQL
+- SCSS
+- Material(CSSフレームワーク) 
+- Docker
+- docker-compose
+- AWS
+  - Route53
+  - VPC
+  - EC2
+  - ALB
+  - ECS
+  - ECR
+  - RDS for MySQL
+  - S3
+- CircleCI
+  - ecs-deploy
+- RSpec
+- Rubocup
 
-* Ruby version
+# 機能一覧
+- 投稿機能
+  - 投稿編集機能
+  - 投稿削除機能
+- ユーザ管理機能
+- ページネーション機能(kaminari)
 
-* System dependencies
+- 未実装
+  - コメント機能
+  - フォロー機能
+  - いいね機能
+  - 管理者機能(rails_admin, cancancan)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## テスト(Rspec)
+  - 単体テスト
+  - 統合テスト
+  
