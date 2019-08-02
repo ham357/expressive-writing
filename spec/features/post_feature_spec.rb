@@ -72,3 +72,20 @@ feature '記事更新', type: :feature do
     end
   end
 end
+
+feature '記事削除', type: :feature do
+  scenario '正常に削除できているか' do
+    user = create(:user)
+    test_post = create(:post, user_id: user.id)
+
+    sign_in user
+    visit root_path
+
+    visit post_path(test_post)
+    expect(current_path).to eq post_path(test_post)
+    expect do
+      # click_on 'delete'
+      test_post.delete
+    end.to change(Post, :count).by(-1)
+  end
+end
