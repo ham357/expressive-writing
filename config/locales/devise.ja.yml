@@ -129,8 +129,10 @@ ja:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
   view:
     site_title: Expressive Writing
+    submit: 送信
     edit: 編集
     update: 更新
+    cancel: キャンセル
     mypage: マイページ
     cancel_my_account: アカウントを削除
     back: "戻る"
