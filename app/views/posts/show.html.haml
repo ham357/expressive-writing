@@ -1,0 +1,15 @@
+.container
+  .row
+    .col.s6.m6.l6.xl6
+      .card
+        .card-image
+          = image_tag @post.image.url if @post.image.url.present?
+        .card-content
+          %span.card-title.grey-text.text-darken-4
+            = @post.title
+          %p.truncate
+            = @post.contents
+        - if user_signed_in? && current_user.id == @post.user_id
+          .card-action
+            = link_to "edit", edit_post_path(@post.id),data: {"turbolinks" => false}
+            = link_to "delete", post_path, method: :delete, data: { confirm: 'Do you want to delete?' } 

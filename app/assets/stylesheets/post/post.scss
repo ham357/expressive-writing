@@ -4,6 +4,18 @@
     word-wrap: break-word;
   }
 }
-.card-image{
-  height: 300px;
+.card.medium.hoverable{
+  .card-image{
+    height: 300px;
+  }
+}
+
+.edit__container{
+  width: 500px;
+  margin: 0 auto;
+  .file-field{
+    .character-counter{
+      display: none;
+    }
+  }
 }
