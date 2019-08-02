@@ -127,3 +127,9 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+  view:
+    edit: 編集
+    update: 更新
+    mypage: マイページ
+    cancel_my_account: アカウントを削除
+    back: "戻る"
