@@ -26,21 +26,23 @@
             Currently waiting confirmation for: #{resource.unconfirmed_email}
         .field
           = f.label :password
-          %i (leave blank if you don't want to change it)
+          %i
+            = t('view.new_password_information')
           %br/
           = f.password_field :password, autocomplete: "new-password"
           - if @minimum_password_length
             %br/
             %em
               = @minimum_password_length
-              characters minimum
+              = t('view.password_information')
         .field
           = f.label :password_confirmation
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .field
           = f.label :current_password
-          %i (we need your current password to confirm your changes)
+          %i 
+            = t('view.current_password_information')
           %br/
           = f.password_field :current_password, autocomplete: "current-password"
         %button.btn.waves-effect.waves-light

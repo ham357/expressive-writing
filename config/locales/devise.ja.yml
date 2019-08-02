@@ -133,3 +133,6 @@ ja:
     mypage: マイページ
     cancel_my_account: アカウントを削除
     back: "戻る"
+    current_password_information: （上記変更をするならパスワードを入力)
+    password_information: 文字以上
+    new_password_information: (パスワードを変更しない場合は入力不要)
