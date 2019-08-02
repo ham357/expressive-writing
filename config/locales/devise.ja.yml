@@ -128,6 +128,7 @@ ja:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
   view:
+    site_title: Expressive Writing
     edit: 編集
     update: 更新
     mypage: マイページ
@@ -136,3 +137,7 @@ ja:
     current_password_information: （上記変更をするならパスワードを入力)
     password_information: 文字以上
     new_password_information: (パスワードを変更しない場合は入力不要)
+    sign_in: "ログイン"
+    sign_out: "ログアウト"
+    sign_up: "アカウント登録"
+    about: "このサイトについて"
