@@ -136,6 +136,7 @@ ja:
     back: "戻る"
     current_password_information: （上記変更をするならパスワードを入力)
     password_information: 文字以上
+    nickname_information: (20文字まで)
     new_password_information: (パスワードを変更しない場合は入力不要)
     sign_in: "ログイン"
     sign_out: "ログアウト"
