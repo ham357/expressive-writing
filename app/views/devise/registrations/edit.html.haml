@@ -1,7 +1,8 @@
 .container
   .row
     .col.s12.m4.l3
-      %h4 Mypage
+      %h4 
+        = t('view.mypage')
       .collection
         = link_to "プロフィールの変更", edit_user_registration_path, class: 'collection-item'
         %a.collection-item{:href => "#!"} Alvin
@@ -9,7 +10,7 @@
         %a.collection-item{:href => "#!"} Alvin
     .col.s12.m8.l9
       %h2
-        Edit #{resource_name.to_s.humanize}
+        = t('view.edit')
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = render "devise/shared/error_messages", resource: resource
         .field
@@ -42,9 +43,19 @@
           %i (we need your current password to confirm your changes)
           %br/
           = f.password_field :current_password, autocomplete: "current-password"
-        .actions
-          = f.submit "Update"
-      %h3 Cancel my account
+        %button.btn.waves-effect.waves-light
+          = f.submit "#{t('view.update')}"
+          %i.material-icons.right send
+      %h3
+        = t('view.cancel_my_account')
       %p
-        Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-      = link_to "Back", :back
+      = link_to registration_path(resource_name), data: { confirm: 'Are you sure?',"turbolinks" => false} do
+        .btn.waves-effect.waves-light
+          = t('view.cancel_my_account')
+          %i.material-icons.right send
+      %br
+      %br
+      = link_to :back do
+        .btn.waves-effect.waves-light.grey
+          Cancel
+          %i.material-icons.right cancel
