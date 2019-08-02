@@ -1,5 +1,6 @@
 .user__container
-  %h4 Log in
+  %h4
+    = t('view.sign_in')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.label :email
@@ -14,6 +15,7 @@
         = f.check_box :remember_me
         = f.label :remember_me
     .actions
-      %button.btn.waves-effect.waves-light#login Log in
+      %button.btn.waves-effect.waves-light#login
+        = t('view.sign_in')
   = render "devise/shared/links"
   
