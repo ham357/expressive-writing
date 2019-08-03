@@ -1,8 +1,8 @@
 %header
   %nav
     .nav-wrapper
-      = link_to root_path,class: "brand-logo",data: {"turbolinks" => false} do
-        = t('view.site_title')
+      = link_to "/" do
+        = image_tag "/uploads/site/logo.jpg", height: "63",width: "150", alt: "expressive-writing"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
           = link_to "#{t('view.about')}", "",data: {"turbolinks" => false}
