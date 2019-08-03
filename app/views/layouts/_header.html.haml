@@ -1,18 +1,18 @@
 %header
   %nav
-    .nav-wrapper
+    .nav-wrapper.white
       = link_to "/" do
         = image_tag "/uploads/site/logo.jpg", height: "63",width: "150", alt: "expressive-writing"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
-          = link_to "#{t('view.about')}", "",data: {"turbolinks" => false}
+          = link_to "#{t('view.about')}", "",class: "black-text", data: {"turbolinks" => false}
         %li
           - if user_signed_in?
-            = link_to "#{t('view.mypage')}", mypages_path,data: {"turbolinks" => false}
+            = link_to "#{t('view.mypage')}", mypages_path, class: "black-text", data: {"turbolinks" => false}
           - else
-            = link_to "#{t('view.sign_up')}", new_user_registration_path,data: {"turbolinks" => false}
+            = link_to "#{t('view.sign_up')}", new_user_registration_path,class: "black-text", data: {"turbolinks" => false}
         %li
           - if user_signed_in?
-            = link_to "#{t('view.sign_out')}", destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to log out?' } 
+            = link_to "#{t('view.sign_out')}", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'Do you want to log out?' } 
           - else
             = link_to "#{t('view.sign_in')}", new_user_session_path,data: {"turbolinks" => false}
