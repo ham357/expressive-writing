@@ -25,7 +25,7 @@
   %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
     = t('view.submit')
     %i.material-icons.right send
-  = link_to root_path, data: { confirm: 'Do you want to return?' ,"turbolinks" => false} do
+  = link_to root_path, data: { confirm: 'キャンセルいたしますか?' ,"turbolinks" => false} do
     .btn.waves-effect.waves-light.grey
       = t('view.cancel')
       %i.material-icons.right cancel

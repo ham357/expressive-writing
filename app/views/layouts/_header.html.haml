@@ -13,6 +13,6 @@
             = link_to "#{t('view.sign_up')}", new_user_registration_path,class: "black-text", data: {"turbolinks" => false}
         %li
           - if user_signed_in?
-            = link_to "#{t('view.sign_out')}", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'Do you want to log out?' } 
+            = link_to "#{t('view.sign_out')}", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'ログアウトいたしますか?' } 
           - else
             = link_to "#{t('view.sign_in')}", new_user_session_path, class: "black-text", data: {"turbolinks" => false}
