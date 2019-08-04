@@ -1,0 +1,4 @@
+.flash-box.time-limit
+  - unless flash.empty?
+    - flash.each do |key, value|
+      = content_tag :div, value, class: key

@@ -16,3 +16,23 @@ main {
     }
    }
 }
+
+.flash-box {
+  color: #eee;
+  font-size: 1rem;
+  font-weight: lighter;
+  text-align: center;
+  width: 100vw;
+
+  .notice {
+    background-color: #0099e8;
+    color: #eee;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: #F35500;
+    color: #eee;
+    text-align: center;
+  }
+}
