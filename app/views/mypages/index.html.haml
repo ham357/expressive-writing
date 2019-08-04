@@ -1,7 +1,9 @@
 .container
   .row
     .col.s12.m4.l3
-      %h4
-        = t('view.mypage')
-      .collection
-        = link_to "プロフィールの変更", edit_user_registration_path, class: 'collection-item'
+      = render "sidebar"
+    %ul.collection.with-header
+      %li.collection-header
+        %h4 新着情報
+      %li.collection-item プロフィールの変更のみ実装済み
+      %li.collection-item 他機能は現在作成中
