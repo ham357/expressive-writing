@@ -1,0 +1,7 @@
+%h4
+  = t('view.mypage')
+.collection.left
+  = link_to "プロフィールの変更", edit_user_registration_path, class: 'collection-item'
+  = link_to "いいね一覧", mypages_path, class: 'collection-item'
+  = link_to "フォロー一覧", mypages_path, class: 'collection-item'
+  = link_to "コメント一覧", mypages_path, class: 'collection-item'

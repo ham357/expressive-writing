@@ -1,0 +1,50 @@
+#index-banner.parallax-container
+  .section.no-pad-bot
+    .container
+      %br/
+      %br/
+      %h1.header.center.teal-text.text-lighten-2
+        Expressive Writing
+      .row.center
+        %h5.header.col.s12.light.white-text     
+          Expressive Writingはアイデアやノウハウを投稿したり、
+          %br/
+          シェアすることができるSNSです。
+      .row.center
+        = render "devise/sessions/easy_login_form"
+      %br/
+      %br/
+  .parallax
+    = image_tag "/site/mori.jpg"
+.container
+  .section
+    .row
+      .col.s12.m4
+        .icon-block
+          %h2.center.brown-text
+            %i.material-icons flash_on
+          %h5.center インスピレーション
+          %p.light 今あなたが探しているアイデアやノウハウが見つかるかもしれません。思わぬ発見があるかも。
+      .col.s12.m4
+        .icon-block
+          %h2.center.brown-text
+            %i.material-icons group
+          %h5.center シェア
+          %p.light あなたが大したことないと考えている小さなアイデアも誰かの役に立つかもしれません。まずはシェアしてみましょう。
+      .col.s12.m4
+        .icon-block
+          %h2.center.brown-text
+            %i.material-icons settings
+          %h5.center 使い方は様々
+          %p.light アイデアやノウハウのシェア。日記やメモなど、使い方はあなた次第です。
+#index-banner.parallax-container
+  .section.no-pad-bot
+    .container
+      %h1.header.center.white-text.text-lighten-2
+        まずはお試しから
+      .row.center
+        %h5.header.col.s12.white-text 下記ボタンをクリックしていただくと、テストユーザでログインできます。
+      .row.center
+        = render "devise/sessions/easy_login_form"
+  .parallax
+    = image_tag "/site/koya.jpg"

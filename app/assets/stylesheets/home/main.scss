@@ -7,3 +7,12 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.parallax-container {
+  .parallax{
+    img{
+      display: block;
+      opacity: 100;
+    }
+   }
+}

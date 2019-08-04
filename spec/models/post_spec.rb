@@ -47,19 +47,19 @@ describe Post, type: :model do
       it "contentsが無いためエラーになる" do
         post = build(:post, contents: nil, user_id: @user.id)
         post.valid?
-        expect(post.errors[:contents]).to include("can't be blank")
+        expect(post.errors[:contents]).to include("が入力されていません。")
       end
 
       it "contentsが100文字より多いためエラーになる" do
         post = build(:post, contents: ('a' * 1001).to_s, user_id: @user.id)
         post.valid?
-        expect(post.errors[:contents][0]).to include("is too long")
+        expect(post.errors[:contents][0]).to include("は1000文字以下に設定して下さい。")
       end
 
       it "titleが50文字より多いためエラーになる" do
         post = build(:post, title: ('a' * 51).to_s, user_id: @user.id)
         post.valid?
-        expect(post.errors[:title][0]).to include("is too long")
+        expect(post.errors[:title][0]).to include("は50文字以下に設定して下さい。")
       end
     end
   end

@@ -8,13 +8,13 @@
   .row
     .input-field.col.s12.m12.l12.x12
       = f.text_field :title,'data-length': "50", autofocus: true
-      = f.label :title, "Title",class:"active"
+      = f.label :title,class:"active"
       %span.helper-text{"data-error" => "50 character limit", "data-success" => "right"}
   .row
     .input-field.col.s12.m12.l12.x12
       = f.text_area :contents, class: "materialize-textarea",'data-length': "1000"
-      = f.label :contents, "Contents *",class:"active"
-      %span.helper-text{"data-error" => "1000 character limit", "data-success" => "right"}
+      = f.label :contents,class:"active"
+      %span.helper-text{"data-error" => "1000 character limit", "data-success" => "right"}*必須
   .row
     .file-field.input-field.col.s12.m12.l12.x12
       .btn
@@ -23,9 +23,9 @@
       .file-path-wrapper
         %input.file-path.validate{:type => "text"}/
   %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
-    Submit
+    = t('view.submit')
     %i.material-icons.right send
-  = link_to root_path, data: { confirm: 'Do you want to return?' ,"turbolinks" => false} do
+  = link_to root_path, data: { confirm: 'キャンセルいたしますか?' ,"turbolinks" => false} do
     .btn.waves-effect.waves-light.grey
-      Cancel
+      = t('view.cancel')
       %i.material-icons.right cancel

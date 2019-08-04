@@ -1,11 +1,12 @@
 .user__container
-  %h4 Sign up
+  %h4
+    = t('view.sign_up')
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
     .field
       = f.label :nickname
       %em
-        (20 characters maxmum)
+        = t('view.nickname_information')
       %br/
       = f.text_field :nickname, autofocus: true
     .field
@@ -16,7 +17,7 @@
       = f.label :password
       - if @minimum_password_length
         %em
-          (#{@minimum_password_length} characters minimum)
+          (#{@minimum_password_length} #{t('view.password_information')})
       %br/
       = f.password_field :password, autocomplete: "new-password"
     .field
@@ -24,6 +25,7 @@
       %br/
       = f.password_field :password_confirmation, autocomplete: "new-password"
     .actions
-      %button.btn.waves-effect.waves-light Sign up
+      %button.btn.waves-effect.waves-light
+        = t('view.sign_up')
   = render "devise/shared/links"
   
