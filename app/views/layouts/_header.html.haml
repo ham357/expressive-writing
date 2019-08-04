@@ -5,7 +5,7 @@
         = image_tag "/site/logo.jpg", height: "63",width: "150", alt: "expressive-writing"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
-          = link_to "#{t('view.about')}", "",class: "black-text", data: {"turbolinks" => false}
+          = link_to "#{t('view.about')}", about_path,class: "black-text", data: {"turbolinks" => false}
         %li
           - if user_signed_in?
             = link_to "#{t('view.mypage')}", mypages_path, class: "black-text", data: {"turbolinks" => false}
