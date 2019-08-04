@@ -1,0 +1,8 @@
+= form_for User.new, url: user_session_path do |f|
+  .field
+    = f.email_field :email, :type => "hidden", :value => "test@example.com", autofocus: true, autocomplete: "email"
+  .field
+    = f.password_field :password, :type => "hidden", :value => "aaaaaaaa", autocomplete: "current-password"
+  .actions
+    %button.btn.waves-effect.waves-light
+      テストユーザとしてログイン
