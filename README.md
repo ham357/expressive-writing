@@ -1,5 +1,5 @@
 # Expressive-writing(作成中)
-アイデアやメモを投稿したり、シェアするSNSです。
+アイデアやノウハウを投稿したり、シェアするSNSです。
 
 # 本番環境
 http://expressive-writing-lb-1420086715.ap-northeast-1.elb.amazonaws.com/
@@ -37,7 +37,7 @@ http://expressive-writing-lb-1420086715.ap-northeast-1.elb.amazonaws.com/
   - コメント機能
   - フォロー機能
   - いいね機能
-  - 管理者機能(rails_admin, cancancan)
+  - 管理者機能
 
 ## テスト(Rspec)
   - 単体テスト
