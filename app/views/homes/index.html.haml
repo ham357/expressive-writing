@@ -11,9 +11,7 @@
           %br/
           シェアすることができるSNSです。
       .row.center
-        = link_to "#", class: 'header--pc__nav--root list-parent' do
-          .btn#download-button.btn-large.waves-effect.waves-light.teal.lighten-1
-            試してみる
+        = render "devise/sessions/easy_login_form"
       %br/
       %br/
   .parallax
@@ -47,8 +45,6 @@
       .row.center
         %h5.header.col.s12.white-text 下記ボタンをクリックしていただくと、テストユーザでログインできます。
       .row.center
-        = link_to "#", class: 'header--pc__nav--root list-parent' do
-          .btn#download-button.btn-large.waves-effect.waves-light.teal.lighten-1
-            試してみる
+        = render "devise/sessions/easy_login_form"
   .parallax
     = image_tag "/site/koya.jpg"
