@@ -1,7 +1,7 @@
 %header
   %nav
     .nav-wrapper.white
-      = link_to "/" do
+      = link_to "/", data: {"turbolinks" => false} do
         = image_tag "/images/logo.jpg", height: "53",width: "150", alt: "expressive-writing"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
