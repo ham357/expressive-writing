@@ -7,7 +7,9 @@
 .card.hoverable{
   .card-content{
     img.responsive-img, video.responsive-video {
-      height: 45px;
+      height: 50px;
+      width: 50px;
+      max-width: none;
     }
   }
 }
