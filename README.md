@@ -10,6 +10,7 @@ http://expressive-writing-lb-1420086715.ap-northeast-1.elb.amazonaws.com/
 - MySQL
 - SCSS
 - Material(CSSフレームワーク) 
+- MagicGrid(JavaScriptライブラリ) 
 - Docker
 - docker-compose
 - AWS
