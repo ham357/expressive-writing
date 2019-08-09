@@ -27,5 +27,9 @@
 .container#index-container{
   .card{
     width: 200px;
+    border-radius: 10px;
+  }
+  .card-image{
+    border-radius: 10px 10px 0 0;
   }
 }
