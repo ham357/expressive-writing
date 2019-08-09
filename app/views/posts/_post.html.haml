@@ -1,12 +1,5 @@
 .item
   .card.hoverable
-    .card-content
-      .row
-        .col.s3
-          = image_tag "/images/mori.jpg", class: 'circle responsive-img'
-        .col.s9
-          %span.black-text
-            = post.user.nickname
     .card-image.waves-effect.waves-block.waves-light
       = image_tag post.image.url, class: 'activator' if post.image.url.present?
     .card-content
