@@ -4,9 +4,13 @@
     word-wrap: break-word;
   }
 }
-.card.medium.hoverable{
-  .card-image{
-    height: 300px;
+.card.hoverable{
+  .card-content{
+    img.responsive-img, video.responsive-video {
+      height: 50px;
+      width: 50px;
+      max-width: none;
+    }
   }
 }
 
@@ -17,5 +21,15 @@
     .character-counter{
       display: none;
     }
+  }
+}
+
+.container#index-container{
+  .card{
+    width: 200px;
+    border-radius: 10px;
+  }
+  .card-image{
+    border-radius: 10px 10px 0 0;
   }
 }
