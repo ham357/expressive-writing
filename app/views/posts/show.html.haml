@@ -1,15 +1,36 @@
 .container
-  .row
-    .col.s6.m6.l6.xl6
-      .card
-        .card-image
-          = image_tag @post.image.url if @post.image.url.present?
-        .card-content
-          %span.card-title.grey-text.text-darken-4
-            = @post.title
-          %p.truncate
-            = @post.contents
-        - if user_signed_in? && current_user.id == @post.user_id
-          .card-action
-            = link_to "edit", edit_post_path(@post.id),data: {"turbolinks" => false}
-            = link_to "delete", post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } 
+  %ul.collection
+    %li.collection-item.avatar
+      = image_tag "/images/mori.jpg", class: 'circle responsive-img'
+      %span.title
+        = @post.user.nickname
+    %li.collection-item.avatar
+      .card-image
+        = image_tag @post.image.url if @post.image.url.present?
+      .card-content
+        %h4.grey-text.text-darken-4
+          = @post.title
+        %span
+          = @post.contents
+      - if user_signed_in? && current_user.id == @post.user_id
+        .action
+          = link_to "edit", edit_post_path(@post.id),data: {"turbolinks" => false}
+          = link_to "delete", post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } 
+      - if @comments.present?
+        %li.collection-item.avatar#comment-section
+          - @comments.each do |comment|
+            %ul
+              %li
+                = image_tag "/images/mori.jpg", class: 'circle responsive-img'
+                %span.title
+                  = comment.user.nickname
+                  %br
+                  = comment.comment
+    %li.collection-item.avatar
+      = form_for @comment, url: post_comments_path(@post.id) do |f|
+        .row
+          .input-field
+            = f.text_area :comment, class: "materialize-textarea",'data-length': "250"
+          %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
+            = t('view.submit')
+            %i.material-icons.right send
