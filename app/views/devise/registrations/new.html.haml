@@ -4,6 +4,14 @@
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
     .field
+      = f.label :image,"プロフィール画像"
+      .file-field.input-field
+        .btn
+          %span File
+          = f.file_field :image
+        .file-path-wrapper
+          %input.file-path.validate{:type => "text"}/
+    .field
       = f.label :nickname
       %em
         = t('view.nickname_information')
