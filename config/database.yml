@@ -14,7 +14,7 @@ development:
 test:
   <<: *default
   username: root
-  host: <%= ENV.fetch('DB_HOST', 'db') %>
+  host: <%= ENV.fetch('DB_HOST', 'test-db') %>
   database: expressive-writing_test
   soket: /tmp/mysql.sock
 

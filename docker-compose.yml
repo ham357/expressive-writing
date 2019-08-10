@@ -14,6 +14,7 @@ services:
       - db
     depends_on:
       - db
+      - test-db
     entrypoint: bash -c
     command: |
       "bundle install && \
@@ -22,5 +23,13 @@ services:
     image: mysql:5.7
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=expressive-writing_development
     ports:
       - "4306:3306"
+  test-db:
+      image: mysql:5.7
+      environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=expressive-writing_test
+      ports:
+        - '3307:3306'
