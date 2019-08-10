@@ -1,7 +1,7 @@
 .container
   %ul.collection
     %li.collection-item.avatar
-      = check_user_icon(@post)
+      = check_user_icon(@post.user)
       %span.title
         = @post.user.nickname
     %li.collection-item.avatar
@@ -21,7 +21,7 @@
           - @comments.each do |comment|
             %ul
               %li
-                = image_tag "/images/mori.jpg", class: 'circle responsive-img'
+                = check_user_icon(comment.user)
                 %span.title
                   = comment.user.nickname
                   %br
