@@ -14,8 +14,8 @@
           = @post.contents
       - if user_signed_in? && current_user.id == @post.user_id
         .action
-          = link_to "edit", edit_post_path(@post.id),data: {"turbolinks" => false}
-          = link_to "delete", post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } 
+          = link_to "編集する", edit_post_path(@post.id),data: {"turbolinks" => false}
+          = link_to "削除する", post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } 
       - if @comments.present?
         %li.collection-item.avatar#comment-section
           - @comments.each do |comment|
