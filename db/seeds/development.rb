@@ -1,10 +1,10 @@
-User.create(nickname: 'テストユーザ', email: 'test@example.com', image: File.open("spec/factories/no_image.jpg"), password: 'aaaaaaaa')
+User.create!(nickname: 'テストユーザ', email: 'test@example.com', image: File.open("spec/factories/no_image.jpg"), password: 'aaaaaaaa')
 
 5.times do
   nickname             = Faker::Games::Pokemon.name
   email                = Faker::Internet.email
   image = File.open("spec/factories/no_image.jpg")
-  password = Faker::Internet.password(min_length: 6, max_length: 128)
+  password = Faker::Internet.password
 
   User.create!(nickname: nickname,
                email: email,
@@ -19,12 +19,10 @@ end
   image = File.open("spec/factories/no_image.jpg")
   user_id = Faker::Number.within(1..6)
 
-  Post.create(
-    title: title,
-    contents: contents,
-    image: image,
-    user_id: user_id
-  )
+  Post.create!(title: title,
+               contents: contents,
+               image: image,
+               user_id: user_id)
 end
 
 (1..50).each do |_n|
