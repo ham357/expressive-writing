@@ -26,11 +26,12 @@
                   = comment.user.nickname
                   %br
                   = comment.comment
-    %li.collection-item.avatar#comment-form-section
-      = form_for @comment, url: post_comments_path(@post.id) do |f|
-        .row
-          .input-field
-            = f.text_area :comment, class: "materialize-textarea textbox", :placeholder => "コメントを追加",'data-length': "250"
-          %button.btn.waves-effect.waves-light#new_comment{:name => "action", :type => "submit"}
-            = t('view.submit')
-            %i.material-icons.right send
+    - if user_signed_in?
+      %li.collection-item.avatar#comment-form-section
+        = form_for @comment, url: post_comments_path(@post.id) do |f|
+          .row
+            .input-field
+              = f.text_area :comment, class: "materialize-textarea textbox", :placeholder => "コメントを追加",'data-length': "250"
+            %button.btn.waves-effect.waves-light#new_comment{:name => "action", :type => "submit"}
+              = t('view.submit')
+              %i.material-icons.right send

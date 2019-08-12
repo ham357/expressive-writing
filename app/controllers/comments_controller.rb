@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @comment = Comment.create(comment: comment_params[:comment], post_id: comment_params[:post_id], user_id: current_user.id)
     respond_to do |format|
