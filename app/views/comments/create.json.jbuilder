@@ -1,3 +1,4 @@
+json.id @comment.id
 json.comment @comment.comment
 if @comment.user.image.present?
   json.user_image @comment.user.image.url

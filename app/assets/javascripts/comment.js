@@ -2,7 +2,7 @@ $(function() {
   
   function buildHTML(comment){
     var html = `
-    <ul>
+    <ul class="comment" data-comment_id="${comment.id}">
     <li>
     <img class="circle responsive-img" src="${comment.user_image}">
     <span class="title">
@@ -10,6 +10,10 @@ $(function() {
     <br>
     ${comment.comment}
     </span>
+    <div class="action">
+    <a data-turbolinks="false" href="">編集する</a>
+    <a class="commnet-destroy" href="">削除する</a>
+    </div>
     </li>
     </ul>`
 
