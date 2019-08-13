@@ -18,7 +18,8 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    return unless @comment.update(comment_params) && @comment.user_id == current_user.id
+    @comment.comment = params[:comment]
+    return unless @comment.save && @comment.user_id == current_user.id
 
     respond_to do |format|
       format.html { redirect_to post_path(params[@comment.post_id]), notice: 'メッセージが編集されました' }
