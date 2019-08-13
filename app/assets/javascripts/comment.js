@@ -42,6 +42,7 @@ $(function() {
     .done(function(data){
       buildHTML(data);
       $('.textbox').val('')
+      $('.comment_submit-btn').addClass('disabled');
     });
   });
 });
