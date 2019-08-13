@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :mypages, only: :index
   get 'about', to: 'homes#index'
   resources    :posts do
-    resources  :comments, only: [:create]
+    resources  :comments, only: %i[edit update create destroy]
   end
 end
