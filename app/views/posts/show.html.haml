@@ -23,12 +23,13 @@
               %li
                 = check_user_icon(comment.user)
                 %span.title
-                  = comment.user.nickname
-                  %br
-                  = comment.comment
+                  %div#comment-section__name
+                    = comment.user.nickname
+                  %div#comment-section__comment
+                    = comment.comment
                 - if user_signed_in? && current_user.id == comment.user_id
-                  .action
-                    = link_to "編集する", edit_post_comment_path(comment.id),data: {"turbolinks" => false}
+                  .action#edit-del-links
+                    = link_to "編集する", "", class: "commnet-edit"
                     = link_to "削除する","", class: "commnet-destroy"
     - if user_signed_in?
       %li.collection-item.avatar#comment-form-section

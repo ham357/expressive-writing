@@ -4,14 +4,15 @@ $(function() {
     var html = `
     <ul class="comment" data-comment_id="${comment.id}">
     <li>
-    <img class="circle responsive-img" src="${comment.user_image}">
-    <span class="title">
+    <img class="circle responsive-img" id="comment-section__image" src="${comment.user_image}">
+    <span class="title" id="comment-section__name">
     ${comment.user_name}
-    <br>
+    <div id="comment-section__comment">
     ${comment.comment}
+    </div>
     </span>
     <div class="action">
-    <a data-turbolinks="false" href="">編集する</a>
+    <a class="commnet-edit" href="">編集する</a>
     <a class="commnet-destroy" href="">削除する</a>
     </div>
     </li>
