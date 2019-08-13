@@ -57,6 +57,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'erb2haml'
+  gem 'guard-rubocop'
+  gem 'terminal-notifier-guard'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :test do
