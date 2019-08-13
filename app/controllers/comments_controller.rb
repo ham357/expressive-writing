@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     return unless @comment.save && @comment.user_id == current_user.id
 
     respond_to do |format|
-      format.html { redirect_to post_path(params[@comment.post_id]), notice: 'メッセージが編集されました' }
+      format.html { redirect_to post_path(@comment.post_id), notice: 'メッセージが編集されました' }
       format.json
     end
   end
