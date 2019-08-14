@@ -19,4 +19,4 @@
         = link_to "…詳しくはこちら", post_path(post.id)
       %p.right.grey-text
         更新日時:
-        = post.updated_at.strftime("%Y/%m/%d %H:%M")
+        = time_ago_in_words(post.updated_at)+"前"
