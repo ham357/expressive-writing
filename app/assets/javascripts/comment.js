@@ -42,6 +42,8 @@ $(function() {
       buildHTML(data);
       $('.textbox').val('')
       $('.comment_submit-btn').addClass('disabled');
+      var commentsCount = Number($('#comment-section__comments-count').attr("data-comments_count")) + 1;
+      $('#comment-section__comments-count').text("コメント"+commentsCount+"件");
       $('#comment-section').animate({scrollTop:$("#comment-section")[0].scrollHeight});
     });
   });
