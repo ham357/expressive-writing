@@ -12,6 +12,9 @@
           = @post.title
         %span
           = @post.contents
+        %p.grey-text
+          更新日時:
+          = time_ago_in_words(@post.updated_at)+"前"
       - if user_signed_in? && current_user.id == @post.user_id
         .action
           = link_to edit_post_path(@post.id) do
@@ -29,6 +32,8 @@
                     = comment.user.nickname
                   %div#comment-section__comment
                     = comment.comment
+                  %p.grey-text
+                    = time_ago_in_words(comment.created_at)+"前"
                 - if user_signed_in? && current_user.id == comment.user_id
                   .action#edit-del-links
                     = link_to "", class: "commnet-edit" do
