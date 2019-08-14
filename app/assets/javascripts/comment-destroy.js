@@ -21,6 +21,8 @@ $(function() {
       }else{
         commentElement.remove();
       }
+      var commentsCount = Number($('#comment-section__comments-count').attr("data-comments_count")) - 1;
+      $('#comment-section__comments-count').text("コメント"+commentsCount+"件");
     })
     
     .fail(function() {
