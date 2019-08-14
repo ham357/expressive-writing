@@ -1,13 +1,18 @@
-#comment-section{
-  ul{
-    padding-bottom: 20px;
+.show_container{
+  span{
+    width:800px;
+    display: block;
   }
-}
-#comment-section__comment{
-  width: 700px;
-  word-wrap: break-word;
-}
+  #comment-section{
+    ul{
+      padding-bottom: 20px;
+    }
+  }
+  #comment-section__comment{
+    word-wrap: break-word;
+  }
 
-#comment-section__comment, #comment-section__updated-comment{
-  display: inline;
+  #comment-section__comment, #comment-section__updated-comment{
+    display: inline;
+  }
 }
