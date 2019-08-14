@@ -8,6 +8,7 @@ $(function() {
     <span class="title">
     <div id="comment-section__name">${comment.user_name}</div>
     <div id="comment-section__comment">${comment.comment}</div>
+    <p class="grey-text" id="comment-section__createtime">たった今</p>
     </span>
     <div class="action">
     <a class="commnet-edit" href=""><i class="material-icons">edit</i></a>

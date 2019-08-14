@@ -32,7 +32,7 @@
                     = comment.user.nickname
                   %div#comment-section__comment
                     = comment.comment
-                  %p.grey-text
+                  %p.grey-text#comment-section__createtime
                     = time_ago_in_words(comment.created_at)+"前"
                 - if user_signed_in? && current_user.id == comment.user_id
                   .action#edit-del-links

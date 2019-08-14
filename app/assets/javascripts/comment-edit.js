@@ -15,6 +15,7 @@ $(function() {
     <span class="title">
     <div id="comment-section__name">${comment.user_name}</div>
     <div id="comment-section__comment">${comment.comment}</div>
+    <p class="grey-text" id="comment-section__createtime">${values.created_at}</p>
     </span>
     <div class="action">
     <a class="commnet-edit" href=""><i class="material-icons">edit</i></a>
@@ -60,8 +61,10 @@ $(function() {
       id: inlineEdit.attr("data-comment_id"),
       user_image: inlineEdit.find('#comment-section__image').attr("src"),
       user_name: inlineEdit.find('#comment-section__name').text(),
-      comment: inlineEdit.find('#comment-section__comment').text()
+      comment: inlineEdit.find('#comment-section__comment').text(),
+      created_at: inlineEdit.find('#comment-section__createtime').text()
     }
+    
     var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.user_image+'"><input class="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
       var button_element = '<div class="btn waves-effect waves-light grey comment-edit-cancelbtn"><i class="material-icons">clear</i></div><button class="btn waves-effect waves-light comment-edit-savebtn" name="action" type="submit"><i class="material-icons">check</i></button>';
       inlineEdit.addClass('comment-edit_acitve').empty().append(input_element).append(button_element).find('input').focus();
