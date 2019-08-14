@@ -41,6 +41,7 @@ $(function() {
       buildHTML(data);
       $('.textbox').val('')
       $('.comment_submit-btn').addClass('disabled');
+      $('#comment-section').animate({scrollTop:$("#comment-section")[0].scrollHeight});
     });
   });
 });
