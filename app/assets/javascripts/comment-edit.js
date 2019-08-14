@@ -4,7 +4,7 @@ $(function() {
     id: "",
     name: "",
     created_at: "",
-    content: "",
+    comment: "",
     image:""
   }
   
