@@ -45,6 +45,8 @@
         = form_for @comment, url: post_comments_path(@post.id) do |f|
           .row
             .input-field
+              %h5.grey-text.darken-2-text#comment-section__comments-count{"data-comments_count" => "#{@comments.count}"}
+                コメント#{@comments.count}件 
               = f.text_area :comment, class: "materialize-textarea textbox comment-textbox", :placeholder => "コメントを追加",'data-length': "250"
             %button.btn.waves-effect.waves-light.disabled.comment_submit-btn#new_comment{:name => "action", :type => "submit"}
               = t('view.submit')
