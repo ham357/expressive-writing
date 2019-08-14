@@ -5,11 +5,9 @@ $(function() {
     <ul class="comment" data-comment_id="${comment.id}">
     <li>
     <img class="circle responsive-img" id="comment-section__image" src="${comment.user_image}">
-    <span class="title" id="comment-section__name">
-    ${comment.user_name}
-    <div id="comment-section__comment">
-    ${comment.comment}
-    </div>
+    <span class="title">
+    <div id="comment-section__name">${comment.name}</div>
+    <div id="comment-section__comment">${comment.comment}</div>
     </span>
     <div class="action">
     <a class="commnet-edit" href="">編集する</a>
