@@ -14,8 +14,10 @@
           = @post.contents
       - if user_signed_in? && current_user.id == @post.user_id
         .action
-          = link_to "編集する", edit_post_path(@post.id),data: {"turbolinks" => false}
-          = link_to "削除する", post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } 
+          = link_to edit_post_path(@post.id) do
+            %i.material-icons edit
+          = link_to post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
+            %i.material-icons delete
       - if @comments.present?
         %li.collection-item.avatar#comment-section
           - @comments.each do |comment|
@@ -29,8 +31,10 @@
                     = comment.comment
                 - if user_signed_in? && current_user.id == comment.user_id
                   .action#edit-del-links
-                    = link_to "編集する", "", class: "commnet-edit"
-                    = link_to "削除する","", class: "commnet-destroy"
+                    = link_to "", class: "commnet-edit" do
+                      %i.material-icons edit
+                    = link_to "", class: "commnet-destroy" do
+                      %i.material-icons delete
     - if user_signed_in?
       %li.collection-item.avatar#comment-form-section
         = form_for @comment, url: post_comments_path(@post.id) do |f|

@@ -17,8 +17,8 @@ $(function() {
     <div id="comment-section__comment">${comment.comment}</div>
     </span>
     <div class="action">
-    <a class="commnet-edit" href="">編集する</a>
-    <a class="commnet-destroy" href="">削除する</a>
+    <a class="commnet-edit" href=""><i class="material-icons">edit</i></a>
+    <a class="commnet-destroy" href=""><i class="material-icons">delete</i></a>
     </div>
     </li>
     </ul>`
@@ -63,7 +63,7 @@ $(function() {
       comment: inlineEdit.find('#comment-section__comment').text()
     }
     var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.user_image+'"><input class="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
-      var button_element = '<div class="btn waves-effect waves-light grey comment-edit-cancelbtn">キャンセル<i class="material-icons right">cancel</i></div><button class="btn waves-effect waves-light comment-edit-savebtn" name="action" type="submit">更新<i class="material-icons right">send</i></button>';
+      var button_element = '<div class="btn waves-effect waves-light grey comment-edit-cancelbtn"><i class="material-icons">clear</i></div><button class="btn waves-effect waves-light comment-edit-savebtn" name="action" type="submit"><i class="material-icons">check</i></button>';
       inlineEdit.addClass('comment-edit_acitve').empty().append(input_element).append(button_element).find('input').focus();
   });
 });

@@ -10,8 +10,8 @@ $(function() {
     <div id="comment-section__comment">${comment.comment}</div>
     </span>
     <div class="action">
-    <a class="commnet-edit" href="">編集する</a>
-    <a class="commnet-destroy" href="">削除する</a>
+    <a class="commnet-edit" href=""><i class="material-icons">edit</i></a>
+    <a class="commnet-destroy" href=""><i class="material-icons">delete</i></a>
     </div>
     </li>
     </ul>`
