@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature '記事投稿', type: :feature do
+feature 'コメント投稿', type: :feature do
   let(:user) { create(:user) }
   let(:test_post) { create(:post, user_id: user.id) }
 
