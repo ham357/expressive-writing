@@ -15,6 +15,7 @@ $(function() {
     <span class="title">
     <div id="comment-section__name">${comment.user_name}</div>
     <div id="comment-section__comment">${comment.comment}</div>
+    <div class="grey-text" id="comment-section__updated-comment">(編集済み)</div>
     <p class="grey-text" id="comment-section__createtime">${values.created_at}</p>
     </span>
     <div class="action">
