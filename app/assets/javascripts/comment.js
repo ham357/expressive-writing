@@ -6,7 +6,7 @@ $(function() {
     <li>
     <img class="circle responsive-img" id="comment-section__image" src="${comment.user_image}">
     <span class="title">
-    <div id="comment-section__name">${comment.name}</div>
+    <div id="comment-section__name">${comment.user_name}</div>
     <div id="comment-section__comment">${comment.comment}</div>
     </span>
     <div class="action">

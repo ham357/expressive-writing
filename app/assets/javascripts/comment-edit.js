@@ -11,9 +11,9 @@ $(function() {
   function reBuild(comment) {
     var html = `
     <li>
-    <img class="circle responsive-img" id="comment-section__image" src="${comment.image}">
+    <img class="circle responsive-img" id="comment-section__image" src="${comment.user_image}">
     <span class="title">
-    <div id="comment-section__name">${comment.name}</div>
+    <div id="comment-section__name">${comment.user_name}</div>
     <div id="comment-section__comment">${comment.comment}</div>
     </span>
     <div class="action">
@@ -58,11 +58,11 @@ $(function() {
     $(".action").css("visibility", "hidden");
     values = {
       id: inlineEdit.attr("data-comment_id"),
-      image: inlineEdit.find('#comment-section__image').attr("src"),
-      name: inlineEdit.find('#comment-section__name').text(),
+      user_image: inlineEdit.find('#comment-section__image').attr("src"),
+      user_name: inlineEdit.find('#comment-section__name').text(),
       comment: inlineEdit.find('#comment-section__comment').text()
     }
-    var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.image+'"><input class="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
+    var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.user_image+'"><input class="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
       var button_element = '<div class="btn waves-effect waves-light grey comment-edit-cancelbtn">キャンセル<i class="material-icons right">cancel</i></div><button class="btn waves-effect waves-light comment-edit-savebtn" name="action" type="submit">更新<i class="material-icons right">send</i></button>';
       inlineEdit.addClass('comment-edit_acitve').empty().append(input_element).append(button_element).find('input').focus();
   });

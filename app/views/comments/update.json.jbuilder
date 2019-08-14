@@ -1,8 +1,8 @@
 json.id @comment.id
 json.comment @comment.comment
 if @comment.user.image.present?
-  json.image @comment.user.image.url
+  json.user_image @comment.user.image.url
 else
-  json.image "/images/no_image.jpeg"
+  json.user_image "/images/no_image.jpeg"
 end
-json.name @comment.user.nickname
+json.user_name @comment.user.nickname
