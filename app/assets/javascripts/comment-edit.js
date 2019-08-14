@@ -26,11 +26,11 @@ $(function() {
   inlineEdit.removeClass('comment-edit_acitve').empty().append(html);
   $(".action").css("visibility", "visible");
   }  
-  $(document).on("click", ".comment__inlineEdit-cancel", function () {
+  $(document).on("click", ".comment-edit-cancelbtn", function () {
     reBuild(values);  
   });
 
-  $(document).on("click", ".comment__inlineEdit-save", function () {
+  $(document).on("click", ".comment-edit-savebtn", function () {
 
     var url = location.href + "/comments/" + values.id;
     var input = inlineEdit.find('input').val();
@@ -62,8 +62,8 @@ $(function() {
       name: inlineEdit.find('#comment-section__name').text(),
       comment: inlineEdit.find('#comment-section__comment').text()
     }
-    var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.image+'"><input class="comment__inlineEdit-input" type="text" value="'+values.comment+'"></li>';
-      var button_element = '<div class="btn waves-effect waves-light grey comment__inlineEdit-cancel">キャンセル<i class="material-icons right">cancel</i></div><button class="btn waves-effect waves-light comment__inlineEdit-save" name="action" type="submit">更新<i class="material-icons right">send</i></button>';
+    var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.image+'"><input class="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
+      var button_element = '<div class="btn waves-effect waves-light grey comment-edit-cancelbtn">キャンセル<i class="material-icons right">cancel</i></div><button class="btn waves-effect waves-light comment-edit-savebtn" name="action" type="submit">更新<i class="material-icons right">send</i></button>';
       inlineEdit.addClass('comment-edit_acitve').empty().append(input_element).append(button_element).find('input').focus();
   });
 });

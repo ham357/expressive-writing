@@ -14,15 +14,15 @@ $(function() {
     }
     });
 
-  $(document).on('keyup', $(".comment__inlineEdit-input"), function () {
-    var txtBoxValue = $(".comment__inlineEdit-input").val();
+  $(document).on('keyup', $(".comment-edit-textbox"), function () {
+    var txtBoxValue = $(".comment-edit-textbox").val();
     var fixTxtBoxValue = $.trim(txtBoxValue.replace(/\n/g, ""));
     var commentLengthCount = fixTxtBoxValue.length;
 
     if (commentLengthCount < minCommentLength|| commentLengthCount > maxCommentLength){
-      $('.comment__inlineEdit-save').addClass('disabled');
+      $('.comment-edit-savebtn').addClass('disabled');
     }else{
-      $('.comment__inlineEdit-save').removeClass('disabled');
+      $('.comment-edit-savebtn').removeClass('disabled');
     }
     });
 });
