@@ -66,7 +66,7 @@ $(function() {
       created_at: inlineEdit.find('#comment-section__createtime').text()
     }
     
-    var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.user_image+'"><input class="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
+    var input_element = '<li><img class="circle responsive-img" id="comment-section__image" src="'+values.user_image+'"><input class="comment-edit-textbox"  id="comment-edit-textbox" type="text" value="'+values.comment+'"></li>';
       var button_element = '<div class="btn waves-effect waves-light grey comment-edit-cancelbtn"><i class="material-icons">clear</i></div><button class="btn waves-effect waves-light comment-edit-savebtn" name="action" type="submit"><i class="material-icons">check</i></button>';
       inlineEdit.addClass('comment-edit_acitve').empty().append(input_element).append(button_element).find('input').focus();
   });
