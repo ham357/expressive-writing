@@ -2,7 +2,7 @@
 アイデアやノウハウを投稿したり、シェアするSNSです。
 
 # 本番環境
-http://expressive-writing-lb-1420086715.ap-northeast-1.elb.amazonaws.com/
+http://expressive-writing.work/
 
 # 使用技術
 - Ruby 2.5.1
