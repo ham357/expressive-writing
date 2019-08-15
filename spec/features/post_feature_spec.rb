@@ -13,7 +13,7 @@ feature '記事投稿', type: :feature do
       expect do
         fill_in 'post_title', with: 'タイトルテスト'
         fill_in 'post_contents', with: 'コンテンツテスト'
-        attach_file "post_image", "#{Rails.root}/spec/factories/no_image.jpg"
+        attach_file "post_image", "spec/factories/no_image.jpg"
         find('[type="submit"]').click
       end.to change(Post, :count).by(1)
     end
@@ -29,7 +29,7 @@ feature '記事投稿', type: :feature do
       expect do
         fill_in 'post_title', with: 'タイトルテスト'
         fill_in 'post_contents', with: ''
-        attach_file "post_image", "#{Rails.root}/spec/factories/no_image.jpg"
+        attach_file "post_image", "spec/factories/no_image.jpg"
         find('[type="submit"]').click
       end.to change(Post, :count).by(0)
     end
@@ -74,7 +74,7 @@ feature '記事更新', type: :feature do
 end
 
 feature '記事削除', type: :feature do
-  scenario '正常に削除できているか' do
+  scenario '正常に削除できているか', js: true do
     user = create(:user)
     test_post = create(:post, user_id: user.id)
 
@@ -84,8 +84,11 @@ feature '記事削除', type: :feature do
     visit post_path(test_post)
     expect(current_path).to eq post_path(test_post)
     expect do
-      # click_on 'delete'
-      test_post.delete
+      find('.post-destroy').click
+      sleep 1
+      expect(page.driver.browser.switch_to.alert.text).to eq "削除いたします。よろしいですか?"
+      page.driver.browser.switch_to.alert.accept
+      sleep 1
     end.to change(Post, :count).by(-1)
   end
 end

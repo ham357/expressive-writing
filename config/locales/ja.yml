@@ -1,0 +1,80 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            contents:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+        comment:
+          attributes:
+            comment:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+  datetime:
+    distance_in_words:
+      half_a_minute: "30秒前後"
+      less_than_x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      less_than_x_minutes:
+        one:   "1分"
+        other: "%{count}分"
+      x_minutes:
+        one:   "約1分"
+        other: "%{count}分"
+      about_x_hours:
+        one:   "約1時間"
+        other: "約%{count}時間"
+      x_days:
+        one:   "1日"
+        other: "%{count}日"
+      about_x_months:
+        one:   "約1ヶ月"
+        other: "約%{count}ヶ月"
+      x_months:
+        one:   "1ヶ月"
+        other: "%{count}ヶ月"
+      almost_x_years:
+        one:   "１年弱"
+        other: "%{count}年弱"
+      about_x_years:
+        one:   "約1年"
+        other: "約%{count}年"
+      over_x_years:
+        one:   "1年以上"
+        other: "%{count}年以上"
+  view:
+    site_title: Expressive Writing
+    submit: 送信
+    edit: 編集
+    update: 更新
+    cancel: キャンセル
+    mypage: マイページ
+    cancel_my_account: アカウントを削除
+    back: "戻る"
+    current_password_information: （上記変更をするならパスワードを入力)
+    password_information: 文字以上
+    nickname_information: (20文字まで)
+    new_password_information: (パスワードを変更しない場合は入力不要)
+    sign_in: "ログイン"
+    sign_out: "ログアウト"
+    sign_up: "アカウント登録"
+    about: "このサイトについて"
+    forgot_password: パスワードをお忘れですか？

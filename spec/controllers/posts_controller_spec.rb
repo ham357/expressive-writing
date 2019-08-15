@@ -127,7 +127,7 @@ describe PostsController, type: :controller do
       it '投稿が登録されないこと' do
         expect do
           post :create, params: { post: attributes_for(:post, contents: "") }
-        end.to_not change(User, :count)
+        end.to_not change(Post, :count)
       end
 
       it 'newテンプレートで表示されること' do

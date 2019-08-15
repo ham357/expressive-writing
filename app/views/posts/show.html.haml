@@ -1,15 +1,56 @@
-.container
-  .row
-    .col.s6.m6.l6.xl6
-      .card
-        .card-image
-          = image_tag @post.image.url if @post.image.url.present?
-        .card-content
-          %span.card-title.grey-text.text-darken-4
-            = @post.title
-          %p.truncate
-            = @post.contents
-        - if user_signed_in? && current_user.id == @post.user_id
-          .card-action
-            = link_to "edit", edit_post_path(@post.id),data: {"turbolinks" => false}
-            = link_to "delete", post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } 
+.container.show_container
+  %ul.collection
+    %li.collection-item.avatar
+      = check_user_icon(@post.user)
+      %span.title
+        = @post.user.nickname
+    %li.collection-item.avatar
+      .card-image
+        = image_tag @post.image.url if @post.image.url.present?
+      .card-content
+        %h4.grey-text.text-darken-4
+          = @post.title
+        %span
+          = @post.contents
+        %p.grey-text
+          更新日時:
+          = time_ago_in_words(@post.updated_at)+"前"
+      - if user_signed_in? && current_user.id == @post.user_id
+        .action
+          = link_to edit_post_path(@post.id) do
+            %i.material-icons edit
+          = link_to post_path, class: "post-destroy", method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
+            %i.material-icons delete
+      - if @comments.present?
+        %li.collection-item.avatar#comment-section
+          - @comments.each do |comment|
+            %ul.comment{"data-comment_id" => "#{comment.id}"}
+              %li
+                = check_user_icon(comment.user)
+                %span.title
+                  %div#comment-section__name
+                    = comment.user.nickname
+                  %div#comment-section__comment
+                    = comment.comment
+                  - if update_comment?(comment)
+                    %div.grey-text#comment-section__updated-comment
+                      (編集済み)
+                  %p.grey-text#comment-section__createtime
+                    = time_ago_in_words(comment.created_at)+"前"
+                - if user_signed_in? && current_user.id == comment.user_id
+                  .action#edit-del-links
+                    = link_to "", class: "commnet-edit" do
+                      %i.material-icons edit
+                    = link_to "", class: "commnet-destroy" do
+                      %i.material-icons delete
+    - if user_signed_in?
+      %li.collection-item.avatar#comment-form-section
+        = form_for @comment, url: post_comments_path(@post.id) do |f|
+          .row
+            .input-field
+              %h5.grey-text.darken-2-text#comment-section__comments-count{"data-comments_count" => "#{@comments.count}"}
+                コメント#{@comments.count}件 
+              = f.text_area :comment, class: "materialize-textarea textbox comment-textbox", :placeholder => "コメントを追加",'data-length': "250"
+            %button.btn.waves-effect.waves-light.disabled.comment_submit-btn#new_comment{:name => "action", :type => "submit"}
+              = t('view.submit')
+              %i.material-icons.right send

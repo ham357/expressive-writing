@@ -1,4 +1,5 @@
 $(function(){
+	if($("#index-container").length){
   let magicGrid = new MagicGrid({
 	container: '#index-container',
 	animate: true,
@@ -7,4 +8,5 @@ $(function(){
 	useMin: true
 });
 magicGrid.listen();
+		};
 });

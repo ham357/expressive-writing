@@ -27,3 +27,4 @@
 /config/master.key
 .docker-env
 public/uploads/
+coverage

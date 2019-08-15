@@ -4,7 +4,7 @@
     word-wrap: break-word;
   }
 }
-.card.hoverable{
+.card{
   .card-content{
     img.responsive-img, video.responsive-video {
       height: 50px;
@@ -32,4 +32,9 @@
   .card-image{
     border-radius: 10px 10px 0 0;
   }
+}
+
+#comment-section{
+  max-height: 300px;
+  overflow: scroll;
 }
