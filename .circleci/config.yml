@@ -48,14 +48,16 @@ jobs:
             - v1-dependencies-
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
-      - run:
-        name: Install Latest Chrome
-        command: |
-          sudo apt install libappindicator3-1
-          curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome.deb
-          sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
-          rm google-chrome.deb
+      - run: CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
+      - run: wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P
+      - run: unzip /chromedriver_linux64.zip -d
+      - run: rm /chromedriver_linux64.zip
+      - run: chown root:root /chromedriver
+      - run: chmod 755 /chromedriver
+      - run: mv /chromedriver /usr/bin/chromedriver
+      - run: sh -c 'wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+      - run: sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+      - run: apt-get update && apt-get install -y google-chrome-stable
       - save_cache:
           paths:
             - ./vendor/bundle
