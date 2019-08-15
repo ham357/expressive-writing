@@ -49,15 +49,15 @@ jobs:
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
       - run: CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
-      - run: wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ && \
-      - run: unzip ~/chromedriver_linux64.zip -d ~/ && \
-      - run: rm ~/chromedriver_linux64.zip && \
-      - run: chown root:root ~/chromedriver && \
-      - run: chmod 755 ~/chromedriver && \
-      - run: mv ~/chromedriver /usr/bin/chromedriver && \
-      - run: sh -c 'wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
-      - run: sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
-      - run: apt-get update && apt-get install -y google-chrome-stable
+    wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ && \
+    unzip ~/chromedriver_linux64.zip -d ~/ && \
+    rm ~/chromedriver_linux64.zip && \
+    chown root:root ~/chromedriver && \
+    chmod 755 ~/chromedriver && \
+    mv ~/chromedriver /usr/bin/chromedriver && \
+    sh -c 'wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
+    apt-get update && apt-get install -y google-chrome-stable
       - save_cache:
           paths:
             - ./vendor/bundle
