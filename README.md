@@ -2,7 +2,7 @@
 アイデアやノウハウを投稿したり、シェアするSNSです。
 
 # 本番環境
-http://expressive-writing.work/
+https://expressive-writing.work/
 
 # 使用技術
 - Ruby 2.5.1
@@ -22,6 +22,7 @@ http://expressive-writing.work/
   - ECR
   - RDS for MySQL
   - S3
+  - ACM
 - CircleCI
   - ecs-deploy
 - RSpec
