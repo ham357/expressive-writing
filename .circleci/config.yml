@@ -53,7 +53,6 @@ jobs:
       - run: unzip ~/chromedriver_linux64.zip -d ~/
       - run: rm ~/chromedriver_linux64.zip
       - run: chmod 755 ~/chromedriver
-      - run: mv ~/chromedriver /usr/bin/chromedriver
       - run: sh -c 'wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
       - run: sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
       - run: apt-get update && apt-get install -y google-chrome-stable
