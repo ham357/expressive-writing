@@ -3,12 +3,12 @@ require 'spec_helper'
 require 'simplecov'
 require 'capybara/rspec'
 require 'selenium-webdriver'
-require 'rspec/rails'
 
 SimpleCov.start 'rails'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+require 'rspec/rails'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
