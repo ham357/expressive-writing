@@ -87,8 +87,9 @@ feature 'コメント削除', type: :feature do
 
     expect do
       find('.commnet-destroy').click
+      expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいでしょうか？"
       page.driver.browser.switch_to.alert.accept
-      comment.delete
+      sleep 1
     end.to change(Comment, :count).by(-1)
   end
 end
