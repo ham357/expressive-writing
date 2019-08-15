@@ -31,11 +31,13 @@ http://expressive-writing-lb-1420086715.ap-northeast-1.elb.amazonaws.com/
 - 投稿機能
   - 投稿編集機能
   - 投稿削除機能
+- コメント機能(Ajax)
+  - 投稿編集機能
+  - 投稿削除機能
 - ユーザ管理機能
 - ページネーション機能(kaminari)
 
 - 未実装
-  - コメント機能
   - フォロー機能
   - いいね機能
   - 管理者機能
