@@ -19,7 +19,7 @@
         .action
           = link_to edit_post_path(@post.id) do
             %i.material-icons edit
-          = link_to post_path, method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
+          = link_to post_path, class: "post-destroy", method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
             %i.material-icons delete
       - if @comments.present?
         %li.collection-item.avatar#comment-section
