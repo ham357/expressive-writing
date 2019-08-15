@@ -48,7 +48,7 @@ jobs:
             - v1-dependencies-
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
-      - run: CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
+      - run: CHROME_DRIVER_VERSION=`76.0.3809.68`
       - run: wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
       - run: unzip /chromedriver_linux64.zip -d
       - run: rm /chromedriver_linux64.zip
