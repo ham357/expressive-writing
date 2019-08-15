@@ -13,7 +13,7 @@ feature '記事投稿', type: :feature do
       expect do
         fill_in 'post_title', with: 'タイトルテスト'
         fill_in 'post_contents', with: 'コンテンツテスト'
-        attach_file "post_image", "#{Rails.root}/spec/factories/no_image.jpg"
+        attach_file "post_image", "spec/factories/no_image.jpg"
         find('[type="submit"]').click
       end.to change(Post, :count).by(1)
     end
@@ -29,7 +29,7 @@ feature '記事投稿', type: :feature do
       expect do
         fill_in 'post_title', with: 'タイトルテスト'
         fill_in 'post_contents', with: ''
-        attach_file "post_image", "#{Rails.root}/spec/factories/no_image.jpg"
+        attach_file "post_image", "spec/factories/no_image.jpg"
         find('[type="submit"]').click
       end.to change(Post, :count).by(0)
     end
