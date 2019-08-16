@@ -9,6 +9,7 @@
         = post.contents
       %p.grey-text
         = link_to "…詳しくはこちら", post_path(post.id)
+      = render 'likes/like_links', post: post
     .card-reveal
       %p.card-title.grey-text.text-darken-4
         %i.material-icons.right close
