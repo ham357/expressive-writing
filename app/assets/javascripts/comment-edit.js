@@ -8,7 +8,8 @@ $(function() {
     image:""
   }
   var iconSection;
-  
+  var editedComment = "";
+
   function reBuild(comment) {
     var html = `
     <li>
@@ -16,7 +17,7 @@ $(function() {
     <span class="title">
     <div id="comment-section__name">${comment.user_name}</div>
     <div id="comment-section__comment">${comment.comment}</div>
-    <div class="grey-text" id="comment-section__updated-comment">(編集済み)</div>
+    <div class="grey-text" id="comment-section__updated-comment">` + editedComment + `</div>
     <p class="grey-text" id="comment-section__createtime">${values.created_at}</p>
     </span>
     </li>`
@@ -24,6 +25,7 @@ $(function() {
   inlineEdit.removeClass('comment-edit_acitve').empty().append(html);
   inlineEdit.find('li').append(iconSection);
   $(".action").css("visibility", "visible");
+  editedComment = "";
   }  
   $(document).on("click", ".comment-edit-cancelbtn", function () {
     reBuild(values);  
@@ -43,6 +45,7 @@ $(function() {
         dataType: 'json'
       })
       .done(function(data) {
+        editedComment = "(編集済み)" 
         reBuild(data);
       })
       
