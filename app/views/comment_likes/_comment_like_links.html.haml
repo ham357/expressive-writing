@@ -1,0 +1,9 @@
+%div.like-link{id: "comment-like-link-#{comment.id}"}
+  - if current_user.comment_likes.find_by(comment_id: comment.id)
+    = link_to comment_unlike_path(comment.id), method: :delete, remote: true do
+      %i.material-icons{id: "comment-heart-#{comment.id}"} favorite
+      = comment.comment_likes.count.to_s
+  - else
+    = link_to comment_like_path(comment.id), method: :post, remote: true do
+      %i.material-icons{id: "comment-heart-#{comment.id}"} favorite_border
+      = comment.comment_likes.count.to_s
