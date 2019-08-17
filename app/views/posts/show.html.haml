@@ -41,9 +41,9 @@
                 - if user_signed_in? && current_user.id == comment.user_id
                   .action#edit-del-links
                     = link_to "", class: "commnet-edit" do
-                      %i.material-icons edit
+                      %i.material-icons{class: "hoverable"} edit
                     = link_to "", class: "commnet-destroy" do
-                      %i.material-icons delete
+                      %i.material-icons{class: "hoverable"} delete
                     = render 'comment_likes/comment_like_links', comment: comment
     - if user_signed_in?
       %li.collection-item.avatar#comment-form-section

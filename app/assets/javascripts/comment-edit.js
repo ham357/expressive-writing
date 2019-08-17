@@ -19,8 +19,8 @@ $(function() {
     <p class="grey-text" id="comment-section__createtime">${values.created_at}</p>
     </span>
     <div class="action">
-    <a class="commnet-edit" href=""><i class="material-icons">edit</i></a>
-    <a class="commnet-destroy" href=""><i class="material-icons">delete</i></a>
+    <a class="commnet-edit" href=""><i class="material-icons hoverable">edit</i></a>
+    <a class="commnet-destroy" href=""><i class="material-icons hoverable">delete</i></a>
     </div>
     </li>
     </ul>`

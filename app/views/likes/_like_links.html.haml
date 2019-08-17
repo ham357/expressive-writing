@@ -1,9 +1,9 @@
 %div.like-link{id: "like-link-#{post.id}"}
   - if current_user.likes.find_by(post_id: post.id)
     = link_to unlike_path(post.id), method: :delete, remote: true do
-      %i.material-icons{id: "heart-#{post.id}"} favorite
+      %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite
       = post.likes.count.to_s
   - else
     = link_to like_path(post.id), method: :post, remote: true do
-      %i.material-icons{id: "heart-#{post.id}"} favorite_border
+      %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite_border
       = post.likes.count.to_s
