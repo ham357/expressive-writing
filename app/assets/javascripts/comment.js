@@ -10,11 +10,13 @@ $(function() {
     <div id="comment-section__comment">${comment.comment}</div>
     <p class="grey-text" id="comment-section__createtime">たった今</p>
     </span>
-    <div class="action">
-    <a class="comment-edit" href=""><i class="material-icons">edit</i></a>
-    <a class="comment-destroy" href=""><i class="material-icons">delete</i></a>
-    </div>
-    </li>
+    <ul id="icon-section">
+    <li class="like-link" id="comment-like-link-${comment.id}">
+    <a data-remote="true" rel="nofollow" data-method="post" href="/comment_like/${comment.id}"><i class="hoverable material-icons" id="comment-heart-${comment.id}">favorite_border</i>0</a></li>
+    <li class="action" id="edit-del-links" style="visibility: visible;">
+    <a class="comment-edit" href=""><i class="hoverable material-icons">edit</i>
+    </a><a class="comment-destroy" href=""><i class="hoverable material-icons">delete</i>
+    </a></li>
     </ul>`
 
     if ($("#comment-section").length == 0){
