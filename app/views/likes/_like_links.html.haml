@@ -1,4 +1,4 @@
-%div.like-link{id: "like-link-#{post.id}"}
+%li.like-link{id: "like-link-#{post.id}"}
   - if current_user.already_liked?(post)
     = link_to unlike_path(post.id), method: :delete, remote: true do
       %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite

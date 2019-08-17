@@ -12,16 +12,17 @@
           = @post.title
         %span
           = @post.contents
-        = render 'likes/like_links', post: @post
         %p.grey-text
           更新日時:
           = time_ago_in_words(@post.updated_at)+"前"
       - if user_signed_in? && current_user.id == @post.user_id
-        .action
-          = link_to edit_post_path(@post.id) do
-            %i.material-icons edit
-          = link_to post_path, class: "post-destroy", method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
-            %i.material-icons delete
+        %ul#icon-section
+          = render 'likes/like_links', post: @post
+          %li.action#edit-del-links
+            = link_to edit_post_path(@post.id) do
+              %i.material-icons edit
+            = link_to post_path, class: "post-destroy", method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
+              %i.material-icons delete
       - if @comments.present?
         %li.collection-item.avatar#comment-section
           - @comments.each do |comment|
@@ -39,12 +40,13 @@
                   %p.grey-text#comment-section__createtime
                     = time_ago_in_words(comment.created_at)+"前"
                 - if user_signed_in? && current_user.id == comment.user_id
-                  .action#edit-del-links
-                    = link_to "", class: "comment-edit" do
-                      %i.material-icons{class: "hoverable"} edit
-                    = link_to "", class: "comment-destroy" do
-                      %i.material-icons{class: "hoverable"} delete
+                  %ul#icon-section
                     = render 'comment_likes/comment_like_links', comment: comment
+                    %li.action#edit-del-links
+                      = link_to "", class: "comment-edit" do
+                        %i.material-icons{class: "hoverable"} edit
+                      = link_to "", class: "comment-destroy" do
+                        %i.material-icons{class: "hoverable"} delete
     - if user_signed_in?
       %li.collection-item.avatar#comment-form-section
         = form_for @comment, url: post_comments_path(@post.id) do |f|
