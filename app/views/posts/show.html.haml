@@ -15,9 +15,9 @@
         %p.grey-text
           更新日時:
           = time_ago_in_words(@post.updated_at)+"前"
-      - if user_signed_in? && current_user.id == @post.user_id
-        %ul#icon-section
-          = render 'likes/like_links', post: @post
+      %ul#icon-section
+        = render 'likes/like_links', post: @post
+        - if user_signed_in? && current_user.id == @post.user_id
           %li.action#edit-del-links
             = link_to edit_post_path(@post.id) do
               %i.material-icons edit
@@ -39,9 +39,9 @@
                       (編集済み)
                   %p.grey-text#comment-section__createtime
                     = time_ago_in_words(comment.created_at)+"前"
-                - if user_signed_in? && current_user.id == comment.user_id
-                  %ul#icon-section
-                    = render 'comment_likes/comment_like_links', comment: comment
+                %ul#icon-section
+                  = render 'comment_likes/comment_like_links', comment: comment
+                  - if user_signed_in? && current_user.id == comment.user_id
                     %li.action#edit-del-links
                       = link_to "", class: "comment-edit" do
                         %i.material-icons{class: "hoverable"} edit
