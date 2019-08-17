@@ -13,4 +13,12 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
   has_many :comment_likes, dependent: :destroy
   has_many :like_comments, through: :comment_likes, source: :comment
+
+  def already_liked?(post)
+    likes.exists?(post_id: post.id)
+  end
+
+  def already_comment_liked?(comment)
+    comment_likes.exists?(comment_id: comment.id)
+  end
 end

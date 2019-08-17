@@ -1,5 +1,5 @@
 %div.like-link{id: "comment-like-link-#{comment.id}"}
-  - if current_user.comment_likes.find_by(comment_id: comment.id)
+  - if current_user.already_comment_liked?(comment)
     = link_to comment_unlike_path(comment.id), method: :delete, remote: true do
       %i.material-icons{class: "hoverable",id: "comment-heart-#{comment.id}"} favorite
       = comment.comment_likes.count.to_s
