@@ -11,8 +11,8 @@ $(function() {
     <p class="grey-text" id="comment-section__createtime">たった今</p>
     </span>
     <div class="action">
-    <a class="commnet-edit" href=""><i class="material-icons">edit</i></a>
-    <a class="commnet-destroy" href=""><i class="material-icons">delete</i></a>
+    <a class="comment-edit" href=""><i class="material-icons">edit</i></a>
+    <a class="comment-destroy" href=""><i class="material-icons">delete</i></a>
     </div>
     </li>
     </ul>`

@@ -19,8 +19,8 @@ $(function() {
     <p class="grey-text" id="comment-section__createtime">${values.created_at}</p>
     </span>
     <div class="action">
-    <a class="commnet-edit" href=""><i class="material-icons hoverable">edit</i></a>
-    <a class="commnet-destroy" href=""><i class="material-icons hoverable">delete</i></a>
+    <a class="comment-edit" href=""><i class="material-icons hoverable">edit</i></a>
+    <a class="comment-destroy" href=""><i class="material-icons hoverable">delete</i></a>
     </div>
     </li>
     </ul>`
@@ -54,7 +54,7 @@ $(function() {
       })
     
   });
-  $(document).on("click", ".commnet-edit", function (e) {
+  $(document).on("click", ".comment-edit", function (e) {
     e.preventDefault();
     inlineEdit = $(this).parents('.comment');
     $(".action").css("visibility", "hidden");

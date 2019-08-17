@@ -40,9 +40,9 @@
                     = time_ago_in_words(comment.created_at)+"前"
                 - if user_signed_in? && current_user.id == comment.user_id
                   .action#edit-del-links
-                    = link_to "", class: "commnet-edit" do
+                    = link_to "", class: "comment-edit" do
                       %i.material-icons{class: "hoverable"} edit
-                    = link_to "", class: "commnet-destroy" do
+                    = link_to "", class: "comment-destroy" do
                       %i.material-icons{class: "hoverable"} delete
                     = render 'comment_likes/comment_like_links', comment: comment
     - if user_signed_in?
