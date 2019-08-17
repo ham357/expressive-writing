@@ -9,7 +9,13 @@
         = post.contents
       %p.grey-text
         = link_to "…詳しくはこちら", post_path(post.id)
-      = render 'likes/like_links', post: post
+      %ul
+        - if user_signed_in?
+          = render 'likes/like_links', post: post
+        -else
+          = link_to new_user_session_path do
+            %i.material-icons{ class: "hoverable" } favorite_border
+            = post.likes.count.to_s
     .card-reveal
       %p.card-title.grey-text.text-darken-4
         %i.material-icons.right close
