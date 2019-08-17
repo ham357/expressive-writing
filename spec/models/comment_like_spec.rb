@@ -22,10 +22,10 @@ describe CommentLike, type: :model do
       end
 
       it "comment_idとuser_idが同じ組み合わせのためエラーになる" do
-        comment_like = create(:comment_like, comment_id: @comment.id, user_id: @user.id)
-        other_comment_like = build(:comment_like, comment_id: @comment.id, user_id: @user.id)
-        other_comment_like.valid?
-        expect(other_comment_like.errors[:comment_id]).to include("はすでに存在します")
+        create(:comment_like, comment_id: @comment.id, user_id: @user.id)
+        comment_like = build(:comment_like, comment_id: @comment.id, user_id: @user.id)
+        comment_like.valid?
+        expect(comment_like.errors[:comment_id]).to include("はすでに存在します")
       end
     end
   end

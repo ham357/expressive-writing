@@ -22,10 +22,10 @@ describe Like, type: :model do
       end
 
       it "post_idとuser_idが同じ組み合わせのためエラーになる" do
-        like = create(:like, post_id: @test_post.id, user_id: @user.id)
-        other_like = build(:like, post_id: @test_post.id, user_id: @user.id)
-        other_like.valid?
-        expect(other_like.errors[:post_id]).to include("はすでに存在します")
+        create(:like, post_id: @test_post.id, user_id: @user.id)
+        like = build(:like, post_id: @test_post.id, user_id: @user.id)
+        like.valid?
+        expect(like.errors[:post_id]).to include("はすでに存在します")
       end
     end
   end
