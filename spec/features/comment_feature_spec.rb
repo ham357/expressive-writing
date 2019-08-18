@@ -44,7 +44,7 @@ feature 'コメント更新', type: :feature do
       comment.reload
       visit current_path
 
-      find('.commnet-edit').click
+      find('.comment-edit').click
       expect do
         fill_in "comment-edit-textbox", with: "変更しました"
         find('.comment-edit-savebtn').click
@@ -62,7 +62,7 @@ feature 'コメント更新', type: :feature do
       comment.reload
       visit current_path
 
-      find('.commnet-edit').click
+      find('.comment-edit').click
       expect do
         fill_in "comment-edit-textbox", with: ""
         find('.comment-edit-savebtn').disabled?
@@ -86,7 +86,7 @@ feature 'コメント削除', type: :feature do
     visit current_path
 
     expect do
-      find('.commnet-destroy').click
+      find('.comment-destroy').click
       expect(page.driver.browser.switch_to.alert.text).to eq "削除してよろしいでしょうか？"
       page.driver.browser.switch_to.alert.accept
       sleep 1

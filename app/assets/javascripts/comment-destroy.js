@@ -1,5 +1,5 @@
 $(function() {
-  $(document).on("click", ".commnet-destroy", function (e) {
+  $(document).on("click", ".comment-destroy", function (e) {
     e.preventDefault();
     var deleteConfirm = confirm('削除してよろしいでしょうか？');
     if(deleteConfirm == true) {

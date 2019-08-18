@@ -5,7 +5,7 @@
   }
   #comment-section{
     ul{
-      padding-bottom: 20px;
+      padding-bottom: 10px;
     }
   }
   #comment-section__comment{
@@ -14,5 +14,11 @@
 
   #comment-section__comment, #comment-section__updated-comment{
     display: inline;
+  }
+
+  #icon-section{
+    li{
+      display: inline;
+    }
   }
 }
