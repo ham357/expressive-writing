@@ -3,16 +3,18 @@ $(function() {
   var maxCommentLength = 250;
 
   $(document).on('keyup', $(".comment-textbox"), function () {
-    var txtBoxValue = $(".comment-textbox").val();
-    var fixTxtBoxValue = $.trim(txtBoxValue.replace(/\n/g, ""));
-    var commentLengthCount = fixTxtBoxValue.length;
+    if($(".comment-textbox").length){
+      var txtBoxValue = $(".comment-textbox").val();
+      var fixTxtBoxValue = $.trim(txtBoxValue.replace(/\n/g, ""));
+      var commentLengthCount = fixTxtBoxValue.length;
 
-    if (commentLengthCount < minCommentLength|| commentLengthCount > maxCommentLength){
-      $('.comment_submit-btn').addClass('disabled');
-    }else{
-      $('.comment_submit-btn').removeClass('disabled');
-    }
-    });
+      if (commentLengthCount < minCommentLength|| commentLengthCount > maxCommentLength){
+        $('.comment_submit-btn').addClass('disabled');
+      }else{
+        $('.comment_submit-btn').removeClass('disabled');
+      }
+    };
+  });
 
     
   $(document).on('keyup', $(".comment-edit-textbox"), function () {
