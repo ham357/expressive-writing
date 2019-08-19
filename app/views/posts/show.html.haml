@@ -4,6 +4,7 @@
       = check_user_icon(@post.user)
       %span.title
         = @post.user.nickname
+        = render 'relationships/follow_button', user: @post.user
     %li.collection-item.avatar
       .card-image
         = image_tag @post.image.url if @post.image.url.present?
