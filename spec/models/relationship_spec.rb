@@ -5,7 +5,6 @@ describe Relationship, type: :model do
     before do
       @user = create(:user)
       @other_user = create(:other_user)
-      @test_post = create(:post)
     end
 
     context 'can save' do
