@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
   has_many :comment_likes, dependent: :destroy
   has_many :like_comments, through: :comment_likes, source: :comment
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
 
   def already_liked?(post)
     likes.exists?(post_id: post.id)
@@ -20,5 +24,18 @@ class User < ApplicationRecord
 
   def already_comment_liked?(comment)
     comment_likes.exists?(comment_id: comment.id)
+  end
+
+  def follow(other_user)
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
+  end
+
+  def unfollow(other_user)
+    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship&.destroy
+  end
+
+  def following?(other_user)
+    followings.include?(other_user)
   end
 end
