@@ -4,4 +4,5 @@ class Relationship < ApplicationRecord
 
   validates :user_id, presence: true
   validates :follow_id, presence: true
+  validates_uniqueness_of :user_id, scope: :follow_id
 end
