@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources    :posts do
     resources  :comments, only: %i[edit update create destroy]
   end
+  resources :relationships, only: %i[create destroy]
   post   '/like/:post_id' => 'likes#like',   as: 'like'
   delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
   post   '/comment_like/:comment_id' => 'comment_likes#comment_like',   as: 'comment_like'
