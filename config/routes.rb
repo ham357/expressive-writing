@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
+  resources :health_check, only: [:index]
   resources :posts
   resources :mypages, only: :index
   get 'about', to: 'homes#index'
