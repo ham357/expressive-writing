@@ -10,5 +10,5 @@ $(function(){
 		});
 		magicGrid.listen();
 		};
-	}, 40);
+	}, 100);
 });

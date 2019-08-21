@@ -10,7 +10,7 @@ $('#index-container').append("<%= escape_javascript(render @posts, object: @post
 		});
 		magicGrid.listen();
 		};
-	}, 40);
+	}, 100);
 $("#more_link").replaceWith("<%= escape_javascript(
   link_to_next_page(@posts, 'もっと見る', class: "btn white black-text", remote: true, id: 'more_link')
 ) %>")
