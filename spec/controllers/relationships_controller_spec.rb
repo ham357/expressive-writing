@@ -46,10 +46,11 @@ describe RelationshipsController, type: :controller do
 
   describe '#destroy' do
     it "フォローが削除されているか" do
-      create(:relationship, user_id: user.id, follow_id: other_user.id)
+      relationship = create(:relationship, user_id: user.id, follow_id: other_user.id)
 
       expect do
         delete :destroy, params: {
+          id: relationship.id,
           relationship: {
             follow_id: other_user.id
           }
