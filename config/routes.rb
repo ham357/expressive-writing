@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   resources :health_check, only: [:index]
   resources :posts
+  resources :post_drafts, only: [:new,:create]
   resources :mypages, only: :index
   get 'about', to: 'homes#index'
   resources    :posts do
