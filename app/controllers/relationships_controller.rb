@@ -2,13 +2,11 @@ class RelationshipsController < ApplicationController
   before_action :set_user
 
   def create
-    @user = User.find(params[:relationship][:follow_id])
     following = current_user.follow(@user)
     following.save
   end
 
   def destroy
-    @user = User.find(params[:relationship][:follow_id])
     following = current_user.unfollow(@user)
     following.destroy
   end
@@ -16,8 +14,8 @@ class RelationshipsController < ApplicationController
   private
 
   def set_user
-    user = User.find(params[:relationship][:follow_id])
-    @follow_id_name = "#follow-link-#{user.id}"
-    @follow_id_btn = ".follow-btn-#{user.id}"
+    @user = User.find(params[:relationship][:follow_id])
+    @follow_id_name = "#follow-link-#{@user.id}"
+    @follow_id_btn = ".follow-btn-#{@user.id}"
   end
 end
