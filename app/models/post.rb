@@ -8,4 +8,6 @@ class Post < ApplicationRecord
   has_many   :comments
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
+
+  paginates_per 20
 end
