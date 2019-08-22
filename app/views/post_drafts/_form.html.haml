@@ -1,0 +1,34 @@
+= form_for post_draft do |f|
+  .row
+    - if post_draft.errors.any?
+      %h5.red-text
+        = "#{post_draft.errors.full_messages.count}件のエラーが発生しました。"
+      - post_draft.errors.full_messages.each do|msg|
+        %h5.red-text= msg
+  .row
+    .input-field.col.s12.m12.l12.x12
+      = f.text_field :title,'data-length': "50", autofocus: true
+      = f.label :title,class:"active"
+      %span.helper-text{"data-error" => "50 character limit", "data-success" => "right"}
+  .row
+    .input-field.col.s12.m12.l12.x12
+      = f.text_area :contents, class: "materialize-textarea",'data-length': "1000"
+      = f.label :contents,class:"active"
+      %span.helper-text{"data-error" => "1000 character limit", "data-success" => "right"}*必須
+  .row
+    .file-field.input-field.col.s12.m12.l12.x12
+      .btn
+        %span File
+        = f.file_field :image
+      .file-path-wrapper
+        %input.file-path.validate{:type => "text"}/
+  %button.btn.waves-effect.waves-light{:name => "commit", :type => "submit",:value => "save"}
+    投稿
+    %i.material-icons.right send
+  %button.btn.waves-effect.waves-light{:name => "commit", :type => "submit",:value => "draft"}
+    下書き保存
+    %i.material-icons.right send
+  = link_to root_path, data: { confirm: 'キャンセルいたしますか?' ,"turbolinks" => false} do
+    .btn.waves-effect.waves-light.grey
+      = t('view.cancel')
+      %i.material-icons.right cancel
