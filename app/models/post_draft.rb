@@ -1,0 +1,2 @@
+class PostDraft < ApplicationRecord
+end
