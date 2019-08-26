@@ -1,5 +1,10 @@
 class PostDraftsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy edit update]
+  before_action :authenticate_user!
+
+  def index
+    @post_drafts = current_user.post_drafts.order("updated_at DESC")
+    @post_draft_last = current_user.post_drafts.order("updated_at").last
+  end
 
   def new
     @post_draft = PostDraft.new
@@ -20,7 +25,7 @@ class PostDraftsController < ApplicationController
     if @post_draft.save
       respond_to do |format|
         format.html do
-          redirect_to root_path, notice: "下書きが作成されました"
+          redirect_to post_draft_path(@post_draft.id), notice: "下書きが作成されました"
         end
         format.js
       end
@@ -52,7 +57,7 @@ class PostDraftsController < ApplicationController
     if params[:commit] == 'save'
       post_create
     elsif params[:commit] == 'draft'
-      redirect_to root_path, notice: "下書きが作成されました"
+      redirect_to post_draft_path(@post_draft.id), notice: "下書きが作成されました"
     else
       redirect_to root_path, alert: "commit_value_checkエラー"
     end
@@ -65,6 +70,21 @@ class PostDraftsController < ApplicationController
     else
       redirect_to root_path, alert: "updateエラー"
     end
+  end
+
+  def destroy
+    post = PostDraft.find(params[:id])
+    post.destroy if post.user_id == current_user.id
+    redirect_to post_drafts_path, notice: "下書きを削除しました"
+  end
+
+  def edit
+    @post_draft = PostDraft.find(params[:id])
+  end
+
+  def show
+    @post_drafts = current_user.post_drafts.order("updated_at DESC")
+    @post_draft = PostDraft.find(params[:id])
   end
 
   private
