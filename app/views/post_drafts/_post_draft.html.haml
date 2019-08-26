@@ -1,0 +1,4 @@
+= link_to post_draft_path(post_draft.id), class: 'collection-item' do
+  = post_draft.title.present? ? post_draft.title : "タイトル未設定"
+  %br
+  = post_draft.updated_at.strftime("%Y年 %m月 %d日 %H:%M:%S")
