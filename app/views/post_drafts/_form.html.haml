@@ -1,4 +1,4 @@
-= form_for post_draft do |f|
+= form_with model: post_draft, local: true  do |f|
   .row
     - if post_draft.errors.any?
       %h5.red-text
@@ -25,7 +25,7 @@
   %button.btn.waves-effect.waves-light{:name => "commit", :type => "submit",:value => "save"}
     投稿
     %i.material-icons.right send
-  %button.btn.waves-effect.waves-light{:name => "commit", :type => "submit",:value => "draft"}
+  %button.btn.waves-effect.waves-light#draft-btn{:name => "commit", :type => "submit",:value => "draft"}
     下書き保存
     %i.material-icons.right send
   = link_to root_path, data: { confirm: 'キャンセルいたしますか?' ,"turbolinks" => false} do
