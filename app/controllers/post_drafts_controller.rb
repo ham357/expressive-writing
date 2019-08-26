@@ -37,7 +37,7 @@ class PostDraftsController < ApplicationController
     if @post.save
       respond_to do |format|
         format.html do
-          @post_draft.destroy if @post_draft
+          @post_draft&.destroy
           redirect_to root_path, notice: "投稿が完了しました"
         end
       end
