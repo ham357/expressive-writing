@@ -2,8 +2,8 @@ class PostDraftsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post_drafts = current_user.post_drafts.order("updated_at DESC")
     @post_draft_last = current_user.post_drafts.order("updated_at").last
+    redirect_to post_draft_path(@post_draft_last.id)
   end
 
   def new
