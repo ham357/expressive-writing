@@ -6,12 +6,12 @@ class PostDraftsController < ApplicationController
   end
 
   def create
-    if params[:commit] == 'draft'
-      draft_create
-    elsif params[:commit] == 'save'
+    if params[:commit] == 'save'
       post_create
+    elsif params[:commit] == 'draft'
+      draft_create
     else
-      render new_post_draft_path
+      redirect_to root_path, alert: "createエラー"
     end
   end
 
@@ -19,14 +19,15 @@ class PostDraftsController < ApplicationController
     @post_draft = PostDraft.new(post_draft_params)
     if @post_draft.save
       respond_to do |format|
-        flash[:notice] = '下書きが作成されました'
-        format.html { redirect_to root_path }
-        format.json
+        format.html do
+          redirect_to root_path, notice: "下書きが作成されました"
+        end
+        format.js
       end
     else
       respond_to do |format|
         format.html { render new_post_draft_path }
-        format.json
+        format.js
       end
     end
   end
@@ -35,15 +36,34 @@ class PostDraftsController < ApplicationController
     @post = Post.new(post_draft_params)
     if @post.save
       respond_to do |format|
-        flash[:notice] = '投稿が完了しました'
-        format.html { redirect_to root_path }
-        format.json
+        format.html do
+          @post_draft.destroy if @post_draft
+          redirect_to root_path, notice: "投稿が完了しました"
+        end
       end
     else
-      respond_to do |format|
-        format.html { render new_post_draft_path }
-        format.json
+      respond_to do |_format|
+        render new_post_draft_path
       end
+    end
+  end
+
+  def commit_value_check
+    if params[:commit] == 'save'
+      post_create
+    elsif params[:commit] == 'draft'
+      redirect_to root_path, notice: "下書きが作成されました"
+    else
+      redirect_to root_path, alert: "commit_value_checkエラー"
+    end
+  end
+
+  def update
+    @post_draft = PostDraft.find(params[:id])
+    if @post_draft.update(post_draft_params) && @post_draft.user_id == current_user.id
+      commit_value_check
+    else
+      redirect_to root_path, alert: "updateエラー"
     end
   end
 
