@@ -16,7 +16,7 @@ class PostDraftsController < ApplicationController
     elsif params[:commit] == 'draft'
       draft_create
     else
-      redirect_to root_path, alert: "createエラー"
+      render new_post_draft_path, alert: "createエラー"
     end
   end
 
@@ -47,8 +47,8 @@ class PostDraftsController < ApplicationController
         end
       end
     else
-      respond_to do |_format|
-        render new_post_draft_path
+      respond_to do |format|
+        format.html { render new_post_draft_path, notice: "createエラー" }
       end
     end
   end
@@ -59,7 +59,7 @@ class PostDraftsController < ApplicationController
     elsif params[:commit] == 'draft'
       redirect_to post_draft_path(@post_draft.id), notice: "下書きが作成されました"
     else
-      redirect_to root_path, alert: "commit_value_checkエラー"
+      render new_post_draft_path, alert: "commit_value_checkエラー"
     end
   end
 
