@@ -1,11 +1,5 @@
 = form_with model: post_draft, local: true  do |f|
   .row
-    - if post_draft.errors.any?
-      %h5.red-text
-        = "#{post_draft.errors.full_messages.count}件のエラーが発生しました。"
-      - post_draft.errors.full_messages.each do|msg|
-        %h5.red-text= msg
-  .row
     .input-field.col.s12.m12.l12.x12
       = f.text_field :title,'data-length': "50", autofocus: true
       = f.label :title,class:"active"
