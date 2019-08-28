@@ -1,8 +1,8 @@
 $(document).ready(function () {
   var preTitleWord = ""
   var nowTitleWord = ""
-  var preContensWord = ""
-  var nowContensWord = ""
+  var preContentsWord = ""
+  var nowContentsWord = ""
 
   $(document).on('keyup', $("#post_draft_title"), function (e) {
     if($("#post_draft_title").length){
@@ -22,18 +22,18 @@ $(document).ready(function () {
 
   $(document).on('keyup', $("#post_draft_contents"), function (e) {
     if($("#post_draft_contents").length){
-      nowContensWord = $("#post_draft_contents").val();
+      nowContentsWord = $("#post_draft_contents").val();
 
       setTimeout(function() {
-        if(preContensWord !== nowContensWord){
+        if(preContentsWord !== nowContentsWord){
           $("form").attr("data-remote","true")
           $('#draft-btn').trigger('click');
           $("form").attr("data-remote","false")
           M.toast({html: '自動保存しました'})
-          preContensWord = nowContensWord;
+          preContentsWord = nowContentsWord;
         }
       }, 3000);
     };
   });
-  
+
 });
