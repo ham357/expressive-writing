@@ -1,0 +1,13 @@
+.container
+  .row
+    .col.s12.m4.l3
+      %ul#icon-section
+        %li.action#edit-del-links
+          %h5.draft-index-title
+            下書き一覧
+          = link_to new_post_draft_path do
+            %i.material-icons create
+    %ul.collection.with-header
+      %li.collection-header
+        %h3
+          下書きは作成されていません
