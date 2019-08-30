@@ -3,7 +3,7 @@ class PostDraftsController < ApplicationController
 
   def index
     @post_draft_last = current_user.post_drafts.order("updated_at").last
-    redirect_to post_draft_path(@post_draft_last.id)
+    redirect_to post_draft_path(@post_draft_last.id) if @post_draft_last.present?
   end
 
   def new
