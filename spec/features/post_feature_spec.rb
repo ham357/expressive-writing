@@ -9,6 +9,7 @@ feature '記事投稿', type: :feature do
       visit root_path
       visit new_post_path
       expect(current_path).to eq new_post_path
+      visit current_path
 
       expect do
         fill_in 'post_title', with: 'タイトルテスト'
