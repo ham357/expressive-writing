@@ -1,0 +1,12 @@
+.container
+  .row
+    .col.s12.m4.l3
+      %h5 プロフィール
+    %ul.collection.with-header
+      .col.s10.m10.l10
+        %li.collection-header
+          = check_user_icon(@user)
+          %h3
+            = @user.nickname
+        %li.collection-header
+          = @user.comment.present? ? @user.comment : "はじめまして。宜しくお願いします。"
