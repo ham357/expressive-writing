@@ -1,0 +1,11 @@
+.container
+  .row
+    .col.s12.m4.l3
+      %h5
+        ユーザ一覧
+        %br
+        %p
+          = "現在登録されているユーザは#{@users.count}名です。"
+
+    %ul.collection
+      = render @users

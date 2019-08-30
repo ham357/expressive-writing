@@ -1,0 +1,5 @@
+%li.collection-item.avatar
+  %span.title
+    = check_user_icon(user)
+    = user.nickname
+    = render 'relationships/follow_button', user: user
