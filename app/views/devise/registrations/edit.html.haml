@@ -48,6 +48,14 @@
         %button.btn.waves-effect.waves-light
           = f.submit "#{t('view.update')}"
           %i.material-icons.right send
+      = form_for(@user, url: user_path(@user.id)) do |f|
+        %br/      
+        .field
+          = f.label :プロフィールコメント
+          %br/
+          = f.text_field :comment, autocomplete: "comment"
+        %button.btn.waves-effect.waves-light
+          = f.submit "#{t('view.update')}"  
       %h3
         = t('view.cancel_my_account')
       %p
