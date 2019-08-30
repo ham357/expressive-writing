@@ -1,8 +1,12 @@
 .container
   .row
     .col.s12.m4.l3
-      %h4
-        下書き一覧
+      %ul#icon-section
+        %li.action#edit-del-links
+          %h5.draft-index-title
+            下書き一覧
+          = link_to new_post_draft_path do
+            %i.material-icons create
       .collection.left
         = render @post_drafts
     %ul.collection.with-header
