@@ -1,0 +1,24 @@
+.container
+  .row
+    .col.s12.m4.l3
+      %ul#icon-section
+        %li.action#edit-del-links
+          %h5.draft-index-title
+            下書き一覧
+          = link_to new_post_draft_path do
+            %i.material-icons create
+      .collection.left
+        = render @post_drafts
+    %ul.collection.with-header
+      %li.collection-header
+        %h3
+          = @post_draft.title.present? ? @post_draft.title : "タイトル未設定"
+          %ul#icon-section
+            - if user_signed_in? && current_user.id == @post_draft.user_id
+              %li.action#edit-del-links
+                = link_to edit_post_draft_path(@post_draft.id) do
+                  %i.material-icons edit
+                = link_to post_draft_path(@post_draft.id), class: "post-draft-destroy", method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
+                  %i.material-icons delete
+      %li.collection-item
+        = @post_draft.contents

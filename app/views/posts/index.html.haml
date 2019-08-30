@@ -6,5 +6,5 @@
   .row.center-align
     = link_to_next_page @posts, 'もっと見る', class: "btn white black-text", remote: true, id: 'more_link'
 .fixed-action-btn
-  = link_to new_post_path, class: "btn-floating btn-large red", data: {"turbolinks" => false} do
+  = link_to new_post_draft_path, class: "btn-floating btn-large red", data: {"turbolinks" => false} do
     %i.large.material-icons create
