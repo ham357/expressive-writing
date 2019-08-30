@@ -31,6 +31,8 @@ https://expressive-writing.work/
 # 機能一覧
 - 投稿機能
   - 投稿機能
+  - 下書き保存機能
+  - 下書き自動保存機能(Ajax)
   - 投稿編集機能
   - 投稿削除機能
 - コメント機能(Ajax)
@@ -39,6 +41,8 @@ https://expressive-writing.work/
   - コメント削除機能
 - ユーザ管理機能
   - マイページ機能
+    - プロフィール編集機能
+    - 下書き一覧表示機能
 - ページネーション機能(kaminari)
   - Google検索と同様の「もっと見る」ボタン(Ajax)
 - いいね機能
@@ -46,7 +50,6 @@ https://expressive-writing.work/
   - コメントいいね機能
 - フォロー機能
 - 未実装
-  - 投稿下書き機能
   - 投稿タイマー機能
   - ユーザ一覧機能
   - 新着情報通知機能
@@ -54,6 +57,7 @@ https://expressive-writing.work/
   - SNSシェア機能
   - SNSログイン機能
   - タグ機能
+  - 検索機能
 
 ## テスト(Rspec)
   - 単体テスト
