@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show update]
   root to: 'posts#index'
   resources :health_check, only: [:index]
   resources :posts
