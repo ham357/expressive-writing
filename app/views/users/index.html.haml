@@ -1,10 +1,25 @@
 .container
   .row
     .col.s12.m4.l3
-      %h5
-        ユーザ一覧
-        %br
+      -if  params[:value] == "following"
+        %h5
+          フォロー
+        %p
+          = "現在フォローしているユーザは#{@users.count}名です。"
+      - elsif params[:value] == "followers"
+        %h5
+          フォロワー
+        %p
+          = "現在フォローされているユーザは#{@users.count}名です。"
+      - else  
+        %h5
+          ユーザ一覧
         %p
           = "現在登録されているユーザは#{@users.count}名です。"
     %ul.collection
-      = render @users
+      - if @users.present?
+        = render @users
+      - else 
+        %li.collection-item.avatar
+          %h5
+            ユーザはいません。
