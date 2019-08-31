@@ -4,3 +4,5 @@
     = link_to user_path(user.id) do
       = user.nickname
     = render 'relationships/follow_button', user: user
+    %p
+      = user.comment.present? ? user.comment : "はじめまして。宜しくお願いします。"
