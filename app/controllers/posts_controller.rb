@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy edit update]
 
   def index
-    @posts = Post.includes(:user).page(params[:page]).order("created_at DESC")
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @posts = Post.where(user_id: user.id).page(params[:page]).order("created_at DESC")
+    else
+      @posts = Post.includes(:user).page(params[:page]).order("created_at DESC")
+    end
   end
 
   def new

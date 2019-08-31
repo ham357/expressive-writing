@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
+
+  def params_value_check
+    if params[:value] == "following"
+      @users = User.joins("LEFT OUTER JOIN relationships ON users.id = relationships.follow_id").where(relationships: { user_id: @user.id }).page(params[:page]).order("relationships.created_at DESC")
+    elsif params[:value] == "followers"
+      @users = User.joins("LEFT OUTER JOIN relationships ON users.id = relationships.user_id").where(relationships: { follow_id: @user.id }).page(params[:page]).order("relationships.created_at DESC")
+    end
+  end
+
   def index
-    @users = User.all
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      params_value_check
+    else
+      @users = User.all.page(params[:page]).order('nickname')
+    end
   end
 
   def show
