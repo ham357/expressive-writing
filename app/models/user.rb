@@ -39,4 +39,14 @@ class User < ApplicationRecord
   def following?(other_user)
     followings.include?(other_user)
   end
+
+  def followers_count
+    user_followers_count = Relationship.where(follow_id: id).count
+    user_followers_count.present? ? user_followers_count : 0
+  end
+
+  def following_count
+    user_following_count = Relationship.where(user_id: id).count
+    user_following_count.present? ? user_following_count : 0
+  end
 end
