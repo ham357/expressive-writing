@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def params_value_check
     if params[:value] == "following"
       @users = User.joins("LEFT OUTER JOIN relationships ON users.id = relationships.follow_id").where(relationships: { user_id: @user.id }).page(params[:page]).order("relationships.created_at DESC")
@@ -13,7 +12,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:user_id])
       params_value_check
     else
-      @users = User.all.page(params[:page]).order('nickname')
+      @users = User.where('nickname LIKE(?) and id != ?', "#{params[:keyword]}%", current_user).page(params[:page]).order('nickname')
+      respond_to do |format|
+        format.html
+        format.json
+        format.js
+      end
     end
   end
 
