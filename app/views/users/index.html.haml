@@ -4,17 +4,17 @@
       -if  params[:value] == "following"
         %h5
           フォロー
-        %p
+        %p#user_count
           = "現在フォローしているユーザは#{@users.count}名です。"
       - elsif params[:value] == "followers"
         %h5
           フォロワー
-        %p
+        %p#user_count
           = "現在フォローされているユーザは#{@users.count}名です。"
       - else  
         %h5
           ユーザ一覧
-        %p
+        %p#user_count
           = "現在登録されているユーザは#{@users.count}名です。"
     %ul.collection
       %li.collection-item
