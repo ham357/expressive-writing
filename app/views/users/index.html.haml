@@ -17,9 +17,8 @@
         %p
           = "現在登録されているユーザは#{@users.count}名です。"
     %ul.collection
-      - if @users.present?
+      %li.collection-item
+        %label ユーザを検索
+        %input#user-search-field{:name => "keyword",:placeholder => "検索したいユーザー名を入力してください", :type => "text"}/
+      %div#user-search-result
         = render @users
-      - else 
-        %li.collection-item.avatar
-          %h5
-            ユーザはいません。
