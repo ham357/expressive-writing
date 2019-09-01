@@ -1,8 +1,13 @@
-%li.collection-item.avatar
-  %span.title
-    = check_user_icon(user)
-    = link_to user_path(user.id) do
-      = user.nickname
-    = render 'relationships/follow_button', user: user
-    %p
-      = user.comment.present? ? user.comment : "はじめまして。宜しくお願いします。"
+- if @users.present?
+  %li.collection-item.avatar
+    %span.title
+      = check_user_icon(user)
+      = link_to user_path(user.id) do
+        = user.nickname
+      = render 'relationships/follow_button', user: user
+      %p
+        = user.comment.present? ? user.comment : "はじめまして。宜しくお願いします。"
+- else
+  %li.collection-item.avatar
+    %h5
+      ユーザはいません。%li.collection-item.avatar
