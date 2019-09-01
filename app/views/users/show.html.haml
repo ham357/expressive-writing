@@ -9,5 +9,6 @@
       %li.collection-item
         %h3
           = @user.nickname
+          = render 'relationships/follow_button', user: @user
       %li.collection-item
         = @user.comment.present? ? @user.comment : "はじめまして。宜しくお願いします。"
