@@ -4,6 +4,7 @@ FactoryBot.define do
     nickname              { Faker::Games::Pokemon.name }
     email                 { Faker::Internet.email }
     image { File.open("spec/factories/no_image.jpg") }
+    comment               { "プロフィールコメントです。" }
     password              { password }
     password_confirmation { password }
   end
@@ -13,6 +14,7 @@ FactoryBot.define do
     nickname              { Faker::Games::Pokemon.name }
     email                 { Faker::Internet.email }
     image { File.open("spec/factories/no_image.jpg") }
+    comment               { "プロフィールコメントです。" }
     password              { password }
     password_confirmation { password }
   end
