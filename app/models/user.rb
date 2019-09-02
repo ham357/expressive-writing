@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, length: { maximum: 20 }
+  validates :comment, length: { maximum: 200 }
   mount_uploader :image, ImageUploader
 
   has_many :posts, dependent: :destroy
