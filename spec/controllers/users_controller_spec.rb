@@ -44,7 +44,7 @@ describe UsersController, type: :controller do
         expect(user.comment).to eq("変更しました")
       end
 
-      it "正常に詳細ページへリダイレクトされているか" do
+      it "正常にプロフィールページへリダイレクトされているか" do
         patch :update, params: { user: {comment: "変更しました"},
           id: user.id,}
         user.reload
