@@ -16,9 +16,10 @@
           ユーザ一覧
         %p#user_count
           = "現在登録されているユーザは#{@users.count}名です。"
-    %ul.collection
-      %li.collection-item
-        %label ユーザを検索
-        %input#user-search-field{:name => "keyword",:placeholder => "検索したいユーザー名を入力してください", :type => "text"}/
-      %div#user-search-result
-        = render @users
+    .row
+      %ul.collection
+        %li.collection-item
+          %label ユーザを検索
+          %input#user-search-field{:name => "keyword",:placeholder => "検索したいユーザー名を入力してください", :type => "text"}/
+        %div#user-search-result
+          = render @users
