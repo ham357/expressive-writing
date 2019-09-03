@@ -10,6 +10,7 @@ describe UsersController, type: :controller do
   describe '#index' do
     it "インスタンス変数の値が正常か" do
       users = create_list(:user, 3)
+      users << user
       get :index
       expect(assigns(:users)).to match(users)
     end
