@@ -2,7 +2,7 @@
   = t('view.mypage')
 .collection.left
   = link_to "新着情報", mypages_path, class: 'collection-item'
-  = link_to "プロフィールの変更", edit_user_registration_path, class: 'collection-item'
+  = link_to "プロフィール", user_path(current_user.id), class: 'collection-item'
   = link_to "いいね一覧", "#", class: 'collection-item'
   = link_to "フォロー一覧", "#", class: 'collection-item'
   = link_to "コメント一覧", "#", class: 'collection-item'
