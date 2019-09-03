@@ -21,7 +21,7 @@ describe UsersController, type: :controller do
     before do
       sign_in user
     end
-    
+
     context 'viewが表示できているか' do
       it 'showのテンプレートが表示されてるか' do
         get :show, params: { id: user.id }
@@ -40,7 +40,7 @@ describe UsersController, type: :controller do
     before do
       sign_in user
     end
-    
+
     context 'パラメータが妥当な場合' do
       it "投稿内容が更新できているか" do
         patch :update, params: { user: { comment: "変更しました" },
