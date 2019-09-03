@@ -1,16 +1,10 @@
 require 'rails_helper'
 
 describe UsersController, type: :controller do
-  let(:user) { create(:user) }
-
-  before do
-    sign_in user
-  end
-
   describe '#index' do
     it "インスタンス変数の値が正常か" do
       users = create_list(:user, 3)
-      users << user
+      sign_in users[0]
       get :index
       expect(assigns(:users)).to match(users)
     end
@@ -22,6 +16,12 @@ describe UsersController, type: :controller do
   end
 
   describe '#show' do
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
+    end
+    
     context 'viewが表示できているか' do
       it 'showのテンプレートが表示されてるか' do
         get :show, params: { id: user.id }
@@ -35,6 +35,12 @@ describe UsersController, type: :controller do
   end
 
   describe '#update' do
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
+    end
+    
     context 'パラメータが妥当な場合' do
       it "投稿内容が更新できているか" do
         patch :update, params: { user: { comment: "変更しました" },
