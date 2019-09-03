@@ -1,10 +1,24 @@
 %h4
   = t('view.mypage')
-.collection.left
-  = link_to "新着情報", mypages_path, class: 'collection-item'
-  = link_to "プロフィール", user_path(current_user.id), class: 'collection-item'
-  = link_to "いいね一覧", "#", class: 'collection-item'
-  = link_to "フォロー一覧", "#", class: 'collection-item'
-  = link_to "コメント一覧", "#", class: 'collection-item'
-  = link_to "下書き一覧", post_drafts_path, class: 'collection-item'
-  = link_to "ユーザ一覧", users_path, class: 'collection-item'
+.collection
+  = link_to mypages_path, class: 'collection-item' do
+    新着情報
+    %i.material-icons.secondary-content send
+  = link_to user_path(current_user.id), class: 'collection-item' do
+    プロフィール
+    %i.material-icons.secondary-content send
+  = link_to "#", class: 'collection-item' do
+    いいね一覧
+    %i.material-icons.secondary-content send
+  = link_to "#", class: 'collection-item' do
+    フォロー一覧
+    %i.material-icons.secondary-content send
+  = link_to "#", class: 'collection-item' do
+    コメント一覧
+    %i.material-icons.secondary-content send
+  = link_to post_drafts_path, class: 'collection-item' do
+    下書き一覧
+    %i.material-icons.secondary-content send
+  = link_to users_path, class: 'collection-item' do
+    ユーザ一覧
+    %i.material-icons.secondary-content send
