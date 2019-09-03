@@ -11,7 +11,6 @@ describe UsersController, type: :controller do
     it "インスタンス変数の値が正常か" do
       users = create_list(:user, 3)
       get :index
-      binding.pry
       expect(assigns(:users)).to match(users)
     end
 
