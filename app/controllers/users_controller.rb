@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:user_id])
       params_value_check
     else
-      @users = User.where('nickname LIKE(?) and id != ?', "#{params[:keyword]}%", current_user).order('nickname')
+      @users = User.where('nickname LIKE(?)', "#{params[:keyword]}%").order('nickname')
       respond_to do |format|
         format.html
         format.json
