@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe UsersController, type: :controller do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
   describe '#index' do
     it "インスタンス変数の値が正常か" do
       users = create_list(:user, 3)
@@ -17,25 +23,17 @@ describe UsersController, type: :controller do
   describe '#show' do
     context 'viewが表示できているか' do
       it 'showのテンプレートが表示されてるか' do
-        user = create(:user)
         get :show, params: { id: user.id }
         expect(response).to render_template :show
       end
       it '投稿内容が正常に表示できているか' do
-        user = create(:user, comment: 'あああ')
         get :show, params: { id: user.id }
-        expect(assigns(:user).comment).to eq "あああ"
+        expect(assigns(:user).comment).to eq "プロフィールコメントです。"
       end
     end
   end
 
   describe '#update' do
-    let(:user) { create(:user) }
-
-    before do
-      sign_in user
-    end
-
     context 'パラメータが妥当な場合' do
       it "投稿内容が更新できているか" do
         patch :update, params: { user: { comment: "変更しました" },
