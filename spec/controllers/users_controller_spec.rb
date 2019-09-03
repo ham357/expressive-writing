@@ -35,18 +35,18 @@ describe UsersController, type: :controller do
     before do
       sign_in user
     end
-  
+
     context 'パラメータが妥当な場合' do
       it "投稿内容が更新できているか" do
-        patch :update, params: { user: {comment: "変更しました"},
-                                 id: user.id,}
+        patch :update, params: { user: { comment: "変更しました" },
+                                 id: user.id  }
         user.reload
         expect(user.comment).to eq("変更しました")
       end
 
       it "正常にプロフィールページへリダイレクトされているか" do
-        patch :update, params: { user: {comment: "変更しました"},
-          id: user.id,}
+        patch :update, params: { user: { comment: "変更しました" },
+                                 id: user.id  }
         user.reload
         expect(response).to redirect_to user_path(user.id)
       end
@@ -54,15 +54,15 @@ describe UsersController, type: :controller do
 
     context 'パラメータが不正な場合' do
       it 'リクエストが成功すること' do
-        patch :update, params: { user: {comment: "変更しました"},
-          id: user.id,}
+        patch :update, params: { user: { comment: "変更しました" },
+                                 id: user.id  }
         expect(response.status).to eq 302
       end
 
       it '投稿内容が変更されないこと' do
         expect do
-          put :update, params: { user: {comment: "変更しました"},
-            id: user.id,}
+          put :update, params: { user: { comment: "変更しました" },
+                                 id: user.id  }
         end.to_not change(User.find(user.id), :comment)
       end
     end
