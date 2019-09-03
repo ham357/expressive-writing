@@ -3,7 +3,7 @@
     .card-image.waves-effect.waves-block.waves-light
       = image_tag post.image.url, class: 'activator' if post.image.url.present?
     .card-content
-      %span.activator.grey-text.text-darken-4
+      %span.activator.grey-text.text-darken-4#card-title
         = post.title
       %p.grey-text
         = link_to "…詳しくはこちら", post_path(post.id)

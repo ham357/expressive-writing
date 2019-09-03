@@ -4,6 +4,13 @@
     word-wrap: break-word;
   }
 }
+
+.card-content{
+  #card-title{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
 .card{
   .card-content{
     img.responsive-img, video.responsive-video {
