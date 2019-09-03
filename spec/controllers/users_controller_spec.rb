@@ -6,7 +6,7 @@ describe UsersController, type: :controller do
       users = create_list(:user, 3)
       sign_in users[0]
       get :index
-      expect(assigns(:users)).to match(users)
+      expect(assigns(:users)).to match_array(users)
     end
 
     it "ビューに正しく遷移できているか" do
