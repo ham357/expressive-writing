@@ -3,7 +3,8 @@
     %li.collection-item.avatar
       = check_user_icon(@post.user)
       %span.title
-        = @post.user.nickname
+        = link_to user_path(@post.user.id) do
+          = @post.user.nickname
         = render 'relationships/follow_button', user: @post.user
     %li.collection-item.avatar
       .card-image
