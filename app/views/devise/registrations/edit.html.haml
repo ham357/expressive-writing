@@ -1,7 +1,5 @@
 .container
   .row
-    .col.s12.m6.l3
-      = render "mypages/sidebar"
     .col.s12.m8.l8
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = render "devise/shared/error_messages", resource: resource
@@ -54,8 +52,9 @@
           = f.label :プロフィールコメント
           %br/
           = f.text_field :comment, autocomplete: "comment"
-        %button.btn.waves-effect.waves-light
+        %button.btn.waves-effect.waves-light#comment-submit
           = f.submit "#{t('view.update')}"  
+          %i.material-icons.right send
       %h3
         = t('view.cancel_my_account')
       %p
