@@ -11,3 +11,8 @@
     %div
       フォロワー
       = link_to "#{user.followers_count}", users_path(user_id: user.id, value: "followers"), class: "secondary-content"
+
+= link_to edit_user_registration_path do
+  .btn.waves-effect.waves-light
+    プロフィールの変更
+    %i.material-icons.right send
