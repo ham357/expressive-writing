@@ -1,0 +1,3 @@
+$("#user-search-result").empty();
+$("#user_count").text("<%= "対象ユーザは#{@users.count}名です。" %>");
+$("#user-search-result").append("<%= escape_javascript(render @users) %>");

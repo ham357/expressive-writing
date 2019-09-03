@@ -1,0 +1,18 @@
+%ul.collection
+  %li.collection-item
+    %div
+      投稿数
+      = link_to "#{user.posts.count}", posts_path(user_id: user.id, value: "following"), class: "secondary-content"
+  %li.collection-item
+    %div
+      フォロー
+      = link_to "#{user.following_count}", users_path(user_id: user.id, value: "following"), class: "secondary-content"
+  %li.collection-item
+    %div
+      フォロワー
+      = link_to "#{user.followers_count}", users_path(user_id: user.id, value: "followers"), class: "secondary-content"
+- if current_user.id == user.id
+  = link_to edit_user_registration_path do
+    .btn.waves-effect.waves-light
+      プロフィールの変更
+      %i.material-icons.right send

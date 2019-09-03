@@ -12,7 +12,7 @@ $(document).ready(function () {
     M.toast({html: '自動保存しました'});
   }
 
-  $(document).on('keyup', $("#post_draft_title"), function (e) {
+  $("#post_draft_title").on('keyup', function (e) {
     if($("#post_draft_title").length){
       nowTitleWord = $("#post_draft_title").val();
       if (timer != false)  clearTimeout(timer);
@@ -25,7 +25,7 @@ $(document).ready(function () {
     };
   });
 
-  $(document).on('keyup', $("#post_draft_contents"), function (e) {
+  $("#post_draft_contents").on('keyup', function (e) {
     if($("#post_draft_contents").length){
       nowContentsWord = $("#post_draft_contents").val();
       if (timer != false)  clearTimeout(timer);

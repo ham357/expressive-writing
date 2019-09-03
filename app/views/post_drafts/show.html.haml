@@ -5,8 +5,8 @@
         %li.action#edit-del-links
           %h5.draft-index-title
             下書き一覧
-          = link_to new_post_draft_path do
-            %i.material-icons create
+            = link_to new_post_draft_path, class: "btn waves-effect waves-light" do
+              %i.material-icons.border   create
       .collection.left
         = render @post_drafts
     %ul.collection.with-header

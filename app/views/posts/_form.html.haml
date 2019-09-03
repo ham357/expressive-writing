@@ -7,7 +7,7 @@
         %h5.red-text= msg
   .row
     .input-field.col.s12.m12.l12.x12
-      = f.text_field :title,'data-length': "50", autofocus: true
+      = f.text_field :title,'data-length': "50"
       = f.label :title,class:"active"
       %span.helper-text{"data-error" => "50 character limit", "data-success" => "right"}
   .row

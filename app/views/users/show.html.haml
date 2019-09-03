@@ -1,0 +1,14 @@
+.container
+  .row
+    .col.s12.m4.l3
+      %h5 プロフィール
+      = render "sidebar", { user: @user}
+    %ul.collection
+      %li.collection-item
+        = check_user_icon(@user)
+      %li.collection-item
+        %h3
+          = @user.nickname
+          = render 'relationships/follow_button', user: @user
+      %li.collection-item
+        = @user.comment.present? ? @user.comment : "はじめまして。宜しくお願いします。"

@@ -54,5 +54,16 @@ describe User do
       user.valid?
       expect(user.errors[:password][0]).to include("は6文字以上に設定して下さい。")
     end
+
+    it "201文字以上のコメントでは保存不可 " do
+      user = build(:user, comment: "a" * 201)
+      user.valid?
+      expect(user.errors[:comment][0]).to include("200文字以内で入力してください")
+    end
+
+    it "200文字のコメントでは保存可能" do
+      user = build(:user, comment: "a" * 200)
+      expect(user).to be_valid
+    end
   end
 end

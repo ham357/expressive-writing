@@ -1,0 +1,25 @@
+.container.user__container
+  .row
+    .col.s12.m4.l3
+      -if  params[:value] == "following"
+        %h5
+          フォロー
+        %p#user_count
+          = "現在フォローしているユーザは#{@users.count}名です。"
+      - elsif params[:value] == "followers"
+        %h5
+          フォロワー
+        %p#user_count
+          = "現在フォローされているユーザは#{@users.count}名です。"
+      - else  
+        %h5
+          ユーザ一覧
+        %p#user_count
+          = "現在登録されているユーザは#{@users.count}名です。"
+    .row
+      %ul.collection
+        %li.collection-item
+          %label ユーザを検索
+          %input#user-search-field{:name => "keyword",:placeholder => "検索したいユーザー名を入力してください", :type => "text"}/
+        %div#user-search-result
+          = render @users
