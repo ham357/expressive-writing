@@ -1,6 +1,8 @@
 class Notification < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   belongs_to :post, optional: true
-  belongs_to :user, optional: true
+  belongs_to :user, foreign_key: "visiter_id"
   belongs_to :comment, optional: true
+
+  paginates_per 10
 end
