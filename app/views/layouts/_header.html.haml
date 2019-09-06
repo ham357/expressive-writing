@@ -10,9 +10,9 @@
           %li
             = link_to notifications_path, class: "black-text", data: {"turbolinks" => false} do
               - if unchecked_notifications.any?
-                %i.fa.fa-envelope.fa-5x.icon-grey.badge{"data-count": "#{@notifications.count}"}
+                %i.fa.fa-bell.fa-5x.icon-grey.badge{"data-count": "#{@notifications.count}"}
               - else
-                %i.fa.fa-envelope.fa-5x.icon-grey
+                %i.fa.fa-bell.fa-5x.icon-grey
           %li
             = link_to "マイページ", mypages_path, class: "black-text", data: {"turbolinks" => false}
           %li
