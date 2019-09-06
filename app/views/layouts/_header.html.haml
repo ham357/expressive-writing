@@ -5,14 +5,20 @@
         = image_tag "/images/logo.jpg", height: "53",width: "150", alt: "expressive-writing"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
-          = link_to "#{t('view.about')}", about_path,class: "black-text", data: {"turbolinks" => false}
-        %li
-          - if user_signed_in?
-            = link_to "#{t('view.mypage')}", mypages_path, class: "black-text", data: {"turbolinks" => false}
-          - else
-            = link_to "#{t('view.sign_up')}", new_user_registration_path,class: "black-text", data: {"turbolinks" => false}
-        %li
-          - if user_signed_in?
-            = link_to "#{t('view.sign_out')}", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'ログアウトいたしますか?' } 
-          - else
-            = link_to "#{t('view.sign_in')}", new_user_session_path, class: "black-text", data: {"turbolinks" => false}
+          = link_to "このサイトについて", about_path,class: "black-text", data: {"turbolinks" => false}
+        - if user_signed_in?
+          %li
+            = link_to notifications_path, class: "black-text", data: {"turbolinks" => false} do
+              - if unchecked_notifications.any?
+                %i.fa.fa-envelope.fa-5x.icon-grey.badge{"data-count": "#{@notifications.count}"}
+              - else
+                %i.fa.fa-envelope.fa-5x.icon-grey
+          %li
+            = link_to "マイページ", mypages_path, class: "black-text", data: {"turbolinks" => false}
+          %li
+            = link_to "ログアウト", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'ログアウトいたしますか?' } 
+        - else
+          %li
+            = link_to "サインアップ", new_user_registration_path,class: "black-text", data: {"turbolinks" => false}
+          %li
+            = link_to "サインイン", new_user_session_path, class: "black-text", data: {"turbolinks" => false}
