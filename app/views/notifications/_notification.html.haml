@@ -1,8 +1,9 @@
-.user-view.clearfix
-  = link_to user_path(notification.visiter_id) do
-    = check_user_icon(notification.user)
-  != notification_form(notification)
-  %span.moderate-font= " (#{time_ago_in_words(notification.created_at)}前)"
-  %br/
-  - if !@comment.nil?
-    %p.moderate-font= @comment
+%li.collection-item.avatar
+  .user-view.clearfix
+    = link_to user_path(notification.visiter_id) do
+      = check_user_icon(notification.user)
+    != notification_form(notification)
+    %span.moderate-font= " (#{time_ago_in_words(notification.created_at)}前)"
+    %br/
+    - if !@comment.nil?
+      %p.moderate-font= @comment

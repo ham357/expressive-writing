@@ -1,8 +1,9 @@
-%div
-  %h4.sub-title 通知
-  - if @notifications.exists?
-    .users-index
-      = render @notifications
-      = paginate @notifications
-  - else
-    %p 通知はありません
+%ul.collection.with-header
+  %li.collection-header
+    %h4.sub-title通知
+    - if @notifications.exists?
+      .users-index
+        = render @notifications
+        = paginate @notifications
+    - else
+      %li.collection-item 通知はありません
