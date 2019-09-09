@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def notifications_list
+    @notifications = current_user.passive_notifications.page(params[:page])
+    @notifications.where(checked: false).each do |notification|
+      notification.update_attributes(checked: true)
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
