@@ -3,6 +3,6 @@ class Notification < ApplicationRecord
   belongs_to :post, optional: true
   belongs_to :user, foreign_key: "visiter_id"
   belongs_to :comment, optional: true
-
+  validates  :action, presence: true
   paginates_per 10
 end
