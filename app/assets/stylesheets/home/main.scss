@@ -81,8 +81,8 @@ i {
 .notifications-contents{
   position: absolute;
   width: 400px;
-  height: 500px;
   right: 30px;
+  visibility: hidden;
 }
 
 .notifications-list{

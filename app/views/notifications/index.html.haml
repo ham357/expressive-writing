@@ -1,6 +1,6 @@
-%ul.collection.with-header
+%ul.collection.with-header.notifications-body
   %li.collection-header
-    %h4.sub-title通知
+    %span.sub-title 通知
     - if @notifications.exists?
       .users-index
         = render @notifications
