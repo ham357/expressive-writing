@@ -16,7 +16,7 @@
                 %i.fa.fa-bell.fa-5x.icon-grey
             %iframe{:class => "notifications-contents", :frameborder => "0", :src => "/notifications"}
           %li
-            = link_to mypages_path, class: "black-text", data: {"turbolinks" => false} do
+            = link_to mypages_path, class: "black-text mypage", data: {"turbolinks" => false} do
               = check_user_icon(current_user)
           %li
             = link_to "ログアウト", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'ログアウトいたしますか?' } 

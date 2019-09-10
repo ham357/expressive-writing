@@ -5,14 +5,14 @@ feature 'user', type: :feature do
 
   scenario 'My pageボタン表示' do
     visit root_path
-    expect(page).to have_no_content('マイページ')
+    expect(page).to have_no_css('.mypage')
 
     visit new_user_session_path
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     find('#login').click
     expect(current_path).to eq root_path
-    expect(page).to have_content('マイページ')
+    expect(page).to have_css('.mypage')
   end
 
   scenario 'Log outボタン表示' do
@@ -41,7 +41,7 @@ feature 'user', type: :feature do
   scenario 'ユーザ一覧の表示' do
     sign_in user
     visit root_path
-    click_on 'マイページ'
+    find('.mypage').click
     click_on 'ユーザ一覧'
 
     expect(current_path).to eq users_path
@@ -50,7 +50,7 @@ feature 'user', type: :feature do
   scenario 'プロフィールページの表示' do
     sign_in user
     visit root_path
-    click_on 'マイページ'
+    find('.mypage').click
     click_on 'プロフィール'
 
     expect(current_path).to eq user_path(user.id)
@@ -59,7 +59,7 @@ feature 'user', type: :feature do
   scenario 'プロフィールコメントの変更' do
     sign_in user
     visit root_path
-    click_on 'マイページ'
+    find('.mypage').click
     click_on 'プロフィール'
 
     expect(current_path).to eq user_path(user.id)
@@ -77,7 +77,7 @@ feature 'user', type: :feature do
     sign_in user
     create(:user, nickname: 'アザーユーザ')
     visit root_path
-    click_on 'マイページ'
+    find('.mypage').click
     click_on 'ユーザ一覧'
     expect(current_path).to eq users_path
 
