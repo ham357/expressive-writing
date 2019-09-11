@@ -15,6 +15,10 @@ module NotificationsHelper
     when "comment" then
       @comment = Comment.find_by(id: notification.comment_id)&.comment
       "#{visiter}が#{your_post}にコメントしました"
+    when "comment_like" then
+      your_post = link_to 'この記事', notification.post, style: "font-weight: bold;"
+      @comment = Comment.find_by(id: notification.comment_id)&.comment
+      "#{visiter}が#{your_post}のあなたのコメントにいいね！しました"
     end
   end
 end

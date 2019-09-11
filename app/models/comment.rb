@@ -12,6 +12,7 @@ class Comment < ApplicationRecord
     notification = current_user.active_notifications.new(
       comment_id: id,
       visited_id: post.user.id,
+      post_id: post.id,
       action: "comment"
     )
     notification.save if notification.valid?
