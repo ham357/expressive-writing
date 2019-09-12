@@ -4,7 +4,7 @@ class CommentLikesController < ApplicationController
   def comment_like
     comment_like = current_user.comment_likes.new(comment_id: @comment.id)
     comment_like.save
-    comment_like.create_notification_by(current_user)
+    comment_like.create_notification_by(current_user) unless current_user.id == comment_like.user_id
   end
 
   def comment_unlike
