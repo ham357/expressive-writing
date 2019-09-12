@@ -31,7 +31,7 @@ describe RelationshipsController, type: :controller do
         expect(response.status).to eq 200
       end
 
-      it 'いいねが登録されないこと' do
+      it 'フォローの保存がされないこと' do
         create(:relationship, user_id: user.id, follow_id: other_user.id)
         expect do
           post :create, params: {
