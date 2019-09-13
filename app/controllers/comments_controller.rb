@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment: comment_params[:comment], post_id: comment_params[:post_id], user_id: current_user.id)
-    @comment.create_notification_by(current_user) unless current_user.id == @comment.user_id
+    @comment.create_notification_by(current_user) unless current_user.id == @comment.post.user_id
     respond_to do |format|
       format.html { redirect_to post_path(params[:post_id]) }
       format.json
