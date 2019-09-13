@@ -14,7 +14,7 @@
                 %i.fa.fa-bell.fa-5x.icon-grey.badge{"data-count": "#{@notifications.count}"}
               - else
                 %i.fa.fa-bell.fa-5x.icon-grey
-            %iframe{:class => "notifications-contents", :frameborder => "0", :src => "/notifications"}
+            %iframe{:class => "notifications-contents", :frameborder => "0", :src => "/notifications", :name => "notifications-contents"}
           %li
             = link_to mypages_path, class: "black-text mypage", data: {"turbolinks" => false} do
               = check_user_icon(current_user)
