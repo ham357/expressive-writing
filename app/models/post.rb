@@ -8,6 +8,16 @@ class Post < ApplicationRecord
   has_many   :comments
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
+  has_many :notifications, dependent: :destroy
 
   paginates_per 20
+
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user.id,
+      action: "like"
+    )
+    notification.save if notification.valid?
+  end
 end

@@ -37,7 +37,7 @@ MethodLength:
   Max: 20
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 30
 
 AllCops:
   TargetRubyVersion: 2.5

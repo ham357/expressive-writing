@@ -5,14 +5,23 @@
         = image_tag "/images/logo.jpg", height: "53",width: "150", alt: "expressive-writing"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
-          = link_to "#{t('view.about')}", about_path,class: "black-text", data: {"turbolinks" => false}
-        %li
-          - if user_signed_in?
-            = link_to "#{t('view.mypage')}", mypages_path, class: "black-text", data: {"turbolinks" => false}
-          - else
-            = link_to "#{t('view.sign_up')}", new_user_registration_path,class: "black-text", data: {"turbolinks" => false}
-        %li
-          - if user_signed_in?
-            = link_to "#{t('view.sign_out')}", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'ログアウトいたしますか?' } 
-          - else
-            = link_to "#{t('view.sign_in')}", new_user_session_path, class: "black-text", data: {"turbolinks" => false}
+          = link_to about_path,class: "black-text", data: {"turbolinks" => false} do
+            %i.fas.fa-info-circle
+        - if user_signed_in?
+          %li.notifications-list
+            = link_to notifications_path, class: "black-text notifications", data: {"turbolinks" => false} do
+              - if unchecked_notifications.any?
+                %i.fa.fa-bell.fa-5x.icon-grey.badge{"data-count": "#{@notifications.count}"}
+              - else
+                %i.fa.fa-bell.fa-5x.icon-grey
+            %iframe{:class => "notifications-contents", :frameborder => "0", :src => "/notifications", :name => "notifications-contents"}
+          %li
+            = link_to mypages_path, class: "black-text mypage", data: {"turbolinks" => false} do
+              = check_user_icon(current_user)
+          %li
+            = link_to "ログアウト", destroy_user_session_path,class: "black-text", method: :delete, data: { confirm: 'ログアウトいたしますか?' } 
+        - else
+          %li
+            = link_to "サインアップ", new_user_registration_path,class: "black-text", data: {"turbolinks" => false}
+          %li
+            = link_to "ログイン", new_user_session_path, class: "black-text", data: {"turbolinks" => false}

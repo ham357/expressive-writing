@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
   post   '/comment_like/:comment_id' => 'comment_likes#comment_like',   as: 'comment_like'
   delete '/comment_like/:comment_id' => 'comment_likes#comment_unlike', as: 'comment_unlike'
+  resources :notifications, only: :index
 end

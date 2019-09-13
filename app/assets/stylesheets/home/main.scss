@@ -39,3 +39,52 @@ main {
     text-align: center;
   }
 }
+
+*.icon-blue {color: #0088cc}
+*.icon-grey {color: grey}
+i {   
+    text-align:center;
+    vertical-align:middle;
+    position: relative;
+}
+.badge:after{
+    content:attr(data-count);
+    position: absolute;
+    background: #b71c1c;
+    height:2rem;
+    top:0.5rem;
+    left:1rem;
+    width:2rem;
+    text-align: center;
+    line-height: 2rem;;
+    font-size: 1rem;
+    border-radius: 50%;
+    color:white;
+}
+
+#nav-mobile{
+  height: 100%;
+  li{
+    height: 100%;
+    a{
+      height: 100%;
+    }
+    img{
+      width: 50px;
+      height: 50px;
+      margin-top: 7px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.notifications-contents{
+  position: absolute;
+  width: 400px;
+  right: 30px;
+  visibility: hidden;
+}
+
+.notifications-list{
+  width: 60px;
+}

@@ -86,3 +86,4 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'fog-aws'
 gem 'rails-i18n'
+gem "font-awesome-rails"

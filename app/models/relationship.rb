@@ -5,4 +5,13 @@ class Relationship < ApplicationRecord
   validates :user_id, presence: true
   validates :follow_id, presence: true
   validates_uniqueness_of :user_id, scope: :follow_id
+
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+      visiter_id: current_user.id,
+      visited_id: follow_id,
+      action: "follow"
+    )
+    notification.save if notification.valid?
+  end
 end

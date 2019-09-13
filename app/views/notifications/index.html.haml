@@ -1,0 +1,9 @@
+%ul.collection.with-header.notifications-body
+  %li.collection-header
+    %span.sub-title 通知
+    - if @notifications.exists?
+      .users-index
+        = render @notifications
+        = paginate @notifications
+    - else
+      %li.collection-item 通知はありません

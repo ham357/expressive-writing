@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
   def create
     following = current_user.follow(@user)
     following.save
+    following.create_notification_by(current_user) unless current_user == @user
   end
 
   def destroy
