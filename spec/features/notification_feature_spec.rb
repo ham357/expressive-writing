@@ -46,7 +46,7 @@ feature '通知一覧機能', type: :feature, js: true do
 
     find('.notifications').click
     expect(find('.notifications-contents', visible: true)).to be_visible
-    page.within_frame 'notifications-contents' do 
+    page.within_frame 'notifications-contents' do
       first('.user-view').click_link other_user.nickname
       expect(current_path).to eq user_path(other_user)
     end
@@ -60,7 +60,7 @@ feature '通知一覧機能', type: :feature, js: true do
 
     find('.notifications').click
     expect(find('.notifications-contents', visible: true)).to be_visible
-    page.within_frame 'notifications-contents' do 
+    page.within_frame 'notifications-contents' do
       first('.user-view').click_link 'あなたの投稿'
       expect(current_path).to eq post_path(test_post)
     end
@@ -74,7 +74,7 @@ feature '通知一覧機能', type: :feature, js: true do
 
     find('.notifications').click
     expect(find('.notifications-contents', visible: true)).to be_visible
-    page.within_frame 'notifications-contents' do 
+    page.within_frame 'notifications-contents' do
       click_link 'この記事'
       expect(current_path).to eq post_path(test_post)
     end
