@@ -61,6 +61,7 @@ feature '通知一覧機能', type: :feature, js: true do
     find('.notifications').click
     expect(find('.notifications-contents', visible: true)).to be_visible
     page.within_frame 'notifications-contents' do
+      sleep 1
       first('.user-view').click_link 'あなたの投稿'
       expect(current_path).to eq post_path(test_post)
     end
