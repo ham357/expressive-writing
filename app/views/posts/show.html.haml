@@ -25,6 +25,10 @@
               %i.material-icons edit
             = link_to post_path, class: "post-destroy", method: :delete, data: { confirm: '削除いたします。よろしいですか?' } do
               %i.material-icons delete
+      %ul#sns-icon-section
+        %li
+          = link_to "Tweet","https://twitter.com/share?ref_src=twsrc%5Etfw&hashtags=ExpressiveWriting", class: "twitter-share-button"
+          %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
       - if @comments.present?
         %li.collection-item.avatar#comment-section
           - @comments.each do |comment|
