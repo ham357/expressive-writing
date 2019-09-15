@@ -28,8 +28,10 @@
               %i.material-icons delete
       %ul#sns-icon-section
         %li
-          = link_to "Tweet","https://twitter.com/share?ref_src=twsrc%5Etfw&hashtags=ExpressiveWriting", class: "twitter-share-button"
+          = link_to "Tweet","https://twitter.com/share?ref_src=twsrc%5Etfw&hashtags=ExpressiveWriting&size=large", class: "twitter-share-button"
           %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+        %li
+          %iframe{:allow => "encrypted-media", :allowtransparency => "true", :frameborder => "0", :height => "28", :scrolling => "no", :src => "https://www.facebook.com/plugins/share_button.php?href=#{request.url}&layout=button&size=large&width=75&height=28&appId", :style => "border:none;overflow:hidden", :width => "75"}
       - if @comments.present?
         %li.collection-item.avatar#comment-section
           - @comments.each do |comment|
