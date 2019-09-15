@@ -58,8 +58,12 @@
 
 #sns-icon-section{
   height: 30px;
-  padding: 10px 0;
   li{
     display: inline;
+  }
+
+  .line-btn{
+    position: absolute;
+    padding-left: 5px;
   }
 }
