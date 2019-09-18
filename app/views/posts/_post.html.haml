@@ -9,7 +9,7 @@
         = link_to "…詳しくはこちら", post_path(post.id)
       %ul
         - if user_signed_in?
-          %li.like-link{id: "like-link-#{post.id}"}
+          %li.action-link{id: "like-link-#{post.id}"}
             - if current_user.already_liked?(post)
               = link_to unlike_path(post.id), class: "heart", method: :delete, remote: true do
                 %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite
