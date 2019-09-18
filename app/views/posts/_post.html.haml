@@ -5,7 +5,7 @@
     .card-content
       %span.activator.grey-text.text-darken-4#card-title
         = post.title
-      %p.grey-text
+      %p.grey-text#card-url
         = link_to "…詳しくはこちら", post_path(post.id)
       %ul
         - if user_signed_in?
