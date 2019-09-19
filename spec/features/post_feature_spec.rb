@@ -112,8 +112,8 @@ feature 'SNSシェアボタンの表示', type: :feature do
 
   scenario 'Tweetシェアボタンが正常に動作するか', js: true do
     page.within_frame 'twitter-widget-0' do
-      sleep 2
-      find('.btn-o').click
+      sleep 1
+      find('.btn').click
     end
     twitter_content = test_post.title + " " + current_url + " #ExpressiveWriting"
     within_window(windows.last) do
