@@ -137,7 +137,6 @@ feature 'SNSシェアボタンの表示', type: :feature do
       find('.btn').click
     end
     within_window(windows.last) do
-      save_and_open_page
       expect(current_url).to include 'line.me'
     end
   end
