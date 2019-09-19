@@ -93,3 +93,20 @@ feature '記事削除', type: :feature do
     end.to change(Post, :count).by(-1)
   end
 end
+
+feature 'SNSシェアボタンの表示', type: :feature do
+  let(:user) { create(:user) }
+  let(:test_post) { create(:post, user_id: user.id) }
+
+  before do
+    sign_in user
+    visit post_path(test_post)
+    expect(current_path).to eq post_path(test_post)
+  end
+
+  scenario 'ボタンが表示されているか', js: true do
+    expect(find('.twitter-share-button', visible: true)).to be_visible
+    expect(find('.facebook-share-button', visible: true)).to be_visible
+    expect(find('.line-it-button', visible: true)).to be_visible
+  end
+end
