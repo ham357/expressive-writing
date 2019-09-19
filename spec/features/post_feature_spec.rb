@@ -113,6 +113,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
   scenario 'Tweetシェアボタンが正常に動作するか', js: true do
     page.within_frame :css, '.twitter-share-button' do
       sleep 1
+      expect(find('.label', visible: true)).to be_visible
       find('.label').click
     end
     twitter_content = test_post.title + " " + current_url + " #ExpressiveWriting"
