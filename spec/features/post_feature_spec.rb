@@ -109,4 +109,15 @@ feature 'SNSシェアボタンの表示', type: :feature do
     expect(find('.facebook-share-button', visible: true)).to be_visible
     expect(find('.line-it-button', visible: true)).to be_visible
   end
+
+  scenario 'Tweetシェアボタンが正常に動作するか', js: true do
+    page.within_frame 'twitter-widget-0' do
+      sleep 1
+      find('.btn-o').click
+    end
+    twitter_content = test_post.title + " " + current_url + " #ExpressiveWriting"
+    within_window(windows.last) do
+      expect(page).to have_selector 'textarea', text: twitter_content
+    end
+  end
 end
