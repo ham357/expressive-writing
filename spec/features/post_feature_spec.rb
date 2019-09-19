@@ -120,4 +120,14 @@ feature 'SNSシェアボタンの表示', type: :feature do
       expect(page).to have_selector 'textarea', text: twitter_content
     end
   end
+
+  scenario 'facebookシェアボタンが正常に動作するか', js: true do
+    page.within_frame 'facebook-share-button' do
+      sleep 1
+      find('[type="submit"]').click
+    end
+    within_window(windows.last) do
+      expect(current_url).to include 'facebook'
+    end
+  end
 end
