@@ -130,4 +130,15 @@ feature 'SNSシェアボタンの表示', type: :feature do
       expect(current_url).to include 'facebook'
     end
   end
+
+  scenario 'Lineシェアボタンが正常に動作するか', js: true do
+    page.within_frame :css, '.line-it-button' do
+      sleep 1
+      find('.btn').click
+    end
+    within_window(windows.last) do
+      save_and_open_page
+      expect(current_url).to include 'line.me'
+    end
+  end
 end
