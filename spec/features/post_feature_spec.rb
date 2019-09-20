@@ -99,6 +99,46 @@ feature 'SNSシェアボタンの表示', type: :feature do
   let(:test_post) { create(:post, user_id: user.id) }
 
   context '一覧表示ページの場合' do
+    before do
+      sign_in user
+      visit root_path
+      expect(current_path).to eq root_path
+    end
+
+    scenario 'SNSシャアボタンが表示されているか' do
+      expect(page).to have_css '.modal-trigger'
+    end
+
+    scenario 'モーダルが正常に表示されるか', js: true do
+      first(".modal-trigger").click
+      within_window(windows.last) do
+        expect(page).to have_content 'SNSでシェアする'
+      end
+    end
+
+    context 'モーダルが正常に表示された場合', js: true do
+      before do
+        first(".modal-trigger").click
+      end
+
+      scenario 'Twitterアイコンが表示されているか' do
+        within_window(windows.last) do
+          expect(find('.fa-twitter-square', visible: true)).to be_visible
+        end
+      end
+
+      scenario 'Facebookアイコンが表示されているか' do
+        within_window(windows.last) do
+          expect(find('.fa-facebook-square', visible: true)).to be_visible
+        end
+      end
+
+      scenario 'LINEアイコンが表示されているか' do
+        within_window(windows.last) do
+          expect(find('.fa-line', visible: true)).to be_visible
+        end
+      end
+    end
   end
 
   context '詳細ページの場合' do
