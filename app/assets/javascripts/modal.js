@@ -5,11 +5,11 @@ $(function() {
     var url = "http://" + urlHost + urlParam
     var hashtag = "ExpressiveWriting";
     var html = `<h4>SNSでシェアする</h4>
-    <a href="http://twitter.com/share?text=${title}&url=${url}&hashtags=${hashtag}" target=”_blank>
+    <a href="http://twitter.com/share?text=${title}&url=${url}&hashtags=${hashtag}" class="twitter_btn" target=”_blank>
     <i class="fab fa-twitter-square fa-3x twitter-color"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=${url}" target=”_blank>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${url}" class="facebook_btn" target=”_blank>
     <i class="fab fa-facebook-square fa-3x facebook-color"></i></a>
-    <a href="http://line.me/R/msg/text/?${url}" target=”_blank><i class="fab fa-line fa-3x line-color"></i></a>`
+    <a href="http://line.me/R/msg/text/?${url}" class="line_btn" target=”_blank><i class="fab fa-line fa-3x line-color"></i></a>`
 
       $('.modal-content').append(html)
   }
