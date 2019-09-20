@@ -96,7 +96,7 @@ end
 
 feature 'SNSシェアボタンの表示', type: :feature do
   let(:user) { create(:user) }
-  let(:test_post) { create(:post, user_id: user.id) }
+  let!(:test_post) { create(:post, user_id: user.id) }
 
   context '一覧表示ページの場合' do
     before do
