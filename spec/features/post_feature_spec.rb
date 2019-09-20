@@ -106,7 +106,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
     end
 
     scenario 'SNSシャアボタンが表示されているか' do
-      expect(page).to have_css '.modal-trigger'
+      expect(first('.modal-trigger', visible: true)).to be_visible
     end
 
     scenario 'モーダルが正常に表示されるか', js: true do
