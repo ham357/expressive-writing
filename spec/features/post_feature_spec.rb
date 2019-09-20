@@ -138,6 +138,33 @@ feature 'SNSシェアボタンの表示', type: :feature do
           expect(find('.fa-line', visible: true)).to be_visible
         end
       end
+
+      context '各SNSアイコンが正常に表示された場合', js: true do
+        scenario 'Tweetシェアボタンが正常に動作するか', js: true do
+          link_url = first('a', text: '…詳しくはこちら')
+          find('.twitter_btn').click
+          twitter_content = test_post.title + " " + link_url[:href] + " #ExpressiveWriting"
+          within_window(windows.last) do
+            expect(page).to have_selector 'textarea', text: twitter_content
+          end
+        end
+
+        scenario 'facebookシェアボタンが正常に動作するか', js: true do
+          sleep 1
+          find('.facebook_btn').click
+          within_window(windows.last) do
+            expect(current_url).to include 'facebook'
+          end
+        end
+
+        scenario 'Lineシェアボタンが正常に動作するか', js: true do
+          sleep 1
+          find('.line_btn').click
+          within_window(windows.last) do
+            expect(current_url).to include 'line.me'
+          end
+        end
+      end
     end
   end
 
