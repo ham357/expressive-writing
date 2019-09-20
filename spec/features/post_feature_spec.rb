@@ -110,7 +110,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
     end
 
     scenario 'モーダルが正常に表示されるか', js: true do
-      first(".modal-trigger").click
+      execute_script("document.querySelectorAll('.modal-trigger')[0].click();")
       within_window(windows.last) do
         expect(page).to have_content 'SNSでシェアする'
       end
@@ -118,7 +118,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
 
     context 'モーダルが正常に表示された場合', js: true do
       before do
-        first(".modal-trigger").click
+        execute_script("document.querySelectorAll('.modal-trigger')[0].click();")
       end
 
       scenario 'Twitterアイコンが表示されているか' do
