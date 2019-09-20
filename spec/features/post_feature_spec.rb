@@ -106,7 +106,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
     end
 
     scenario 'SNSシャアボタンが表示されているか', js: true do
-      expect(first('.fa-share-square', visible: true)).to be_visible
+      expect(first('.fa-share-square', visible: false)).to be_visible
     end
 
     scenario 'モーダルが正常に表示されるか', js: true do
