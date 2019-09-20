@@ -105,7 +105,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
       expect(current_path).to eq root_path
     end
 
-    scenario 'SNSシャアボタンが表示されているか', js: true do
+    scenario 'SNSシャアボタンが表示されているか' do
       expect(first('.action-link')).to be_visible
     end
 
