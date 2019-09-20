@@ -98,46 +98,51 @@ feature 'SNSシェアボタンの表示', type: :feature do
   let(:user) { create(:user) }
   let(:test_post) { create(:post, user_id: user.id) }
 
-  before do
-    sign_in user
-    visit post_path(test_post)
-    expect(current_path).to eq post_path(test_post)
+  context '一覧表示ページの場合' do
   end
 
-  scenario 'ボタンが表示されているか', js: true do
-    expect(find('.twitter-share-button', visible: true)).to be_visible
-    expect(find('.facebook-share-button', visible: true)).to be_visible
-    expect(find('.line-it-button', visible: true)).to be_visible
-  end
+  context '詳細ページの場合' do
+    before do
+      sign_in user
+      visit post_path(test_post)
+      expect(current_path).to eq post_path(test_post)
+    end
 
-  scenario 'Tweetシェアボタンが正常に動作するか', js: true do
-    page.within_frame :css, '.twitter-share-button' do
-      sleep 1
-      execute_script("document.querySelectorAll('.btn')[0].click();")
+    scenario 'ボタンが表示されているか', js: true do
+      expect(find('.twitter-share-button', visible: true)).to be_visible
+      expect(find('.facebook-share-button', visible: true)).to be_visible
+      expect(find('.line-it-button', visible: true)).to be_visible
     end
-    twitter_content = test_post.title + " " + current_url + " #ExpressiveWriting"
-    within_window(windows.last) do
-      expect(page).to have_selector 'textarea', text: twitter_content
-    end
-  end
 
-  scenario 'facebookシェアボタンが正常に動作するか', js: true do
-    page.within_frame 'facebook-share-button' do
-      sleep 1
-      find('[type="submit"]').click
+    scenario 'Tweetシェアボタンが正常に動作するか', js: true do
+      page.within_frame :css, '.twitter-share-button' do
+        sleep 1
+        execute_script("document.querySelectorAll('.btn')[0].click();")
+      end
+      twitter_content = test_post.title + " " + current_url + " #ExpressiveWriting"
+      within_window(windows.last) do
+        expect(page).to have_selector 'textarea', text: twitter_content
+      end
     end
-    within_window(windows.last) do
-      expect(current_url).to include 'facebook'
-    end
-  end
 
-  scenario 'Lineシェアボタンが正常に動作するか', js: true do
-    page.within_frame :css, '.line-it-button' do
-      sleep 1
-      find('.btn').click
+    scenario 'facebookシェアボタンが正常に動作するか', js: true do
+      page.within_frame 'facebook-share-button' do
+        sleep 1
+        find('[type="submit"]').click
+      end
+      within_window(windows.last) do
+        expect(current_url).to include 'facebook'
+      end
     end
-    within_window(windows.last) do
-      expect(current_url).to include 'line.me'
+
+    scenario 'Lineシェアボタンが正常に動作するか', js: true do
+      page.within_frame :css, '.line-it-button' do
+        sleep 1
+        find('.btn').click
+      end
+      within_window(windows.last) do
+        expect(current_url).to include 'line.me'
+      end
     end
   end
 end
