@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   post   '/comment_like/:comment_id' => 'comment_likes#comment_like',   as: 'comment_like'
   delete '/comment_like/:comment_id' => 'comment_likes#comment_unlike', as: 'comment_unlike'
   resources :notifications, only: :index
+  post   '/favorite/:post_id' => 'favorites#favorite',   as: 'favorite'
+  delete '/favorite/:post_id' => 'favorites#unfavorite', as: 'unfavorite'
 end
