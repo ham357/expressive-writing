@@ -7,7 +7,7 @@
         = post.title
       %p.grey-text#card-url
         = link_to "…詳しくはこちら", post_path(post.id)
-      %ul
+      %ul#icon-section
         - if user_signed_in?
           %li.action-link{id: "like-link-#{post.id}"}
             - if current_user.already_liked?(post)
@@ -18,12 +18,25 @@
               = link_to like_path(post.id), class: "heart", method: :post, remote: true do
                 %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite_border
                 = post.likes.count.to_s
+          %li.favorite-link{id: "favorite-link-#{post.id}"}
+            - if current_user.already_favorited?(post)
+              = link_to unfavorite_path(post.id), class: "star", method: :delete, remote: true do
+                %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star
+                = post.favorites.count.to_s
+            - else
+              = link_to favorite_path(post.id), class: "star", method: :post, remote: true do
+                %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star_border
+                = post.favorites.count.to_s
+          %li.share-link
             = link_to "#modal1", class: "modal-trigger" do
               %i.fas.fa-share-square.fa-lg{ class: "hoverable" }
         -else
           = link_to new_user_session_path do
             %i.material-icons{ class: "hoverable" } favorite_border
             = post.likes.count.to_s
+          = link_to favorite_path(post.id), class: "star", method: :post, remote: true do
+            %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star_border
+            = post.favorites.count.to_s
     .card-reveal
       %p.card-title.grey-text.text-darken-4
         %i.material-icons.right close
