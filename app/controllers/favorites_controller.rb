@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
 
   def set_variables
     @post = Post.find(params[:post_id])
-    @id_name = "#like-link-#{@post.id}"
+    @f_id_name = "#favorite-link-#{@post.id}"
     @id_star = "#star-#{@post.id}"
   end
 end
