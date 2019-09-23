@@ -7,7 +7,7 @@
         = post.title
       %p.grey-text#card-url
         = link_to "…詳しくはこちら", post_path(post.id)
-      %ul#icon-section
+      %ul#top-icon-section
         - if user_signed_in?
           %li.like-link{id: "like-link-#{post.id}"}
             - if current_user.already_liked?(post)
