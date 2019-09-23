@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_025101) do
-
+ActiveRecord::Schema.define(version: 20_190_923_025_101) do
   create_table "comment_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "comment_id", null: false
@@ -58,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_025101) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["visiter_id", "visited_id"], name: "index_notifications_on_visiter_id_and_visited_id"
+    t.index %w[visiter_id visited_id], name: "index_notifications_on_visiter_id_and_visited_id"
   end
 
   create_table "post_drafts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -87,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_025101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index %w[user_id follow_id], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
