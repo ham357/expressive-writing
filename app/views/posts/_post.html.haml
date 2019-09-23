@@ -5,11 +5,11 @@
     .card-content
       %span.activator.grey-text.text-darken-4#card-title
         = post.title
-      %p.grey-text
+      %p.grey-text#card-url
         = link_to "…詳しくはこちら", post_path(post.id)
       %ul
         - if user_signed_in?
-          %li.like-link{id: "like-link-#{post.id}"}
+          %li.action-link{id: "like-link-#{post.id}"}
             - if current_user.already_liked?(post)
               = link_to unlike_path(post.id), class: "heart", method: :delete, remote: true do
                 %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite
@@ -18,6 +18,8 @@
               = link_to like_path(post.id), class: "heart", method: :post, remote: true do
                 %i.material-icons{ class: "hoverable", id: "heart-#{post.id}"} favorite_border
                 = post.likes.count.to_s
+            = link_to "#modal1", class: "modal-trigger" do
+              %i.fas.fa-share-square.fa-lg{ class: "hoverable" }
         -else
           = link_to new_user_session_path do
             %i.material-icons{ class: "hoverable" } favorite_border
@@ -33,3 +35,6 @@
       %p.right.grey-text
         更新日時:
         = time_ago_in_words(post.updated_at)+"前"
+#modal1.modal
+  .modal-content
+
