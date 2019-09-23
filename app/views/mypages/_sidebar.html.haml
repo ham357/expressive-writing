@@ -7,6 +7,9 @@
   = link_to user_path(current_user.id), class: 'collection-item' do
     プロフィール
     %i.material-icons.secondary-content send
+  = link_to favorites_path, class: 'collection-item' do
+    お気に入り一覧
+    %i.material-icons.secondary-content send
   = link_to "#", class: 'collection-item' do
     いいね一覧
     %i.material-icons.secondary-content send
