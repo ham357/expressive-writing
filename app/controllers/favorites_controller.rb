@@ -1,5 +1,10 @@
 class FavoritesController < ApplicationController
-  before_action :set_variables
+  before_action :authenticate_user!
+  before_action :set_variables, only: %i[favorite unfavorite]
+
+  def index
+    @favorites = current_user.favorites.order("created_at DESC")
+  end
 
   def favorite
     favorite = current_user.favorites.new(post_id: @post.id)
