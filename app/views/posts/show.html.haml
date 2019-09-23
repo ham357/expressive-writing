@@ -20,6 +20,7 @@
           = time_ago_in_words(@post.updated_at)+"前"
       %ul#icon-section
         = render 'likes/like_links', post: @post
+        = render 'favorites/favorite_links', post: @post
         - if user_signed_in? && current_user.id == @post.user_id
           %li.action#edit-del-links
             = link_to edit_post_path(@post.id) do
