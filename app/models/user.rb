@@ -55,4 +55,8 @@ class User < ApplicationRecord
     user_following_count = Relationship.where(user_id: id).count
     user_following_count.present? ? user_following_count : 0
   end
+
+  def already_favorited?(post)
+    favorites.exists?(post_id: post.id)
+  end
 end
