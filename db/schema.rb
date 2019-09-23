@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_905_103_624) do
+ActiveRecord::Schema.define(version: 2019_09_23_025101) do
+
   create_table "comment_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "comment_id", null: false
@@ -28,6 +29,15 @@ ActiveRecord::Schema.define(version: 20_190_905_103_624) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -48,7 +58,7 @@ ActiveRecord::Schema.define(version: 20_190_905_103_624) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index %w[visiter_id visited_id], name: "index_notifications_on_visiter_id_and_visited_id"
+    t.index ["visiter_id", "visited_id"], name: "index_notifications_on_visiter_id_and_visited_id"
   end
 
   create_table "post_drafts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -77,7 +87,7 @@ ActiveRecord::Schema.define(version: 20_190_905_103_624) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
-    t.index %w[user_id follow_id], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
@@ -100,6 +110,8 @@ ActiveRecord::Schema.define(version: 20_190_905_103_624) do
   add_foreign_key "comment_likes", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "posts"
+  add_foreign_key "favorites", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "post_drafts", "users"
