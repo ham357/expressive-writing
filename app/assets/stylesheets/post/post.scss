@@ -68,12 +68,6 @@
   }
 }
 
-.action-link{
-  a{
-    padding-right: 10px;
-  }
-}
-
 .twitter-color{
   color: #1DA1F2;
 }
@@ -84,4 +78,13 @@
 
 .line-color{
   color: #00c300;
+}
+
+#top-icon-section{
+  a{
+    padding-right: 10px;
+  }
+  li{
+    display: inline;
+  }
 }

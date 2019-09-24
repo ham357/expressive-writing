@@ -9,7 +9,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
   has_many :notifications, dependent: :destroy
-
+  has_many :favorites
+  has_many :favorited_users, through: :favorites, source: :user
   paginates_per 20
 
   def create_notification_by(current_user)

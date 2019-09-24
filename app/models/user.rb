@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
 
   def already_liked?(post)
     likes.exists?(post_id: post.id)
@@ -52,5 +54,9 @@ class User < ApplicationRecord
   def following_count
     user_following_count = Relationship.where(user_id: id).count
     user_following_count.present? ? user_following_count : 0
+  end
+
+  def already_favorited?(post)
+    favorites.exists?(post_id: post.id)
   end
 end

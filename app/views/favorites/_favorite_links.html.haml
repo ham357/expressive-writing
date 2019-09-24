@@ -1,0 +1,9 @@
+%li.favorite-link{id: "favorite-link-#{post.id}"}
+  - if current_user.already_favorited?(post)
+    = link_to unfavorite_path(post.id), class: "star", method: :delete, remote: true do
+      %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star
+      = post.favorites.count.to_s
+  - else
+    = link_to favorite_path(post.id), class: "star", method: :post, remote: true do
+      %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star_border
+      = post.favorites.count.to_s
