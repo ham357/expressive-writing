@@ -41,3 +41,6 @@ Metrics/AbcSize:
 
 AllCops:
   TargetRubyVersion: 2.5
+
+Style/ClassAndModuleChildren:
+  Enabled: false
