@@ -63,8 +63,19 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
+      user.email = User.dummy_email(auth)
       user.password = Devise.friendly_token[0, 20]
+      user.image = auth.info.image
+      if auth.provider == 'twitter'
+        user.nickname = auth.info.nickname
+      else
+        user.nickname ||= auth.info.email.sub!(/@.*/m, "")
+      end
     end
   end
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
+  private_class_method :dummy_email
 end
