@@ -63,9 +63,9 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = User.dummy_email(auth)
+      user.email = dummy_email(auth)
       user.password = Devise.friendly_token[0, 20]
-      user.image = auth.info.image
+      user.remote_image_url = auth.info.image
       if auth.provider == 'twitter'
         user.nickname = auth.info.nickname
       else
