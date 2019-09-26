@@ -3,6 +3,7 @@ require 'spec_helper'
 require 'simplecov'
 require 'capybara/rspec'
 require 'selenium-webdriver'
+require 'support/omniauth_macros'
 
 SimpleCov.start 'rails'
 ENV['RAILS_ENV'] ||= 'test'
@@ -22,6 +23,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  OmniAuth.config.test_mode = true
+  config.include OmniauthMacros
 
   if Rails.env.test?
     require 'database_cleaner'
