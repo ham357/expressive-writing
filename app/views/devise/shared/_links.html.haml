@@ -14,6 +14,17 @@
   = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
   %br/
 - if devise_mapping.omniauthable?
-  - resource_class.omniauth_providers.each do |provider|
-    = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)
-    %br/
+  %hr
+  .social-btn
+    %p
+      = link_to user_twitter_omniauth_authorize_path, class: "btn-twitter btn btn-social" do
+        %i.fab.fa-twitter.fa-4x
+        Twitterアカウントでログイン
+    %p
+      = link_to user_facebook_omniauth_authorize_path, class: "btn btn-social btn-facebook" do
+        %span.fab.fa-facebook-f
+        Facebookアカウントでログイン
+    %p
+      = link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-social btn-google" do
+        %span.fab.fa-google
+        Googleアカウントでログイン
