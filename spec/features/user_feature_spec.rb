@@ -84,4 +84,30 @@ feature 'user', type: :feature do
     fill_in 'user-search-field', with: 'アザーユーザ'
     expect(page).to have_content 'アザーユーザ'
   end
+
+  describe "facebook連携でサインアップする" do
+    before do
+      OmniAuth.config.mock_auth[:facebook] = nil
+      Rails.application.env_config['omniauth.auth'] = facebook_mock
+      visit root_path
+      click_on "ログイン"
+    end
+
+    it "サインアップするとユーザーが増える" do
+      expect do
+        click_on "Facebookアカウントでログイン"
+      end.to change(User, :count).by(1)
+    end
+
+    it "すでに連携されたユーザーがサインアップしようとするとユーザーは増えない" do
+      click_on "Facebookアカウントでログイン"
+      sleep 1
+      click_on "ログアウト"
+      visit root_path
+      click_on "ログイン"
+      expect do
+        click_on "Facebookアカウントでログイン"
+      end.not_to change(User, :count)
+    end
+  end
 end
