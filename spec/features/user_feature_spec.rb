@@ -99,11 +99,12 @@ feature 'user', type: :feature do
       end.to change(User, :count).by(1)
     end
 
-    it "すでに連携されたユーザーがサインアップしようとするとユーザーは増えない" do
+    it "すでに連携されたユーザーがサインアップしようとするとユーザーは増えない", js: true do
       click_on "Facebookアカウントでログイン"
       sleep 1
       click_on "ログアウト"
-      visit root_path
+      expect(page.driver.browser.switch_to.alert.text).to eq "ログアウトいたしますか?"
+      page.driver.browser.switch_to.alert.accept
       click_on "ログイン"
       expect do
         click_on "Facebookアカウントでログイン"
