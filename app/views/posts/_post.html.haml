@@ -31,12 +31,17 @@
             = link_to "#modal1", class: "modal-trigger" do
               %i.fas.fa-share-square.fa-lg{ class: "hoverable" }
         -else
-          = link_to new_user_session_path do
-            %i.material-icons{ class: "hoverable" } favorite_border
-            = post.likes.count.to_s
-          = link_to new_user_session_path do
-            %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star_border
-            = post.favorites.count.to_s
+          %li.like-link
+            = link_to new_user_session_path do
+              %i.material-icons{ class: "hoverable" } favorite_border
+              = post.likes.count.to_s
+          %li.favorite-link          
+            = link_to new_user_session_path do
+              %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star_border
+              = post.favorites.count.to_s
+          %li.share-link
+            = link_to "#modal1", class: "modal-trigger" do
+              %i.fas.fa-share-square.fa-lg{ class: "hoverable" }
     .card-reveal
       %p.card-title.grey-text.text-darken-4
         %i.material-icons.right close
