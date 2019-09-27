@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
 
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :comment, length: { maximum: 200 }
@@ -59,4 +60,22 @@ class User < ApplicationRecord
   def already_favorited?(post)
     favorites.exists?(post_id: post.id)
   end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = dummy_email(auth)
+      user.password = Devise.friendly_token[0, 20]
+      user.remote_image_url = auth.info.image
+      if auth.provider == 'twitter'
+        user.nickname = auth.info.nickname
+      else
+        user.nickname ||= auth.info.email.sub!(/@.*/m, "")
+      end
+    end
+  end
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
+  private_class_method :dummy_email
 end

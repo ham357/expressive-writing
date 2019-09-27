@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   resources :users, only: %i[index show update]
   root to: 'posts#index'
   resources :health_check, only: [:index]
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   resources :post_drafts
   resources :mypages, only: :index
   get 'about', to: 'homes#index'
+  get 'privacy-policy', to: 'homes#privacy-policy'
   resources    :posts do
     resources  :comments, only: %i[edit update create destroy]
   end

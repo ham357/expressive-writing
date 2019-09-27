@@ -87,3 +87,8 @@ gem 'kaminari'
 gem 'fog-aws'
 gem 'rails-i18n'
 gem "font-awesome-rails"
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+gem 'bootstrap-social-rails'
