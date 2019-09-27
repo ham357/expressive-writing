@@ -110,4 +110,32 @@ feature 'user', type: :feature do
       end.not_to change(User, :count)
     end
   end
+  
+  describe "twitter連携でサインアップする" do
+    before do
+      OmniAuth.config.mock_auth[:twitter] = nil
+      Rails.application.env_config['omniauth.auth'] = twitter_mock
+      visit root_path
+      click_on "ログイン"
+    end
+    
+    it "サインアップするとユーザーが増える" do
+      expect do
+        click_on "Twitterアカウントでログイン"
+        sleep 1
+      end.to change(User, :count).by(1)
+    end
+    
+    it "すでに連携されたユーザーがサインアップしようとするとユーザーは増えない", js: true do
+      click_on "Twitterアカウントでログイン"
+      sleep 1
+      click_on "ログアウト"
+      expect(page.driver.browser.switch_to.alert.text).to eq "ログアウトいたしますか?"
+      page.driver.browser.switch_to.alert.accept
+      click_on "ログイン"
+      expect do
+        click_on "Twitterアカウントでログイン"
+      end.not_to change(User, :count)
+    end
+  end
 end
