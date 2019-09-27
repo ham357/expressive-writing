@@ -34,7 +34,7 @@
           = link_to new_user_session_path do
             %i.material-icons{ class: "hoverable" } favorite_border
             = post.likes.count.to_s
-          = link_to favorite_path(post.id), class: "star", method: :post, remote: true do
+          = link_to new_user_session_path do
             %i.material-icons{ class: "hoverable", id: "star-#{post.id}"} star_border
             = post.favorites.count.to_s
     .card-reveal
