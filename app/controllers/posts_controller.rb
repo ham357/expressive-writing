@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy edit update]
+  before_action :authenticate_user!, only: %i[new create destroy edit update show]
 
   def index
     if params[:user_id]
