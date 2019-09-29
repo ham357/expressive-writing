@@ -22,6 +22,10 @@
         = f.file_field :image
       .file-path-wrapper
         %input.file-path.validate{:type => "text"}/
+  .row
+    .input-field.col.s12.m12.l12.x12
+      = f.label :tag_list
+      = f.text_field :tag_list
   %button.btn.waves-effect.waves-light{:name => "action", :type => "submit"}
     = t('view.submit')
     %i.material-icons.right send
