@@ -90,6 +90,6 @@ class PostDraftsController < ApplicationController
   private
 
   def post_draft_params
-    params.require(:post_draft).permit(:title, :contents, :image).merge(user_id: current_user.id)
+    params.require(:post_draft).permit(:title, :contents, :image, :tag_list).merge(user_id: current_user.id)
   end
 end
