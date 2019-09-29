@@ -24,6 +24,6 @@ RUN \
   rm -rf ~/.gem
 
 ADD . $APP_ROOT
-RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
+RUN bundle exec rails assets:precompile
 EXPOSE  3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
