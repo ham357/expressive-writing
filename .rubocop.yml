@@ -44,3 +44,10 @@ AllCops:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+  CyclomaticComplexity:
+  Max: 8
+
+  Metrics/PerceivedComplexity:
+  Max: 8
+  
