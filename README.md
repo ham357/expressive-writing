@@ -55,9 +55,9 @@ https://expressive-writing.work/
 - 新着情報通知機能
 - お気に入り登録機能
 - SNSシェア機能
+- SNSログイン機能
 - 未実装
   - 投稿タイマー機能
-  - SNSログイン機能
   - タグ機能
   - 検索機能
 ## テスト(Rspec)
