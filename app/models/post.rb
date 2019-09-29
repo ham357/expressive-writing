@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :contents, length: { maximum: 1000 }
   validates :contents, presence: true
   mount_uploader :image, ImageUploader
+  acts_as_taggable
 
   belongs_to :user
   has_many   :comments
