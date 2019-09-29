@@ -45,9 +45,8 @@ AllCops:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-  CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Max: 8
 
-  Metrics/PerceivedComplexity:
+Metrics/PerceivedComplexity:
   Max: 8
-  
