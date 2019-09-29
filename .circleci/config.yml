@@ -126,6 +126,8 @@ jobs:
           command: |
             docker push ${ECR_DOMAIN}/expressive-writing-image:$CIRCLE_SHA1
             docker push ${ECR_DOMAIN}/expressive-writing-image:latest
+      - store_artifacts:
+          path: tmp/capybara/
   deploy:
     docker:
       - image: circleci/python:3.7
