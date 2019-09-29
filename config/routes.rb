@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   post   '/favorite/:post_id' => 'favorites#favorite',   as: 'favorite'
   delete '/favorite/:post_id' => 'favorites#unfavorite', as: 'unfavorite'
   resources :favorites, only: %i[index]
+  get 'tags/:tag', to: 'posts#index', as: :tag
 end
