@@ -42,8 +42,6 @@
           %li.share-link
             = link_to "#modal1", class: "modal-trigger" do
               %i.fas.fa-share-square.fa-lg{ class: "hoverable" }
-        - post.tag_list.each do |tag|
-          .chip.label.label-primary= link_to tag, tag_path(tag)
     .card-reveal
       %p.card-title.grey-text.text-darken-4
         %i.material-icons.right close
