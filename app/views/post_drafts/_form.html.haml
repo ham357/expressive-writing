@@ -18,8 +18,7 @@
         %input.file-path.validate{:type => "text"}/
   .row
     .input-field.col.s12.m12.l12.x12
-      = f.label :tag_list
-      = f.text_field :tag_list
+      = f.text_field :tag_list,value: post_draft.tag_list.join(','),class:"input"
   %button.btn.waves-effect.waves-light{:name => "commit", :type => "submit",:value => "save"}
     投稿
     %i.material-icons.right send
