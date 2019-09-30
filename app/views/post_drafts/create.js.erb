@@ -1,4 +1,0 @@
-$(".post_draft_form").html('<%= escape_javascript(render("/post_drafts/form", post_draft: @post_draft  )) %>');
-var textVal = $("#post_draft_contents").val();
-$("#post_draft_contents").val('');
-$("#post_draft_contents").focus().val(textVal);
