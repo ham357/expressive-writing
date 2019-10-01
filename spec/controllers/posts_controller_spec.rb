@@ -13,10 +13,28 @@ describe PostsController, type: :controller do
     sign_in user
   end
   describe 'GET #index' do
-    it "インスタンス変数の値が正常か" do
-      posts = create_list(:post, 3, user_id: user.id).order("created_at DESC")
-      get :index
-      expect(assigns(:posts)).to match(posts)
+    context 'インスタンス変数の値が正常か' do
+      let(:other_user) { create(:user) }
+      let!(:test_posts) do
+        [
+          test_post,
+          create(:post, contents: "テストA", user_id: user.id),
+          create(:post, contents: "テストB", user_id: user.id),
+          create(:post, contents: "テストC", user_id: other_user.id)
+        ]
+      end
+
+      it "params[:user_id] インスタンス変数の値が正常か" do
+        posts = Post.where(user_id: user.id).order("created_at DESC")
+        get :index, params: { user_id: user.id }
+        expect(assigns(:posts)).to match(posts)
+      end
+
+      it "インスタンス変数の値が正常か" do
+        posts = create_list(:post, 3, user_id: user.id).order("created_at DESC")
+        get :index
+        expect(assigns(:posts)).to match(posts)
+      end
     end
 
     it "ビューに正しく遷移できているか" do
