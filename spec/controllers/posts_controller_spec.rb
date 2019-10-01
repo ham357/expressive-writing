@@ -39,7 +39,6 @@ describe PostsController, type: :controller do
         test_posts[3].reload
         posts = Post.tagged_with("TagTest").order("created_at DESC")
         get :index, params: { tag: "TagTest" }
-        binding.pry
         expect(assigns(:posts)).to match(posts)
       end
 
