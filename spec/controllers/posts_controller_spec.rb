@@ -27,7 +27,7 @@ describe PostsController, type: :controller do
       it "params[:user_id] インスタンス変数の値が正常か" do
         posts = Post.where(user_id: user.id).order("created_at DESC")
         get :index, params: { user_id: user.id }
-        expect(assigns(:posts)).to match(posts)
+        expect(assigns(:posts)).to match_array(posts)
       end
 
       it "params[:tag] インスタンス変数の値が正常か" do
@@ -39,7 +39,7 @@ describe PostsController, type: :controller do
         test_posts[3].reload
         posts = Post.tagged_with("TagTest").order("created_at DESC")
         get :index, params: { tag: "TagTest" }
-        expect(assigns(:posts)).to match(posts)
+        expect(assigns(:posts)).to match_array(posts)
       end
 
       it "インスタンス変数の値が正常か" do
