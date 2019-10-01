@@ -30,6 +30,19 @@ describe PostsController, type: :controller do
         expect(assigns(:posts)).to match(posts)
       end
 
+      it "params[:tag] インスタンス変数の値が正常か" do
+        test_posts[0].tag_list.add("TagTest")
+        test_posts[3].tag_list.add("TagTest")
+        test_posts[0].save
+        test_posts[3].save
+        test_posts[0].reload
+        test_posts[3].reload
+        posts = Post.tagged_with("TagTest").order("created_at DESC")
+        get :index, params: { tag: "TagTest" }
+        binding.pry
+        expect(assigns(:posts)).to match(posts)
+      end
+
       it "インスタンス変数の値が正常か" do
         posts = create_list(:post, 3, user_id: user.id).order("created_at DESC")
         get :index
