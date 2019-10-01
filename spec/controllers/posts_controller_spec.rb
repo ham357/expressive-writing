@@ -44,7 +44,7 @@ describe PostsController, type: :controller do
       end
 
       it "インスタンス変数の値が正常か" do
-        posts = create_list(:post, 3, user_id: user.id).order("created_at DESC")
+        posts = create_list(:post, 3, user_id: user.id)
         get :index
         expect(assigns(:posts)).to match(posts)
       end
@@ -141,6 +141,15 @@ describe PostsController, type: :controller do
         expect do
           post :create, params: { post: attributes_for(:post) }
         end.to change(Post, :count).by(1)
+      end
+
+      it "tagが正常に保存できているか" do
+        expect do
+          test_post.tag_list.add("タグテスト")
+          test_post.save
+          test_post.reload
+        end.to change(test_post.tags, :count).by(1)
+                                             .and change(test_post.taggings, :count).by(1)
       end
 
       it "正常にトップページへリダイレクトされているか" do
