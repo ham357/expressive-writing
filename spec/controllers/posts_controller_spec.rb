@@ -43,9 +43,8 @@ describe PostsController, type: :controller do
       end
 
       it "インスタンス変数の値が正常か" do
-        posts = create_list(:post, 3, user_id: user.id)
         get :index
-        expect(assigns(:posts)).to match(posts)
+        expect(assigns(:posts)).to match(test_posts)
       end
     end
 
