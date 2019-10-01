@@ -14,7 +14,7 @@ describe PostsController, type: :controller do
   end
   describe 'GET #index' do
     it "インスタンス変数の値が正常か" do
-      posts = create_list(:post, 3, user_id: user.id)
+      posts = create_list(:post, 3, user_id: user.id).order("created_at DESC")
       get :index
       expect(assigns(:posts)).to match(posts)
     end
