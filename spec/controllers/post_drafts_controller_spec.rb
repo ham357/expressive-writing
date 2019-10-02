@@ -152,6 +152,17 @@ describe PostDraftsController, type: :controller do
           end.to change(PostDraft, :count).by(1)
         end
 
+        it "tagが正常に保存できているか" do
+          test_post_draft = create(:post_draft, user_id: user.id)
+
+          expect do
+            test_post_draft.tag_list.add("タグテスト")
+            test_post_draft.save
+            test_post_draft.reload
+          end.to change(test_post_draft.tags, :count).by(1)
+                                               .and change(test_post_draft.taggings, :count).by(1)
+        end
+
         it "下書き一覧へリダイレクトされること" do
           post :create, params: { post_draft: attributes_for(:post_draft), commit: 'draft' }
           post_draft_last = user.post_drafts.order("updated_at").last
@@ -184,6 +195,17 @@ describe PostDraftsController, type: :controller do
           expect do
             post :create, params: { post_draft: attributes_for(:post_draft), commit: 'save' }
           end.to change(Post, :count).by(1)
+        end
+
+        it "tagが正常に保存できているか" do
+          test_post = create(:post, user_id: user.id)
+
+          expect do
+            test_post.tag_list.add("タグテスト")
+            test_post.save
+            test_post.reload
+          end.to change(test_post.tags, :count).by(1)
+                                               .and change(test_post.taggings, :count).by(1)
         end
 
         it "トップページへリダイレクトされること" do
