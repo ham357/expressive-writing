@@ -3,6 +3,12 @@ $(document).ready(function () {
   var tag_list = $('#post_draft_tag_list');
   var tagListVal = $('#post_draft_tag_list').val();
 
+  var allTags = gon.tags;
+  var allTagdata = {}
+  allTags.map( function(value,i) {
+    allTagdata[value.name] = null;
+  });
+  
   var tagListArray = tagListVal.split(',');
   var userTagData = [];
   tagListArray.map( function(value,i) {
@@ -32,6 +38,11 @@ $(document).ready(function () {
     secondaryPlaceholder: '+Tag',
     limit: 5,
     onChipAdd: chipAddCallback,
-    onChipDelete: chipDeleteCallback
+    onChipDelete: chipDeleteCallback,
+    autocompleteOptions: {
+      data: allTagdata,
+      limit: Infinity,
+      minLength: 1
+    }
   });
 });
