@@ -3,6 +3,7 @@ $(document).ready(function () {
 
   $('.chips-placeholder').chips({
     placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag'
+    secondaryPlaceholder: '+Tag',
+    limit: 5
   });
 });
