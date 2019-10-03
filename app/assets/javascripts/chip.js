@@ -1,7 +1,13 @@
 $(document).ready(function () {
 
   var tag_list = $('#post_draft_tag_list');
+  var tagListVal = $('#post_draft_tag_list').val();
 
+  var tagListArray = tagListVal.split(',');
+  var userTagData = [];
+  tagListArray.map( function(value,i) {
+    userTagData[i] = {tag: value};
+});
 
   function tagListUpdate() {
     var instance = $('.chips').chips('getData');
