@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  $('.chips').chips();
 
   function tagListUpdate() {
     var tag_list = $('#post_draft_tag_list');
@@ -20,6 +19,7 @@ $(document).ready(function () {
   }
 
   $('.chips').chips({
+    data: userTagData,
     placeholder: 'Enter a tag',
     secondaryPlaceholder: '+Tag',
     limit: 5,
