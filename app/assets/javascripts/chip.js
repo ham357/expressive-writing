@@ -8,10 +8,9 @@ $(document).ready(function () {
   allTags.map( function(value,i) {
     allTagdata[value.name] = null;
   });
-  
-  var tagListArray = tagListVal.split(',');
+  var user_tags = gon.user_tags;
   var userTagData = [];
-  tagListArray.map( function(value,i) {
+  user_tags.map( function(value,i) {
     userTagData[i] = {tag: value};
 });
 
