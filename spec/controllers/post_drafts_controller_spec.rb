@@ -160,7 +160,7 @@ describe PostDraftsController, type: :controller do
             test_post_draft.save
             test_post_draft.reload
           end.to change(test_post_draft.tags, :count).by(1)
-                                               .and change(test_post_draft.taggings, :count).by(1)
+                                                     .and change(test_post_draft.taggings, :count).by(1)
         end
 
         it "下書き一覧へリダイレクトされること" do
