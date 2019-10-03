@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+  var tag_list = $('#post_draft_tag_list');
+
+
   function tagListUpdate() {
-    var tag_list = $('#post_draft_tag_list');
     var instance = $('.chips').chips('getData');
 
     var result = instance.map( function(value) {
