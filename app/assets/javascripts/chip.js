@@ -19,7 +19,7 @@ $(document).ready(function () {
     tagListUpdate();
   }
 
-  $('.chips-placeholder').chips({
+  $('.chips').chips({
     placeholder: 'Enter a tag',
     secondaryPlaceholder: '+Tag',
     limit: 5,
