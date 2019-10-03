@@ -18,7 +18,7 @@
         %input.file-path.validate{:type => "text"}
   .row
     = f.hidden_field :tag_list, value: post_draft.tag_list.join(',')
-    .chips.chips-placeholder.input-field.col.s12.m12.l12.x12
+    .chips.input-field.col.s12.m12.l12.x12
       %input#tag-input
   %button.btn.waves-effect.waves-light{:name => "commit", :type => "submit",:value => "save"}
     投稿
