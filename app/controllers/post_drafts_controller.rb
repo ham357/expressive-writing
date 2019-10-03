@@ -81,11 +81,13 @@ class PostDraftsController < ApplicationController
 
   def edit
     @post_draft = PostDraft.find(params[:id])
+    gon.user_tags = @post_draft.tag_list
   end
 
   def show
     @post_drafts = current_user.post_drafts.order("updated_at DESC")
     @post_draft = PostDraft.find(params[:id])
+    gon.user_tags = @post_draft.tag_list
   end
 
   def all_tags
