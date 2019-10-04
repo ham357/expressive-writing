@@ -1,6 +1,6 @@
 class PostDraftsController < ApplicationController
   before_action :authenticate_user!
-  before_action :all_tags, only: %i[edit show]
+  before_action :all_tags, only: %i[edit new show]
 
   def index
     @post_draft_last = current_user.post_drafts.order("updated_at").last
