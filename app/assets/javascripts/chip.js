@@ -2,16 +2,16 @@ $(document).ready(function () {
 
   var tagList = $('#post_draft_tag_list');
 
-  var allTags = gon.tags;
-  var allTagdata = {}
+  var allTags = typeof gon.tags !== 'undefined' ? gon.tags : [];
+  var allTagdata = {};
   allTags.map( function(value,i) {
     allTagdata[value.name] = null;
   });
-  var user_tags = gon.user_tags;
-  var userTagData = [];
-  user_tags.map( function(value,i) {
-    userTagData[i] = {tag: value};
-});
+    var user_tags = typeof gon.user_tags !== 'undefined' ? gon.user_tags : [];
+    var userTagData = [];
+    user_tags.map( function(value,i) {
+      userTagData[i] = {tag: value};
+  });
 
   function tagListUpdate(instance) {
     var result = instance.map( function(value) {
