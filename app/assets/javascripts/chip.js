@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  var tag_list = $('#post_draft_tag_list');
+  var tagList = $('#post_draft_tag_list');
   var tagListVal = $('#post_draft_tag_list').val();
 
   var allTags = gon.tags;
@@ -18,7 +18,7 @@ $(document).ready(function () {
     var result = instance.map( function(value) {
           return value.tag;
       });
-    tag_list.val(result.join(','));
+    tagList.val(result.join(','));
   }
 
   function chipAddCallback() {
