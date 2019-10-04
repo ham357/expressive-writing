@@ -24,10 +24,18 @@ $(document).ready(function () {
   }
 
   function chipAddCallback() {
+    var instance = $('.chips').chips('getData');
+    if (instance.length == 5){
+      $('#tag-input').removeAttr('placeholder');
+    }
     tagListUpdate();
   };
 
   function chipDeleteCallback() {
+    var instance = $('.chips').chips('getData');
+    if (instance.length == 4){
+      $('#tag-input').attr('placeholder', '+Tag');
+    }
     tagListUpdate();
   }
 
