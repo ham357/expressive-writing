@@ -31,15 +31,15 @@ $(document).ready(function () {
   function chipDeleteCallback() {
     var instance = $('.chips').chips('getData');
     if (instance.length == 4){
-      $('#tag-input').attr('placeholder', '+Tag');
+      $('#tag-input').attr('placeholder', '+Tag(5つまで)');
     }
     tagListUpdate(instance);
   }
 
   $('.chips').chips({
     data: userTagData,
-    placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag',
+    placeholder: 'Enter + tag(5つまで)',
+    secondaryPlaceholder: '+Tag(5つまで)',
     limit: 5,
     onChipAdd: chipAddCallback,
     onChipDelete: chipDeleteCallback,
