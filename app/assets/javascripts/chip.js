@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
   var tagList = $('#post_draft_tag_list');
-  var tagListVal = $('#post_draft_tag_list').val();
 
   var allTags = gon.tags;
   var allTagdata = {}
