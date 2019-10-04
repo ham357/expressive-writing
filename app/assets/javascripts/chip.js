@@ -14,9 +14,7 @@ $(document).ready(function () {
     userTagData[i] = {tag: value};
 });
 
-  function tagListUpdate() {
-    var instance = $('.chips').chips('getData');
-
+  function tagListUpdate(instance) {
     var result = instance.map( function(value) {
           return value.tag;
       });
@@ -28,7 +26,7 @@ $(document).ready(function () {
     if (instance.length == 5){
       $('#tag-input').removeAttr('placeholder');
     }
-    tagListUpdate();
+    tagListUpdate(instance);
   };
 
   function chipDeleteCallback() {
@@ -36,7 +34,7 @@ $(document).ready(function () {
     if (instance.length == 4){
       $('#tag-input').attr('placeholder', '+Tag');
     }
-    tagListUpdate();
+    tagListUpdate(instance);
   }
 
   $('.chips').chips({
