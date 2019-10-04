@@ -36,6 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    gon.user_tags = @post.tag_list
   end
 
   def update
@@ -58,6 +59,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    gon.user_tags = @post.tag_list
   end
 
   def all_tags
