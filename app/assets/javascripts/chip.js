@@ -7,9 +7,9 @@ $(document).ready(function () {
   allTags.map( function(value,i) {
     allTagdata[value.name] = null;
   });
-    var user_tags = typeof gon.user_tags !== 'undefined' ? gon.user_tags : [];
+    var userTags = typeof gon.user_tags !== 'undefined' ? gon.user_tags : [];
     var userTagData = [];
-    user_tags.map( function(value,i) {
+    userTags.map( function(value,i) {
       userTagData[i] = {tag: value};
   });
 
