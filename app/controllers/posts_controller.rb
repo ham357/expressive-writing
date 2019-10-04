@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy edit update show]
+  before_action :all_tags, only: %i[edit new show]
 
   def index
     if params[:user_id]
@@ -57,6 +58,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+  end
+
+  def all_tags
+    gon.tags = ActsAsTaggableOn::Tag.all
   end
 
   private
