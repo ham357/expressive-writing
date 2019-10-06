@@ -1,0 +1,3 @@
+history.replaceState(null,null,'<%= "/post_drafts/#{@post_draft.id}/edit" %>')
+$('form').attr('action','<%= "/post_drafts/#{@post_draft.id}" %>')
+$('form').append('<input type="hidden" name="_method" value="patch">');
