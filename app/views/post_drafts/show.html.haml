@@ -22,3 +22,6 @@
                   %i.material-icons delete
       %li.collection-item
         = @post_draft.contents
+        %br
+        - @post_draft.tag_list.each do |tag|
+          .chip.label.label-primary= link_to tag, tag_path(tag)

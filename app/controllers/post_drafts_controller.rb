@@ -1,5 +1,6 @@
 class PostDraftsController < ApplicationController
   before_action :authenticate_user!
+  before_action :all_tags, only: %i[edit new show]
 
   def index
     @post_draft_last = current_user.post_drafts.order("updated_at").last
@@ -80,16 +81,22 @@ class PostDraftsController < ApplicationController
 
   def edit
     @post_draft = PostDraft.find(params[:id])
+    gon.user_tags = @post_draft.tag_list
   end
 
   def show
     @post_drafts = current_user.post_drafts.order("updated_at DESC")
     @post_draft = PostDraft.find(params[:id])
+    gon.user_tags = @post_draft.tag_list
+  end
+
+  def all_tags
+    gon.tags = ActsAsTaggableOn::Tag.all
   end
 
   private
 
   def post_draft_params
-    params.require(:post_draft).permit(:title, :contents, :image).merge(user_id: current_user.id)
+    params.require(:post_draft).permit(:title, :contents, :image, :tag_list).merge(user_id: current_user.id)
   end
 end

@@ -1,4 +1,3 @@
-$(".post_draft_form").html('<%= escape_javascript(render("/post_drafts/form", post_draft: @post_draft  )) %>');
-var textVal = $("#post_draft_contents").val();
-$("#post_draft_contents").val('');
-$("#post_draft_contents").focus().val(textVal);
+history.replaceState(null,null,'<%= "/post_drafts/#{@post_draft.id}/edit" %>')
+$('form').attr('action','<%= "/post_drafts/#{@post_draft.id}" %>')
+$('form').append('<input type="hidden" name="_method" value="patch">');

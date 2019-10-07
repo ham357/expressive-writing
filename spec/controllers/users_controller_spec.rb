@@ -2,11 +2,22 @@ require 'rails_helper'
 
 describe UsersController, type: :controller do
   describe '#index' do
-    it "インスタンス変数の値が正常か" do
-      users = create_list(:user, 3)
+    let(:users) do
+      [
+        create(:user, nickname: "山田太郎"),
+        create(:user, nickname: "山田二郎"),
+        create(:user, nickname: "鈴木二郎")
+      ]
+    end
+
+    before do
       sign_in users[0]
-      get :index
-      expect(assigns(:users)).to match_array(users)
+    end
+
+    it "インスタンス変数の値が正常か" do
+      keyword_users = User.where('nickname LIKE(?)', "山田%").order('nickname')
+      get :index, params: { keyword: "山田" }
+      expect(assigns(:users)).to match(keyword_users)
     end
 
     it "ビューに正しく遷移できているか" do

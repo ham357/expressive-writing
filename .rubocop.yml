@@ -30,7 +30,7 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/BlockLength:
-  Max: 200
+  Max: 250
 
 MethodLength:
   CountComments: false  # count full line comments?
@@ -44,3 +44,9 @@ AllCops:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/PerceivedComplexity:
+  Max: 8

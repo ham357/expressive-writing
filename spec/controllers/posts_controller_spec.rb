@@ -13,10 +13,39 @@ describe PostsController, type: :controller do
     sign_in user
   end
   describe 'GET #index' do
-    it "インスタンス変数の値が正常か" do
-      posts = create_list(:post, 3, user_id: user.id)
-      get :index
-      expect(assigns(:posts)).to match(posts)
+    context 'インスタンス変数の値が正常か' do
+      let(:other_user) { create(:user) }
+      let!(:test_posts) do
+        [
+          test_post,
+          create(:post, contents: "テストA", user_id: user.id),
+          create(:post, contents: "テストB", user_id: user.id),
+          create(:post, contents: "テストC", user_id: other_user.id)
+        ]
+      end
+
+      it "params[:user_id] インスタンス変数の値が正常か" do
+        posts = Post.where(user_id: user.id).page(1).order("created_at DESC")
+        get :index, params: { user_id: user.id }
+        expect(assigns(:posts)).to match(posts)
+      end
+
+      it "params[:tag] インスタンス変数の値が正常か" do
+        test_posts[0].tag_list.add("TagTest")
+        test_posts[3].tag_list.add("TagTest")
+        test_posts[0].save
+        test_posts[3].save
+        test_posts[0].reload
+        test_posts[3].reload
+        posts = Post.tagged_with("TagTest").page(1).order("created_at DESC")
+        get :index, params: { tag: "TagTest" }
+        expect(assigns(:posts)).to match(posts)
+      end
+
+      it "インスタンス変数の値が正常か" do
+        get :index
+        expect(assigns(:posts)).to match(test_posts)
+      end
     end
 
     it "ビューに正しく遷移できているか" do
@@ -110,6 +139,15 @@ describe PostsController, type: :controller do
         expect do
           post :create, params: { post: attributes_for(:post) }
         end.to change(Post, :count).by(1)
+      end
+
+      it "tagが正常に保存できているか" do
+        expect do
+          test_post.tag_list.add("タグテスト")
+          test_post.save
+          test_post.reload
+        end.to change(test_post.tags, :count).by(1)
+                                             .and change(test_post.taggings, :count).by(1)
       end
 
       it "正常にトップページへリダイレクトされているか" do
