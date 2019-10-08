@@ -268,6 +268,8 @@ GEM
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
+    polyamorous (2.3.0)
+      activerecord (>= 5.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -311,6 +313,12 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (12.3.3)
+    ransack (2.3.0)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      i18n
+      polyamorous (= 2.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -451,6 +459,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-controller-testing
   rails-i18n
+  ransack
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
