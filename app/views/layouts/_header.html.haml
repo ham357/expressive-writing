@@ -1,8 +1,15 @@
 %header.navbar-fixed
   %nav
     .nav-wrapper.white
-      = link_to "/", data: {"turbolinks" => false} do
-        = image_tag "/images/logo.jpg", height: "53",width: "150", alt: "expressive-writing"
+      .black-text.left.hide-on-med-and-down
+        .left
+          = link_to "/", data: {"turbolinks" => false} do
+            = image_tag "/images/logo.jpg", height: "53",width: "150", alt: "expressive-writing"
+        .left
+          %span.material-icons search
+        .left
+          = search_form_for @search do |f|
+            = f.search_field :contents_cont, placeholder: "キーワードを入力"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
           = link_to about_path,class: "black-text", data: {"turbolinks" => false} do
