@@ -8,8 +8,6 @@ class PostsController < ApplicationController
       @posts = Post.where(user_id: user.id).page(params[:page]).order("created_at DESC")
     elsif params[:tag]
       @posts = Post.tagged_with(params[:tag]).page(params[:page]).order("created_at DESC")
-    else
-      @posts = Post.includes(:user).page(params[:page]).order("created_at DESC")
     end
   end
 
