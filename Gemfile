@@ -95,4 +95,3 @@ gem 'bootstrap-social-rails'
 gem 'acts-as-taggable-on'
 gem 'gon'
 gem 'ransack'
-
