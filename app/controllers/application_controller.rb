@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_search
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def notifications_list
@@ -6,6 +7,11 @@ class ApplicationController < ActionController::Base
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
+  end
+
+  def set_search
+    @search = Post.ransack(params[:q])
+    @posts = @search.result.page(params[:page]).order("created_at DESC")
   end
 
   protected
