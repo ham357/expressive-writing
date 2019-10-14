@@ -10,8 +10,39 @@ class ApplicationController < ActionController::Base
   end
 
   def set_search
-    @search = Post.ransack(params[:q])
-    @posts = @search.result.page(params[:page]).order("created_at DESC")
+    if params[:q].present?
+      if params[:q]["title_or_contents_has_every_term"].include?("title:") || params[:q]["title_or_contents_has_every_term"].include?("contents:")
+        q = { "g" => {} } if defined? q
+        params[:q]["title_or_contents_has_every_term"].split.map.with_index do |t, index|
+          if t.include?("title:") || t.include?("contents:")
+            keyword = t.match(":")
+            name = keyword.pre_match
+            value = keyword.post_match
+            q["g"].merge!(
+              index.to_s => {
+                "c" => {
+                  "0" => {
+                    "a" => { "0" => { "name" => name.to_s } },
+                    "p" => "cont",
+                    "v" => { "0" => { "value" => value.to_s } }
+                  }
+                }
+              }
+            )
+          else
+            q["g"].merge!(
+              index.to_s => {
+                "title_or_contents_cont" => t.to_s
+              }
+            )
+          end
+        end
+      else
+        q = params[:q]
+      end
+    end
+    @search = Post.ransack(q)
+    @posts = @search.result.includes(:user).page(params[:page]).order("created_at DESC")
   end
 
   protected
