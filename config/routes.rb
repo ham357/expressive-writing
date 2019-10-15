@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'privacy-policy', to: 'homes#privacy-policy'
   resources    :posts do
     resources  :comments, only: %i[edit update create destroy]
+    collection do
+      match 'search' => 'posts#search', via: %i[get post], as: :search
+    end
   end
   resources :relationships, only: %i[create destroy]
   post   '/like/:post_id' => 'likes#like',   as: 'like'

@@ -1,0 +1,25 @@
+.container.search__container
+  .row#search-option
+    %p#search-title
+      %span.material-icons search
+      検索オプション
+    %dl#search-option-table
+      %dt#search-word
+        = link_to 'title:Git', search_posts_path(q: {title_or_contents_has_every_term: "title:Git"}), method: :post
+      %dd#search-dis タイトルに「Git」を含んでいる
+      %dt#search-word
+        = link_to 'contents:Ruby', search_posts_path(q: {title_or_contents_has_every_term: "contents:Ruby"}), method: :post
+      %dd#search-dis 本文に「Ruby」を含んでいる
+  .row
+    %ul.collection
+      %li.collection-item
+        = search_form_for @search, url: search_posts_path, html: { method: :post } do |f|
+          = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力",value: @temp_search_word
+      %div#user-search-result
+      - if @search.result.present? and @temp_search_word.present?
+        - @posts.each do |post|
+          = render partial: "search_post", locals: { post: post }
+      - else
+        %li.collection-item.avatar
+          %h5
+            該当はありません。

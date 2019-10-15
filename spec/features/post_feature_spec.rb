@@ -212,4 +212,80 @@ feature 'SNSシェアボタンの表示', type: :feature do
       end
     end
   end
+
+  feature '記事検索', type: :feature, js: true do
+    let(:user) { create(:user) }
+    let(:test_post) { create(:post, user_id: user.id) }
+
+    context 'パラメータが妥当な場合' do
+      scenario '正常に検索できているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: test_post.title + "\n"
+        expect(page).to have_content test_post.title
+
+        expect(current_path).to eq search_posts_path
+      end
+
+      scenario '「title:」を使用して正常に検索できているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: "title:" + test_post.title + "\n"
+        expect(page).to have_content test_post.title
+
+        expect(current_path).to eq search_posts_path
+      end
+
+      scenario '「contents:」を使用して正常に検索できているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: "contents:" + test_post.contents + "\n"
+        expect(page).to have_content test_post.contents
+
+        expect(current_path).to eq search_posts_path
+      end
+
+      scenario 'スペース区切りで複数の検索が正常にできているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: test_post.title + " " + test_post.contents + "\n"
+        expect(page).to have_content test_post.title
+        expect(page).to have_content test_post.contents
+
+        expect(current_path).to eq search_posts_path
+      end
+    end
+
+    context 'パラメータが不正な場合' do
+      scenario '検索フォームに何も入力していない場合「該当はありません。」と表示されているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: "" + "\n"
+        expect(page).to have_content "該当はありません。"
+
+        expect(current_path).to eq search_posts_path
+      end
+
+      scenario '検索結果に該当が無い場合「該当はありません。」と表示されているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: "@@@@@@@" + "\n"
+        expect(page).to have_content "該当はありません。"
+
+        expect(current_path).to eq search_posts_path
+      end
+    end
+  end
 end

@@ -191,4 +191,16 @@ describe PostsController, type: :controller do
       expect(response).to render_template :edit
     end
   end
+
+  describe 'GET #search' do
+    it 'リクエストが成功すること' do
+      get :search, params: { q: { title_or_contents_has_every_term: "テスト" } }
+      expect(response.status).to eq 200
+    end
+
+    it 'searchテンプレートで表示されること' do
+      get :search, params: { q: { title_or_contents_has_every_term: "テスト" } }
+      expect(response).to render_template :search
+    end
+  end
 end
