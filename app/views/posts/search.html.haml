@@ -3,7 +3,7 @@
     %ul.collection
       %li.collection-item
         = search_form_for @search, url: search_posts_path, html: { method: :post } do |f|
-          = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力"
+          = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力",value: @temp_search_word
       %div#user-search-result
       - if @search.result.present? and @temp_search_word.present?
         - @posts.each do |post|
