@@ -1,4 +1,14 @@
 .container.user__container
+  .row#search-option
+    %p#search-title
+      検索オプション
+    %dl
+      %dt
+        = link_to 'title:Git', search_posts_path(q: {title_or_contents_has_every_term: "title:Git"}), method: :post
+      %dd タイトルに「Git」を含んでいる
+      %dt
+        = link_to 'contents:Ruby', search_posts_path(q: {title_or_contents_has_every_term: "contents:Ruby"}), method: :post
+      %dd 本文に「Ruby」を含んでいる
   .row
     %ul.collection
       %li.collection-item
