@@ -8,7 +8,7 @@
         .left
           %span.material-icons search
         .left
-          = search_form_for @search do |f|
+          = search_form_for @search, url: search_posts_path, html: { method: :post } do |f|
             = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力"
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
