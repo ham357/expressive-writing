@@ -1,0 +1,9 @@
+.container.user__container
+  .row
+    %ul.collection
+      %li.collection-item
+        = search_form_for @search, url: search_posts_path, html: { method: :post } do |f|
+          = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力"
+      %div#user-search-result
+      - @posts.each do |post|
+        = render partial: "search_post", locals: { post: post }
