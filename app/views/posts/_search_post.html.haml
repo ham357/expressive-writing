@@ -1,0 +1,19 @@
+- if @posts.present?
+  %li.collection-item.avatar
+    %span.title
+      = check_user_icon(post.user)
+      = link_to user_path(post.user.id) do
+        = post.user.nickname
+      が
+      = post.updated_at.strftime("%Y年 %m月 %d日 %H:%M:%S")
+      に投稿
+      .collection-item
+        = link_to post_path(post.id) do
+          = post.title.present? ? post.title : "タイトル未設定"
+        %br
+        = post.contents
+        
+- else
+  %li.collection-item.avatar
+    %h5
+      該当はありません。%li.collection-item.avatar
