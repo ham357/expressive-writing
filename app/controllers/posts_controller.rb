@@ -64,6 +64,48 @@ class PostsController < ApplicationController
     gon.tags = ActsAsTaggableOn::Tag.all
   end
 
+  def remake_query(keyword)
+    if keyword.include?("title:") || keyword.include?("contents:")
+      q = { "g" => {} } if defined? q
+      keyword.split.map.with_index do |t, index|
+        if t.include?("title:") || t.include?("contents:")
+          word = t.match(":")
+          name = word.pre_match
+          value = word.post_match
+          q["g"].merge!(
+            index.to_s => {
+              "c" => {
+                "0" => {
+                  "a" => { "0" => { "name" => name.to_s } },
+                  "p" => "cont",
+                  "v" => { "0" => { "value" => value.to_s } }
+                }
+              }
+            }
+          )
+        else
+          q["g"].merge!(
+            index.to_s => {
+              "title_or_contents_cont" => t.to_s
+            }
+          )
+        end
+      end
+    else
+      q = params[:q]
+    end
+
+    q
+  end
+
+  def search
+    if params[:q].present?
+      q = remake_query(params[:q]["title_or_contents_has_every_term"])
+    end
+    @search = Post.ransack(q)
+    @posts = @search.result.includes(:user).page(params[:page]).order("created_at DESC")
+  end
+
   private
 
   def post_params
