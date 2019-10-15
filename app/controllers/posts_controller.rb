@@ -99,11 +99,10 @@ class PostsController < ApplicationController
   end
 
   def search
-    if params[:q].present?
-      q = remake_query(params[:q]["title_or_contents_has_every_term"])
-      @temp_search_word = params[:q]["title_or_contents_has_every_term"]
-    end
+    @temp_search_word = params[:q]["title_or_contents_has_every_term"]
+    q = remake_query(params[:q]["title_or_contents_has_every_term"])
     @search = Post.ransack(q)
+    @search.build_condition if @search.conditions.empty?
     @posts = @search.result.includes(:user).page(params[:page]).order("created_at DESC")
   end
 
