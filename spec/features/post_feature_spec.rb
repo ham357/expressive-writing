@@ -222,7 +222,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
         sign_in user
         visit root_path
         expect(current_path).to eq root_path
-  
+
         fill_in 'q_title_or_contents_has_every_term', with: test_post.title + "\n"
         expect(page).to have_content test_post.title
 
@@ -233,7 +233,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
         sign_in user
         visit root_path
         expect(current_path).to eq root_path
-  
+
         fill_in 'q_title_or_contents_has_every_term', with: "title:" + test_post.title + "\n"
         expect(page).to have_content test_post.title
 
@@ -244,9 +244,33 @@ feature 'SNSシェアボタンの表示', type: :feature do
         sign_in user
         visit root_path
         expect(current_path).to eq root_path
-  
+
         fill_in 'q_title_or_contents_has_every_term', with: "contents:" + test_post.contents + "\n"
         expect(page).to have_content test_post.contents
+
+        expect(current_path).to eq search_posts_path
+      end
+    end
+
+    context 'パラメータが不正な場合' do
+      scenario '検索フォームに何も入力していない場合「該当はありません。」と表示されているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+  
+        fill_in 'q_title_or_contents_has_every_term', with: "" + "\n"
+        expect(page).to have_content "該当はありません。"
+
+        expect(current_path).to eq search_posts_path
+      end
+
+      scenario '検索結果に該当が無い場合「該当はありません。」と表示されているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+  
+        fill_in 'q_title_or_contents_has_every_term', with: "@@@@@@@" + "\n"
+        expect(page).to have_content "該当はありません。"
 
         expect(current_path).to eq search_posts_path
       end
