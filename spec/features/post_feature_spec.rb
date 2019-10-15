@@ -269,7 +269,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
         sign_in user
         visit root_path
         expect(current_path).to eq root_path
-  
+
         fill_in 'q_title_or_contents_has_every_term', with: "" + "\n"
         expect(page).to have_content "該当はありません。"
 
@@ -280,7 +280,7 @@ feature 'SNSシェアボタンの表示', type: :feature do
         sign_in user
         visit root_path
         expect(current_path).to eq root_path
-  
+
         fill_in 'q_title_or_contents_has_every_term', with: "@@@@@@@" + "\n"
         expect(page).to have_content "該当はありません。"
 
