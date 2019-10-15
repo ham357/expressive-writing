@@ -250,6 +250,18 @@ feature 'SNSシェアボタンの表示', type: :feature do
 
         expect(current_path).to eq search_posts_path
       end
+
+      scenario 'スペース区切りで複数の検索が正常にできているか' do
+        sign_in user
+        visit root_path
+        expect(current_path).to eq root_path
+
+        fill_in 'q_title_or_contents_has_every_term', with: test_post.title + " " + test_post.contents + "\n"
+        expect(page).to have_content test_post.title
+        expect(page).to have_content test_post.contents
+
+        expect(current_path).to eq search_posts_path
+      end
     end
 
     context 'パラメータが不正な場合' do
