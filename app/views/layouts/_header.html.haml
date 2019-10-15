@@ -9,7 +9,7 @@
           %span.material-icons search
         .left
           = search_form_for @search, url: search_posts_path, html: { method: :post } do |f|
-            = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力"
+            = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力",value: @temp_search_word
       %ul#nav-mobile.right.hide-on-med-and-down
         %li
           = link_to about_path,class: "black-text", data: {"turbolinks" => false} do
