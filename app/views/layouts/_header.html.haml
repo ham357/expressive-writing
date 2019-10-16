@@ -8,15 +8,15 @@
         .left
           = link_to search_posts_path,class:"black-text" do
             %span.material-icons search
-        .left.hide-on-med-and-down
+        .left.hide-on-small-only
           = search_form_for @search, url: search_posts_path, html: { method: :post } do |f|
             = f.search_field :title_or_contents_has_every_term, placeholder: "キーワードを入力",value: @temp_search_word
       %ul#nav-mobile.right
-        %li.hide-on-med-and-down
+        %li.hide-on-small-only
           = link_to about_path,class: "black-text", data: {"turbolinks" => false} do
             %i.fas.fa-info-circle
         - if user_signed_in?
-          %li.notifications-list.hide-on-med-and-down
+          %li.notifications-list.hide-on-small-only
             = link_to notifications_path, class: "black-text notifications", data: {"turbolinks" => false} do
               - if unchecked_notifications.any?
                 %i.fa.fa-bell.fa-5x.icon-grey.badge{"data-count": "#{@notifications.count}"}
