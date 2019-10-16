@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  resources    :posts do
+    resources  :comments, only: %i[edit update create destroy]
+    collection do
+      match 'search' => 'posts#search', via: %i[get post], as: :search
+    end
+  end
   resources :users, only: %i[index show update]
   root to: 'posts#index'
   resources :health_check, only: [:index]
@@ -9,12 +15,6 @@ Rails.application.routes.draw do
   resources :mypages, only: :index
   get 'about', to: 'homes#index'
   get 'privacy-policy', to: 'homes#privacy-policy'
-  resources    :posts do
-    resources  :comments, only: %i[edit update create destroy]
-    collection do
-      match 'search' => 'posts#search', via: %i[get post], as: :search
-    end
-  end
   resources :relationships, only: %i[create destroy]
   post   '/like/:post_id' => 'likes#like',   as: 'like'
   delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
