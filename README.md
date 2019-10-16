@@ -57,9 +57,9 @@ https://expressive-writing.work/
 - SNSシェア機能
 - SNSログイン機能
 - タグ機能
+- 検索機能
 - 未実装
   - 投稿タイマー機能
-  - 検索機能
 ## テスト(Rspec)
   - 単体テスト
   - 統合テスト
