@@ -5,7 +5,5 @@
     %ul.collection.with-header
       %li.collection-header
         %h4 新着情報
-      %li.collection-item 他機能は現在作成中
-      %li.collection-item 「ユーザ一覧」実装済み
-      %li.collection-item 「下書き一覧」実装済み
-      %li.collection-item 「プロフィール」実装済み
+        - @notifications.each do |notification|
+          = render partial: "notifications/notification", locals: { notification: notification }
