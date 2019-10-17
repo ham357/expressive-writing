@@ -60,6 +60,7 @@ https://expressive-writing.work/
 - 検索機能
 - 未実装
   - 投稿タイマー機能
+  - 検索機能の拡張
 ## テスト(Rspec)
   - 単体テスト
   - 統合テスト
