@@ -64,4 +64,5 @@ https://expressive-writing.work/
 ## テスト(Rspec)
   - 単体テスト
   - 統合テスト
-  
+## AWSアーキテクチャ図
+![AWS Networking](AWS Networking.png)
