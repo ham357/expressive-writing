@@ -1,8 +1,9 @@
-# Expressive-writing(作成中)
+# Expressive-writing
 アイデアやノウハウを投稿したり、シェアするSNSです。
 
 # 本番環境
 https://expressive-writing.work/
+テストユーザでログインできます。
 
 # 使用技術
 - Ruby 2.5.1
