@@ -4,11 +4,11 @@
       %span.material-icons search
       検索オプション
     %dl#search-option-table
-      %dt#search-word
-        = link_to 'title:Git', search_posts_path(q: {title_or_contents_has_every_term: "title:Git"}), method: :post
+      %dt
+        = link_to 'title:Git', search_posts_path(q: {title_or_contents_has_every_term: "title:Git"}), method: :post,class:"search-title-word"
       %dd#search-dis タイトルに「Git」を含んでいる
-      %dt#search-word
-        = link_to 'contents:Ruby', search_posts_path(q: {title_or_contents_has_every_term: "contents:Ruby"}), method: :post
+      %dt
+        = link_to 'contents:Ruby', search_posts_path(q: {title_or_contents_has_every_term: "contents:Ruby"}), method: :post,class:"search-title-word"
       %dd#search-dis 本文に「Ruby」を含んでいる
   .row
     %ul.collection

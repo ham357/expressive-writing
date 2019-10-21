@@ -50,3 +50,7 @@ Metrics/CyclomaticComplexity:
 
 Metrics/PerceivedComplexity:
   Max: 8
+
+ClassLength:
+  CountComments: false  # count full line comments?
+  Max: 110

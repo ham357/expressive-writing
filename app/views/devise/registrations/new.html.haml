@@ -1,39 +1,41 @@
 .user__container
-  %h4
-    = t('view.sign_up')
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = render "devise/shared/error_messages", resource: resource
-    .field
-      = f.label :image,"プロフィール画像"
-      .file-field.input-field
-        .btn
-          %span File
-          = f.file_field :image
-        .file-path-wrapper
-          %input.file-path.validate{:type => "text"}/
-    .field
-      = f.label :nickname
-      %em
-        = t('view.nickname_information')
-      %br/
-      = f.text_field :nickname, autofocus: true
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autocomplete: "email"
-    .field
-      = f.label :password
-      - if @minimum_password_length
-        %em
-          (#{@minimum_password_length} #{t('view.password_information')})
-      %br/
-      = f.password_field :password, autocomplete: "new-password"
-    .field
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .actions
-      %button.btn.waves-effect.waves-light
+  .row
+    .col.s12
+      %h4
         = t('view.sign_up')
-  = render "devise/shared/links"
-  
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          = f.label :image,"プロフィール画像"
+          .file-field.input-field
+            .btn
+              %span File
+              = f.file_field :image
+            .file-path-wrapper
+              %input.file-path.validate{:type => "text"}/
+        .field
+          = f.label :nickname
+          %em
+            = t('view.nickname_information')
+          %br/
+          = f.text_field :nickname, autofocus: true
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autocomplete: "email"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} #{t('view.password_information')})
+          %br/
+          = f.password_field :password, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+        .actions
+          %button.btn.waves-effect.waves-light
+            = t('view.sign_up')
+      = render "devise/shared/links"
+      

@@ -60,6 +60,7 @@
   height: 30px;
   li{
     display: inline;
+    height: auto;
   }
 
   .line-btn{
@@ -113,18 +114,17 @@
           font-size: 15px;
         }
       }
-      #search-word{
+      .search-title-word{
         background-color: #fff;
         border: solid 1px #ccc;
         border-radius: 2px;
         font-family: Menlo,Monaco,Consolas,Courier New,monospace;
         font-size: 13px;
         padding: 4px 8px;
-        display: inline-block;
       }
       #search-dis{
         margin: 0;
-        margin-right: 12px;
+        margin-bottom: 12px;
         display: inline-block;
       }
     }
