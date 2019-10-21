@@ -13,6 +13,9 @@
       .card-content
         %h4.grey-text.text-darken-4
           = @post.title
+        .tag-field
+          - @post.tag_list.each do |tag|
+            .chip.label.label-primary= link_to tag, tag_path(tag)
         %span
           = @post.contents
         %p.grey-text
@@ -36,9 +39,6 @@
         %li.line-btn
           .line-it-button{"data-color" => "default", "data-count" => "false", "data-lang" => "ja", "data-size" => "large", "data-type" => "share-a", "data-url" => "#{request.url}", "data-ver" => "3"}
           %script{:async => "async", :defer => "defer", :src => "https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"}
-      %br
-      - @post.tag_list.each do |tag|
-        .chip.label.label-primary= link_to tag, tag_path(tag)
       - if @comments.present?
         %li.collection-item.avatar#comment-section
           - @comments.each do |comment|
