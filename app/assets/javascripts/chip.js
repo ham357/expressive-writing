@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  if ( location.pathname.match(/edit/) || location.pathname.match(/new/)){
   var tagList = $('#post_draft_tag_list');
 
   var allTags = typeof gon.tags !== 'undefined' ? gon.tags : [];
@@ -49,4 +49,5 @@ $(document).ready(function () {
       minLength: 1
     }
   });
+}
 });
