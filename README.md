@@ -65,4 +65,4 @@ https://expressive-writing.work/
   - 単体テスト
   - 統合テスト
 ## AWSアーキテクチャ図
-![AWS Networking](AWS Networking.png)
+![AWS Networking](https://user-images.githubusercontent.com/47965672/67170974-d8b53b80-f3ef-11e9-93b7-51d71cdf8ba8.png)
