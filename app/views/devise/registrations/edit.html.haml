@@ -37,12 +37,6 @@
           = f.label :password_confirmation
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
-        .field
-          = f.label :current_password
-          %i 
-            = t('view.current_password_information')
-          %br/
-          = f.password_field :current_password, autocomplete: "current-password"
         %button.btn.waves-effect.waves-light
           = f.submit "#{t('view.update')}"
           %i.material-icons.right send
