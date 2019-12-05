@@ -2,7 +2,7 @@
 アイデアやノウハウを投稿したり、シェアするSNSです。
 
 # 本番環境
-https://expressive-writing.work/
+https://expressive-writing.work/(現在停止中)
 <br>テストユーザでログインできます。
 
 # 使用技術
