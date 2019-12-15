@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
   def params_value_check
     if params[:value] == "following"
-      @users = User.joins("LEFT OUTER JOIN relationships ON users.id = relationships.follow_id").where(relationships: { user_id: @user.id }).order("relationships.created_at DESC")
+      @users = User.joins("LEFT OUTER JOIN relationships ON users.id = relationships.follow_id").where(relationships: { user: @user }).order("relationships.created_at DESC")
     elsif params[:value] == "followers"
-      @users = User.joins("LEFT OUTER JOIN relationships ON users.id = relationships.user_id").where(relationships: { follow_id: @user.id }).order("relationships.created_at DESC")
+      @users = User.joins("LEFT OUTER JOIN relationships ON users = relationships.user").where(relationships: { follow: @user }).order("relationships.created_at DESC")
     end
   end
 
   def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
+    if params[:user]
+      @user = User.find(params[:user])
       params_value_check
     else
       @users = User.where('nickname LIKE(?)', "#{params[:keyword]}%").order('nickname')
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params) && @user.id == current_user.id
-      redirect_to user_path(@user.id), notice: "コメントが更新されました"
+    if @user.update(user_params) && @user == current_user
+      redirect_to user_path(@user), notice: "コメントが更新されました"
     else
       render "registrations/edit", alert: "user updateエラー"
     end

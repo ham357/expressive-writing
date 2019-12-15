@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       user = User.find(params[:user_id])
-      @posts = Post.where(user_id: user.id).page(params[:page]).order("created_at DESC")
+      @posts = Post.where(user: user).page(params[:page]).order("created_at DESC")
     elsif params[:tag]
       @posts = Post.tagged_with(params[:tag]).page(params[:page]).order("created_at DESC")
     end
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params) && @post.user_id == current_user.id
+    if @post.update(post_params) && @post.user == current_user
       redirect_to root_path
     else
       respond_to do |format|
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy if post.user_id == current_user.id
+    post.destroy if post.user == current_user
     redirect_to root_path
   end
 
@@ -111,6 +111,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :contents, :image, :tag_list).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :contents, :image, :tag_list).merge(user: current_user)
   end
 end

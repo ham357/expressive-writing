@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
   def edit; end
 
   def create
-    @comment = Comment.create(comment: comment_params[:comment], post_id: comment_params[:post_id], user_id: current_user.id)
-    @comment.create_notification_by(current_user) unless current_user.id == @comment.post.user_id
+    @comment = Comment.create(comment: comment_params[:comment], post_id: comment_params[:post_id], user: current_user)
+    @comment.create_notification_by(current_user) unless current_user == @comment.post.user
     respond_to do |format|
       format.html { redirect_to post_path(params[:post_id]) }
       format.json
@@ -20,10 +20,10 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.comment = params[:comment]
-    return unless @comment.save && @comment.user_id == current_user.id
+    return unless @comment.save && @comment.user == current_user
 
     respond_to do |format|
-      format.html { redirect_to post_path(@comment.post_id), notice: 'メッセージが編集されました' }
+      format.html { redirect_to post_path(@comment.post), notice: 'メッセージが編集されました' }
       format.json
     end
   end

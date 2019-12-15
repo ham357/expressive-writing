@@ -7,13 +7,13 @@ class FavoritesController < ApplicationController
   end
 
   def favorite
-    favorite = current_user.favorites.new(post_id: @post.id)
+    favorite = current_user.favorites.new(post: @post)
     favorite.save
-    @post.create_notification_by(current_user) unless current_user.id == @post.user_id
+    @post.create_notification_by(current_user) unless current_user == @post.user
   end
 
   def unfavorite
-    favorite = current_user.favorites.find_by(post_id: @post.id)
+    favorite = current_user.favorites.find_by(post: @post)
     favorite.destroy
   end
 
@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
 
   def set_variables
     @post = Post.find(params[:post_id])
-    @f_id_name = "#favorite-link-#{@post.id}"
-    @id_star = "#star-#{@post.id}"
+    @f_id_name = "#favorite-link-#{@post}"
+    @id_star = "#star-#{@post}"
   end
 end

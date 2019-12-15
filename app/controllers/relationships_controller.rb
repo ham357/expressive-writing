@@ -16,7 +16,7 @@ class RelationshipsController < ApplicationController
 
   def set_user
     @user = User.find(params[:relationship][:follow_id])
-    @follow_id_name = "#follow-link-#{@user.id}"
-    @follow_id_btn = ".follow-btn-#{@user.id}"
+    @follow_id_name = "#follow-link-#{@user}"
+    @follow_id_btn = ".follow-btn-#{@user}"
   end
 end

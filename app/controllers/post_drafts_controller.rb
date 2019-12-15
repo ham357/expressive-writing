@@ -4,7 +4,7 @@ class PostDraftsController < ApplicationController
 
   def index
     @post_draft_last = current_user.post_drafts.order("updated_at").last
-    redirect_to post_draft_path(@post_draft_last.id) if @post_draft_last.present?
+    redirect_to post_draft_path(@post_draft_last) if @post_draft_last.present?
   end
 
   def new
@@ -26,7 +26,7 @@ class PostDraftsController < ApplicationController
     if @post_draft.save
       respond_to do |format|
         format.html do
-          redirect_to post_draft_path(@post_draft.id), notice: "下書きが作成されました"
+          redirect_to post_draft_path(@post_draft), notice: "下書きが作成されました"
         end
         format.js
       end
@@ -58,7 +58,7 @@ class PostDraftsController < ApplicationController
     if params[:commit] == 'save'
       post_create
     elsif params[:commit] == 'draft'
-      redirect_to post_draft_path(@post_draft.id), notice: "下書きが作成されました"
+      redirect_to post_draft_path(@post_draft), notice: "下書きが作成されました"
     else
       render new_post_draft_path, alert: "commit_value_checkエラー"
     end
@@ -66,7 +66,7 @@ class PostDraftsController < ApplicationController
 
   def update
     @post_draft = PostDraft.find(params[:id])
-    if @post_draft.update(post_draft_params) && @post_draft.user_id == current_user.id
+    if @post_draft.update(post_draft_params) && @post_draft.user == current_user
       commit_value_check
     else
       redirect_to root_path, alert: "updateエラー"
@@ -75,7 +75,7 @@ class PostDraftsController < ApplicationController
 
   def destroy
     post = PostDraft.find(params[:id])
-    post.destroy if post.user_id == current_user.id
+    post.destroy if post.user == current_user
     redirect_to post_drafts_path, notice: "下書きを削除しました"
   end
 
@@ -97,6 +97,6 @@ class PostDraftsController < ApplicationController
   private
 
   def post_draft_params
-    params.require(:post_draft).permit(:title, :contents, :image, :tag_list).merge(user_id: current_user.id)
+    params.require(:post_draft).permit(:title, :contents, :image, :tag_list).merge(user: current_user)
   end
 end
