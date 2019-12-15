@@ -5,9 +5,9 @@ class CommentLike < ApplicationRecord
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
-      visited_id: comment.user.id,
-      comment_id: comment.id,
-      post_id: comment.post_id,
+      visited: comment.user,
+      comment: comment,
+      post: comment.post,
       action: "comment_like"
     )
     notification.save if notification.valid?

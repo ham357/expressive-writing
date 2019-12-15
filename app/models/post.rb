@@ -16,8 +16,8 @@ class Post < ApplicationRecord
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
-      post_id: id,
-      visited_id: user.id,
+      post: self,
+      visited: user,
       action: "like"
     )
     notification.save if notification.valid?

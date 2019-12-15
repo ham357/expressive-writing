@@ -27,19 +27,19 @@ class User < ApplicationRecord
   has_many :favorited_posts, through: :favorites, source: :post
 
   def already_liked?(post)
-    likes.exists?(post_id: post.id)
+    likes.exists?(post: post)
   end
 
   def already_comment_liked?(comment)
-    comment_likes.exists?(comment_id: comment.id)
+    comment_likes.exists?(comment: comment)
   end
 
   def follow(other_user)
-    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
+    relationships.find_or_create_by(follow: other_user) unless self == other_user
   end
 
   def unfollow(other_user)
-    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship = relationships.find_by(follow: other_user)
     relationship&.destroy
   end
 
@@ -48,17 +48,17 @@ class User < ApplicationRecord
   end
 
   def followers_count
-    user_followers_count = Relationship.where(follow_id: id).count
+    user_followers_count = Relationship.where(follow: self).count
     user_followers_count.present? ? user_followers_count : 0
   end
 
   def following_count
-    user_following_count = Relationship.where(user_id: id).count
+    user_following_count = Relationship.where(user: self).count
     user_following_count.present? ? user_following_count : 0
   end
 
   def already_favorited?(post)
-    favorites.exists?(post_id: post.id)
+    favorites.exists?(post: post)
   end
 
   def self.from_omniauth(auth)
