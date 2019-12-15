@@ -1,5 +1,6 @@
 default: &default
   adapter: mysql2
+  charset: utf8
   encoding: utf8mb4
   pool: 5
   port: 3306
